@@ -7,6 +7,7 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   has_many :participations
+  belongs_to :year
 
 
   def assign_default_role
