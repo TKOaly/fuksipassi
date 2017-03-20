@@ -12,11 +12,11 @@ html
 body
   = render 'layouts/header'
   / WHY DOESN'T THIS WORK
-  /div.container
-  /  div.alert.alert-info
-  /      p.notice
-  /        = notice
-  /
-  /  div.alert.alert-danger
-  /      - alert
+  div.container
+    - if flash[:notice]
+      div.alert.alert-info
+        = flash[:notice]
+    - if flash[:alert]
+      div.alert.alert-danger
+        = flash[:alert]
   = yield
