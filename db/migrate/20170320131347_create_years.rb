@@ -1,7 +1,7 @@
 class CreateYears < ActiveRecord::Migration[5.0]
   def change
     create_table :years do |t|
-      t.integer :year, uniqueness: true, null: false
+      t.integer :year, null: false, uniqueness: true
 
       t.timestamps
     end
