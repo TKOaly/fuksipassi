@@ -7,6 +7,9 @@ end
 
 
 gem 'rails', '~> 5.0.2'
+ruby '2.3.1'
+
+
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
@@ -58,4 +61,3 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-ruby '2.3.1'
