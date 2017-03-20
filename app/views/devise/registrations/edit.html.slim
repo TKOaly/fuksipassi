@@ -7,6 +7,22 @@ h2
     = f.label :email
     br
     = f.email_field :email, autofocus: true
+  .field
+    = f.label :username
+    br
+      = f.text_field :username
+  .field
+    = f.label :first_name
+    br
+      = f.text_field :first_name
+  .field
+    = f.label :last_name
+    br
+      = f.text_field :last_name
+  .field
+    = f.label :irc_nick
+    br
+      = f.text_field :irc_nick
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
       | Currently waiting confirmation for: 
