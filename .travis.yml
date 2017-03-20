@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+- 2.3.1
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: Png7SwCncQePOrINBBan8UY9pEb0AUq0zj3HVCNhECfAZLJGanhkTLb66aVQLGg8TVOkZ7LlDnlE3TT8RtkZ2fWruNKNttWMdHzaic6D5DXsoQjG60J2MVgEj5SH77nSrJG6iM685+FxzFWmHWwHWoG0uqpjHQcXESa9Zb8YqPsZILzN5kYt+WL8MSvzQyq136ANSAP2CTfsnVfnVSlbANskOc4909RB6c1s/TVjeiK481OGGWTF370bgzl9dipnhcwySqPk7C3jgPgZYJm5Ad02rUjIBNGMuyliDFdS1QuhZaD9KqwTADPYies7eUT56+tRUxIHL/+FIB8BT/o3GsvYpkHpgAfCR04SBACxCqW834Hz6XFf7zb850tEMLqPY7QZuRR9MQfSKnYyXZNxM8vtdTP5ekiXOdtTXhXsSZ1S66N19RqTElSn4s79Z+UPuFgckDT2CPJtU5FWk1lXv1a4sHZUcNGvLOFtN20rqUg+Hnuso6jWLTGs66rpLIXIzr9rWJGyrvEwz9FhENsZ3S1Tm/xzhsaEtq8gmwEjLuL0fptITsB/Kk3HoaT6AGEvM9gMSDtEN21GgOMJQn9GBz6XESEw8nv8blypa8334pMR2A0le4sP6GiWfizRyxZhwGMnX9UoaKhhNfg96P+plsJ4qeukzGrbiSSkgk7hBi8=
+  run:
+      - rake db:migrate
+      - restart
+  app: fuksipassi
+  on:
+    repo: tekisfuksi/fuksipassi
