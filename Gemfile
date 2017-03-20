@@ -13,12 +13,14 @@ gem 'dotenv-rails', require: 'dotenv/rails-now', groups: [:development, :test]
 
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'slim'
 gem 'slim-rails'
 # gem 'therubyracer', platforms: :ruby
+
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

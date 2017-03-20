@@ -1,25 +1,24 @@
-h1 Listing events
 
-table
-  thead
-    tr
-      th String
-      th Date
-      th String
-      th
-      th
-      th
-
-  tbody
-    - @events.each do |event|
+div.container
+  h1 Listing events
+  table.table
+    thead
       tr
-        td = event.string
-        td = event.date
-        td = event.string
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
+        th Name
+        th Date
+        th
+        th
+        th
 
-br
+    tbody
+      - @events.each do |event|
+        tr
+          td = event.name
+          td = event.date
+          td = link_to 'Show', event
+          td = link_to 'Edit', edit_event_path(event)
+          td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New Event', new_event_path
+  br
+
+  = link_to 'New Event', new_event_path, :class => "btn"
