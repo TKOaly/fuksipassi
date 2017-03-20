@@ -9,6 +9,7 @@ end
 gem 'rails', '~> 5.0.2'
 ruby '2.3.1'
 
+gem 'dotenv-rails', require: 'dotenv/rails-now', groups: [:development, :test]
 
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
