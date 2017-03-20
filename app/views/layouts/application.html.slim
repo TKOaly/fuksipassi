@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+  title Fuksipassi
+  = csrf_meta_tags
+
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+
+
+body
+  = render 'layouts/header'
+  / WHY DOESN'T THIS WORK
+  /div.container
+  /  div.alert.alert-info
+  /      p.notice
+  /        = notice
+  /
+  /  div.alert.alert-danger
+  /      - alert
+  = yield
