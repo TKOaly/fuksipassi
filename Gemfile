@@ -22,6 +22,7 @@ gem 'simplecov', require: false
 
 gem 'devise'
 gem 'cancancan'
+gem 'rolify'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
