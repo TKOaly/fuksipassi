@@ -3,7 +3,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
 
+
   after_create :assign_default_role
+
+  has_many :participations
+
 
   def assign_default_role
     self.add_role(:fuksi) if self.roles.blank?

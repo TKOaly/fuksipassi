@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Points:
+  = @participation.points
+
+= link_to 'Edit', edit_participation_path(@participation)
+'  |
+= link_to 'Back', participations_path

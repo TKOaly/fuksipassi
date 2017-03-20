@@ -1,0 +1,12 @@
+= form_for @participation do |f|
+  - if @participation.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@participation.errors.count, "error")} prohibited this participation from being saved:"
+      ul
+        - @participation.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :points
+    = f.number_field :points
+  .actions = f.submit
