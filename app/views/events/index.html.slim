@@ -1,23 +1,12 @@
-
 div.container
-  h1 Listing events
-  table.table
-    thead
-      tr
-        th Name
-        th Date
-        th
-        th
-        th
+  h1 Unattended events:
 
-    tbody
-      - @events.each do |event|
-        tr
-          td = event.name
-          td = event.date
-          td = link_to 'Show', event
-          td = link_to 'Edit', edit_event_path(event)
-          td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
+  ul.list-group
+    - @events.each do |event|
+      li.list-group-item.justify-content-between
+        h4.mb-1 = link_to event.name, event
+        span.badge-danger.badge.badge-pill = event.points_for_participation
+        small = event.date
 
   br
 

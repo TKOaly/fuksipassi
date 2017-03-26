@@ -8,7 +8,7 @@
 
       def points_for_participation
         if self.participations.first
-          self.participations.first
+          self.participations.first.points
         else
           0
         end
