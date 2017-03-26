@@ -8,11 +8,19 @@
 
   .field
     = f.label :name
+    br
     = f.text_field :name
   .field
     = f.label :date
+    br
     = f.date_select :date
   .field
     = f.label :url
+    br
     = f.text_field :url
+  .field
+    = f.label :points_for_participation
+    br
+    = f.number_field :points
+
   .actions = f.submit

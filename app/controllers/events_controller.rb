@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @participation = Participation.new
   end
 
   # GET /events/1/edit
@@ -24,7 +25,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.create(event_params)
+    @event.participations << Participation.create(points: params[:event][:points])
 
     respond_to do |format|
       if @event.save
@@ -69,6 +71,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :url)
+      params.require(:event).permit(:name, :date, :url, :points)
     end
 end

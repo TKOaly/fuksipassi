@@ -1,15 +1,17 @@
-p#notice = notice
+div.container
 
-p
-  strong Name:
-  = @event.name
-p
-  strong Date:
-  = @event.date
-p
-  strong URL:
-  = @event.url
+  h2
+    = @event.name + ' '
+    small = @event.date
+  p
+    = link_to 'Tapahtuma tko-aly.fi', @event.url if @event.url
 
-= link_to 'Edit', edit_event_path(@event)
-'  |
-= link_to 'Back', events_path
+  h4
+    ' Possible points for participation:
+    span.badge.badge-pill
+      = @event.points_for_participation.points
+
+
+  = link_to 'Edit', edit_event_path(@event)
+  '  |
+  = link_to 'Back', events_path

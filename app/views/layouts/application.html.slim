@@ -11,7 +11,6 @@ html
 
 body
   = render 'layouts/header'
-  / WHY DOESN'T THIS WORK
   div.container
     - if flash[:notice]
       div.alert.alert-info
@@ -19,4 +18,4 @@ body
     - if flash[:alert]
       div.alert.alert-danger
         = flash[:alert]
-  = yield
+= yield
