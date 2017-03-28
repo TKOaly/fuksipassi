@@ -23,6 +23,10 @@ class User < ApplicationRecord
                 :case_sensitive => false
             }
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

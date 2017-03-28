@@ -1,2 +1,12 @@
 div.container
-  h1 Moi #{@user.first_name}
+  h1
+    = @user.full_name
+    small
+      '
+      = @user.username
+
+  ul.list-inline
+    - current_user.roles.each do |role|
+      li
+        span.label.label-warning
+          = role.name

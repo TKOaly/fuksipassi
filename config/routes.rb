@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :years
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
