@@ -57,6 +57,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false
+
 end
 
 group :production do
