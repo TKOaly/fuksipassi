@@ -7,7 +7,7 @@ div.container
 
   - if @user.image.present?
     = image_tag @user.image.url(:display)
-    
+
   ul.list-inline
     - current_user.roles.each do |role|
       li
