@@ -34,6 +34,9 @@ gem 'rolify'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'carrierwave'
+gem 'cloudinary'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'

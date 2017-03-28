@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  mount_uploader :image, ImageUploader
 
   after_create :assign_default_role
   has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id'
