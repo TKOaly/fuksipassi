@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   rolify
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable,
+         :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable,
          :omniauthable, :omniauth_providers => [:facebook]
 
 
