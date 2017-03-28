@@ -5,6 +5,9 @@
       # accepts_nested_attributes_for :participations
       attr_accessor :points
 
+      scope :future, -> {where("date > ?", Time.zone.now)}
+      scope :unattended, -> {where("date < ?", Time.zone.now)}
+
 
       def points_for_participation
         if self.participations.first

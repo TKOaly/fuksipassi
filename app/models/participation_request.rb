@@ -1,5 +1,5 @@
 class ParticipationRequest < ApplicationRecord
-  belongs_to :accepter_id
-  belongs_to :participant_id
-  belongs_to :participation_id
+  belongs_to :acceptor, :class_name => 'User', :foreign_key => 'acceptor_id'
+  belongs_to :participant, :class_name => 'User', :foreign_key => 'participant_id'
+  belongs_to :participation
 end

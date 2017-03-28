@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :participations
   resources :events
   resources :years
+  resources :participation_requests
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users, only: [:show, :index]
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy'
     get 'register', to: 'devise/registrations#new'
   end
+
+  get 'overview' => "overview#index"
 
 
 

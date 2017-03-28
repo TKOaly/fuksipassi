@@ -11,6 +11,8 @@ div.container
     span.badge.badge-pill
       = @event.points_for_participation
 
+  == render 'participation_request_form'
+
 
   = link_to 'Edit', edit_event_path(@event)
   '  |

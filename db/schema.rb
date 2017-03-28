@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328131444) do
+ActiveRecord::Schema.define(version: 20170328153527) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",       null: false
@@ -23,23 +23,24 @@ ActiveRecord::Schema.define(version: 20170328131444) do
   end
 
   create_table "participation_requests", force: :cascade do |t|
-    t.integer  "acceptor_id_id"
-    t.integer  "participant_id_id"
+    t.integer  "acceptor_id"
+    t.integer  "participant_id"
     t.string   "description"
-    t.integer  "participation_id_id"
+    t.integer  "participation_id"
     t.boolean  "accepted"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["acceptor_id_id"], name: "index_participation_requests_on_acceptor_id_id"
-    t.index ["participant_id_id"], name: "index_participation_requests_on_participant_id_id"
-    t.index ["participation_id_id"], name: "index_participation_requests_on_participation_id_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["acceptor_id"], name: "index_participation_requests_on_acceptor_id"
+    t.index ["participant_id"], name: "index_participation_requests_on_participant_id"
+    t.index ["participation_id"], name: "index_participation_requests_on_participation_id"
   end
 
   create_table "participations", force: :cascade do |t|
     t.integer  "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "event_id"
+    t.string   "description"
     t.index ["event_id"], name: "index_participations_on_event_id"
   end
 

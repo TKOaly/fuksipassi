@@ -1,0 +1,8 @@
+div.jumbotron
+
+  h3 Request points:
+  = form_for @participation_request do |f|
+    .field
+      = f.collection_select(:participation_id, @event.participations, :id, :to_s)
+      = f.hidden_field :participant_id, :value => current_user.id
+    .actions = f.submit

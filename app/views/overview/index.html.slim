@@ -1,0 +1,6 @@
+div.container
+  h4 Participations created:
+  ul
+    - @participations.each do |p|
+      li
+        = p.to_s

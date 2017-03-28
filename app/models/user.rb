@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
 
   after_create :assign_default_role
-
-  has_many :participations
+  has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id'
+  has_many :accepted_participations, :class_name => 'ParticipationRequest', foreign_key: 'acceptor_id'
+  has_many :participations, :through => :participation_requests
   belongs_to :year
 
   attr_accessor :login

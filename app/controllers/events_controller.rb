@@ -5,11 +5,14 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @future_events = Event.future
+    @unattended_events = Event.unattended
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @participation_request = ParticipationRequest.new
   end
 
   # GET /events/new
