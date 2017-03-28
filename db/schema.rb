@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20170328153527) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "year_id"
     t.string   "provider"
     t.string   "uid"
-    t.integer  "year_id"
     t.string   "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

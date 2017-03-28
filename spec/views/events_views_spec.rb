@@ -4,9 +4,9 @@ RSpec.describe "Events view", type: :feature do
   describe "creating an event" do
     before :each do
       user = FactoryGirl.create(:user)
+      user.add_role "admin"
       login_as(user)
       visit new_event_path
-
       fill_in 'event_name', with: 'test event'
       fill_in 'event_points', with: 10
 
