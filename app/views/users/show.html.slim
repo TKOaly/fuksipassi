@@ -1,17 +1,34 @@
 div.container
-  h1
-    = @user.full_name
-    small
-      '
-      = @user.username
-
-  - if @user.image.present?
-    = image_tag @user.image.url(:display)
-
   ul.list-inline
-    - current_user.roles.each do |role|
-      li
-        span.label.label-warning
-          = role.name
+    li
+      h1
+        = @user.full_name
+        small
+          '
+          = @user.username
+    br
+    / Onko ylläoleva tarpeellinen elämän suhteen??
+    == render 'role_list', roles: @user.roles
 
 
+    - if @user.image.present?
+      = image_tag @user.image.url(:display)
+  br
+
+  p
+    ' Confirmed points:
+    = @user.confirmed_points
+
+  h3 Attended events
+  - @participation_requests.each do |participation|
+    li.list-group-item.justify-content-between
+      ul.list-inline
+        li
+          h4.mb-1 = link_to participation.event.name, participation.event
+        li#confirmed
+        - unless participation.acceptor
+          span.label.label-warning unconfirmed
+        - else
+          span.label.label-success confirmed
+      span.badge-danger.badge.badge-pill = participation.event.points_for_participation
+      small#date = participation.event.date

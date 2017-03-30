@@ -1,0 +1,9 @@
+ul.list-inline
+  - roles.each do |role|
+    li
+      - if role.name == 'admin'
+        span.label.label-success
+          = role.name
+      - else
+        span.label.label-primary
+          = role.name

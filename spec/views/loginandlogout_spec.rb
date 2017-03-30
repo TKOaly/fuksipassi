@@ -25,8 +25,6 @@ RSpec.describe "Logging in and out", type: :feature do
     it 'user is able to log out' do
       login_as(User.first)
       visit logout_path
-      # click_button 'Logout'
-
       expect(page).to have_content('Signed out successfully')
     end
   end

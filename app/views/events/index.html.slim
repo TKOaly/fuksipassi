@@ -3,17 +3,17 @@ div.container
     div.col-sm-12.col-md-4
       h3 Unattended events:
 
-      == render 'list', events: @unattended_events, typeid: 'unattended'
+      == render 'list', events: @unattended_events
 
     div.col-sm-12.col-md-4
       h3 Upcoming events:
 
-      == render 'list', events: @future_events, typeid: 'upcoming'
+      == render 'list', events: @future_events
 
     div.col-sm-12.col-md-4
       h3 Attended events:
 
-      == render 'list', events: @participated_events, typeid: 'attended'
+      == render 'list', events: @participated_events
   br
 
   = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'

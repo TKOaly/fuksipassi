@@ -3,16 +3,22 @@ Rails.application.routes.draw do
   resources :events
   resources :years
   resources :participation_requests
-  resources :users, only: [:show, :index]
+  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
+
+  scope '/apua' do
+    resources :users
+  end
+
+  # get 'my_page', to: user_path
 
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'
     get 'register', to: 'devise/registrations#new'
+
   end
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
   get 'overview' => 'overview#index'
 
   authenticated :user do
