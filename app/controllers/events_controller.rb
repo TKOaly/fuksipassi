@@ -7,7 +7,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @future_events = Event.future
-    @unattended_events = Event.unattended
+    @unattended_events = Event.unattended - current_user.participations.map { |u| u.event}
+    @participated_events = current_user.participations.map { |u| u.event}
   end
 
   # GET /events/1

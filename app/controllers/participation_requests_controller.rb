@@ -1,6 +1,7 @@
 class ParticipationRequestsController < ApplicationController
 
   def create
+    # TODO: do not allow multiple requests for same point
     @participation_request = ParticipationRequest.new(participation_request_params)
 
 

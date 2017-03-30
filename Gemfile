@@ -34,6 +34,8 @@ gem 'rolify'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'rack-mini-profiler'
+
 gem 'carrierwave'
 gem 'cloudinary'
 

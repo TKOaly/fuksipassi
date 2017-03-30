@@ -10,5 +10,5 @@ div.container
   ul
     - @unconfirmed.each do |s|
       li
-        = s.participant.full_name
+        = s.participant.full_name + ' - '
         = s.participation.event.name

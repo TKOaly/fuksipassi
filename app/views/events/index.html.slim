@@ -1,6 +1,6 @@
 div.container
   div.container
-    div.col-sm-12.col-md-6
+    div.col-sm-12.col-md-4
       h3 Unattended events:
 
       - @unattended_events.each do |event|
@@ -9,11 +9,20 @@ div.container
           span.badge-danger.badge.badge-pill = event.points_for_participation
           small = event.date
 
-    div.col-sm-12.col-md-6
+    div.col-sm-12.col-md-4
       h3 Upcoming events:
 
       - @future_events.each do |event|
         li.list-group-item.justify-content-between#future
+          h4.mb-1 = event.name
+          span.badge-danger.badge = event.points_for_participation
+          small = event.date
+
+    div.col-sm-12.col-md-4
+      h3 Attended events:
+
+      - @participated_events.each do |event|
+        li.list-group-item.justify-content-between
           h4.mb-1 = event.name
           span.badge-danger.badge = event.points_for_participation
           small = event.date

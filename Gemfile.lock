@@ -176,6 +176,8 @@ GEM
     public_suffix (2.0.5)
     puma (3.8.1)
     rack (2.0.1)
+    rack-mini-profiler (0.10.2)
+      rack (>= 1.2.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -327,6 +329,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma (~> 3.0)
+  rack-mini-profiler
   rails (~> 5.0.2)
   rolify
   rspec-rails
