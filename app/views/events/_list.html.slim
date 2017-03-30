@@ -1,0 +1,5 @@
+- events.each do |event|
+  li.list-group-item.justify-content-between id=typeid
+    h4.mb-1 = link_to event.name, event
+    span.badge-danger.badge.badge-pill = event.points_for_participation
+    small = event.date
