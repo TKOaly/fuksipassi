@@ -5,3 +5,10 @@ div.container
     - @participations.each do |p|
       li
         = p.to_s
+
+  h4 Unconfirmed attendances
+  ul
+    - @unconfirmed.each do |s|
+      li
+        = s.participant.full_name
+        = s.participation.event.name

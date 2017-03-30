@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @participation_request = ParticipationRequest.new
+    @unattended_participations = @event.participations - current_user.participations
   end
 
   # GET /events/new

@@ -3,6 +3,7 @@ class ParticipationRequestsController < ApplicationController
   def create
     @participation_request = ParticipationRequest.new(participation_request_params)
 
+
     respond_to do |format|
       if @participation_request.save
         format.html { redirect_to :back, notice: 'Request submitted.' }
