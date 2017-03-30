@@ -6,7 +6,7 @@ div.container
   p
     = link_to 'Tapahtuma tko-aly.fi', @event.url if @event.url
 
-  h4
+  p
     ' Possible points for participation:
     span.badge.badge-pill
       = @event.points_for_participation

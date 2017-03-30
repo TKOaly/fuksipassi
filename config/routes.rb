@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :events
   resources :years
   resources :participation_requests
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users, only: [:show, :index]
+
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
@@ -12,11 +12,12 @@ Rails.application.routes.draw do
     get 'register', to: 'devise/registrations#new'
   end
 
-  get 'overview' => "overview#index"
+  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
+  get 'overview' => 'overview#index'
 
-
-
-
-  root to: "events#index"
+  authenticated :user do
+    root :to => 'events#index', :as => :authenticated_root
+  end
+  root :to => redirect('login')
 
 end
