@@ -26,7 +26,6 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-gem 'simplecov', require: false
 
 gem 'devise'
 gem 'cancancan'
@@ -34,7 +33,6 @@ gem 'rolify'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem 'rack-mini-profiler'
 
 gem 'carrierwave'
 gem 'cloudinary'
@@ -51,6 +49,10 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rack-mini-profiler', require: false
+  gem 'simplecov', require: false
+
+
 end
 
 group :test do
