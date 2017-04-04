@@ -10,25 +10,28 @@ div.container
     / Onko ylläoleva tarpeellinen elämän suhteen??
     == render 'role_list', roles: @user.roles
 
-
+    br
     - if @user.image.present?
       = image_tag @user.image.url(:display)
   br
-
   p
     ' Confirmed points:
     = @user.confirmed_points
+    br
+    ' All points:
+    = @user.all_points
 
-  h3 Attended events
-  - @participation_requests.each do |participation|
-    li.list-group-item.justify-content-between
-      ul.list-inline
-        li
-          h4.mb-1 = link_to participation.event.name, participation.event
-        li#confirmed
-        - unless participation.acceptor
-          span.label.label-warning unconfirmed
-        - else
-          span.label.label-success confirmed
-      span.badge-danger.badge.badge-pill = participation.event.points_for_participation
-      small#date = participation.event.date
+  - if @participation_requests.any?
+    h3 Attended events
+    - @participation_requests.each do |participation|
+      li.list-group-item.justify-content-between
+        ul.list-inline
+          li
+            h4.mb-1 = link_to participation.event.name, participation.event
+          li#confirmed
+          - unless participation.acceptor
+            span.label.label-warning unconfirmed
+          - else
+            span.label.label-success confirmed
+        span.badge-danger.badge.badge-pill = participation.event.points_for_participation
+        small#date = participation.event.date

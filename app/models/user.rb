@@ -30,7 +30,19 @@ class User < ApplicationRecord
   end
 
   def confirmed_points
-    participation_requests.confirmed.map {|p| p.participation.points}.inject(:+)
+    if participation_requests.any?
+      participation_requests.confirmed.map {|p| p.participation.points}.inject(:+)
+    else
+      0
+    end
+  end
+
+  def all_points
+    if participations.any?
+      participations.map {|p| p.points}.inject(:+)
+    else
+      0
+    end
   end
 
 
