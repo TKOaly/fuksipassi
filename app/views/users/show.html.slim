@@ -16,7 +16,7 @@ div.container
   br
   p
     ' Confirmed points:
-    = @user.confirmed_points
+    = @user.confirmed_points ? @user.confirmed_points : 0
     br
     ' All points:
     = @user.all_points
@@ -27,12 +27,12 @@ div.container
       li.list-group-item.justify-content-between
         ul.list-inline
           li
-            h4.mb-1 = link_to participation.participation, participation.participation
+            h4.mb-1 = link_to participation.participation.name, participation.participation
           li#confirmed
           - unless participation.acceptor
             span.label.label-warning unconfirmed
           - else
             span.label.label-success confirmed
         span.badge-danger.badge.badge-pill = participation.participation.points
-        -if participation.event
-          small#date = participation.event.date
+        small#date = date(participation)
+

@@ -7,7 +7,13 @@ class Participation < ApplicationRecord
   scope :tasks,  -> {where('PARTICIPATION_TYPE = 2')}
 
   def name
-    description
+    if participation_type == 'event'
+      event.name
+    elsif participation_type == 'event_extra'
+      "#{event.name} - #{description}"
+    elsif participation_type == 'task'
+      description
+    end
   end
 
   def to_s
