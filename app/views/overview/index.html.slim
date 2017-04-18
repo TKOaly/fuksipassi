@@ -1,12 +1,10 @@
 div.container
-
-
   h4 Unconfirmed attendances
   select.list-group(multiple)
     - @unconfirmed_requests.each do |event|
       option(disabled)
-        = event.first.event.name
-      ul.list-group
+        = event.first.participation
+        ul.list-group
         -event.each do |part|
           li.list-group-item
             option
@@ -16,5 +14,4 @@ div.container
   ul
     - @participations.each do |p|
       li
-        = p.to_s + " "
-        = p.points
+        = p.to_s

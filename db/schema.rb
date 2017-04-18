@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328153527) do
+ActiveRecord::Schema.define(version: 20170418180934) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",       null: false
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20170328153527) do
 
   create_table "participations", force: :cascade do |t|
     t.integer  "points"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "event_id"
     t.string   "description"
+    t.integer  "participation_type"
     t.index ["event_id"], name: "index_participations_on_event_id"
   end
 
