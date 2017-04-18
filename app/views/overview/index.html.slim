@@ -2,14 +2,15 @@ div.container
 
 
   h4 Unconfirmed attendances
-  div.panel.panel-default
+  select.list-group(multiple)
     - @unconfirmed_requests.each do |event|
-      div.panel-heading
+      option(disabled)
         = event.first.event.name
       ul.list-group
         -event.each do |part|
           li.list-group-item
-            = part.participant.full_name
+            option
+              = part.participant.full_name
 
   h4 Possible participations:
   ul
