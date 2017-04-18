@@ -1,14 +1,19 @@
 div.container
 
-  h4 Participations created:
+
+  h4 Unconfirmed attendances
+  div.panel.panel-default
+    - @unconfirmed_requests.each do |event|
+      div.panel-heading
+        = event.first.event.name
+      ul.list-group
+        -event.each do |part|
+          li.list-group-item
+            = part.participant.full_name
+
+  h4 Possible participations:
   ul
     - @participations.each do |p|
       li
-        = p.to_s
-
-  h4 Unconfirmed attendances
-  ul
-    - @unconfirmed.each do |s|
-      li
-        = s.participant.full_name + ' - '
-        = s.participation.event.name
+        = p.to_s + " "
+        = p.points

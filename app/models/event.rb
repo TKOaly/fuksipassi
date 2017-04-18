@@ -9,6 +9,7 @@
       scope :unattended, -> {where("date < ?", Time.zone.now)}
 
 
+
       def points_for_participation
         if self.participations.first
           self.participations.first.points
