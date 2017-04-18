@@ -19,3 +19,4 @@ div.container
   br
   - if current_user.has_role? 'admin'
     = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
+    = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'

@@ -11,6 +11,13 @@ class ParticipationsController < ApplicationController
   # GET /participations/1
   # GET /participations/1.json
   def show
+    if  @participation.event
+      redirect_to @participation.event
+
+    end
+    @unattended_participations = [@participation]-current_user.participations
+    @participation_request = ParticipationRequest.new
+
   end
 
   # GET /participations/new
@@ -26,6 +33,7 @@ class ParticipationsController < ApplicationController
   # POST /participations.json
   def create
     @participation = Participation.new(participation_params)
+    @participation.participation_type = 2
 
     respond_to do |format|
       if @participation.save
@@ -63,13 +71,13 @@ class ParticipationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_participation
-      @participation = Participation.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_participation
+    @participation = Participation.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def participation_params
-      params.require(:participation).permit(:points)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def participation_params
+    params.require(:participation).permit(:points, :description)
+  end
 end

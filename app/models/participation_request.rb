@@ -4,6 +4,7 @@ class ParticipationRequest < ApplicationRecord
   belongs_to :participation
   has_one :event, through: :participation
 
+
   # has_one :points, through: :participation
 
   scope :unconfirmed, -> {where('ACCEPTOR_ID IS NULL')}

@@ -7,8 +7,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @future_events = Event.future
-    @unattended_events = Event.unattended - current_user.participations.map { |u| u.event}
-    @participated_events = current_user.participations.map { |u| u.event}
+    @unattended_events = Event.unattended  + Participation.tasks - current_user.participations.map { |u| u.event ? u.event : u }
+    @participated_events = current_user.participations.map { |u| u.event ? u.event : u }
   end
 
   # GET /events/1
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.create(event_params)
-    @event.participations << Participation.create(points: params[:event][:points], participation_type:0)
+    @event.participations << Participation.create(points: params[:event][:points], participation_type: 0)
 
     respond_to do |format|
       if @event.save
@@ -70,13 +70,13 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :date, :url, :points)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:name, :date, :url, :points)
+  end
 end

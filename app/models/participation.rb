@@ -4,13 +4,17 @@ class Participation < ApplicationRecord
   has_many :participation_requests
   has_many :users, through: :participation_requests
 
-  def to_s
-    if event
-      "Attendance to #{event.name} - #{points}"
-    else
-      participation
-    end
+  scope :tasks,  -> {where('PARTICIPATION_TYPE = 2')}
+
+  def name
+    description
   end
 
-
+  def to_s
+    if event
+      "#{event.name} - #{points}"
+    else
+      "#{description} - #{points}"
+    end
+  end
 end

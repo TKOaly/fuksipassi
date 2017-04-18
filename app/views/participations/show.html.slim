@@ -1,9 +1,18 @@
-p#notice = notice
+div.container
+  h2
+    =@participation.description
+  p
+    ' Possible points for participation:
+    span.badge.badge-pill
+      = @participation.points
+  - if @unattended_participations.any?
+    == render 'events/participation_request_form'
+  - else
+    ' You have already requested all the possible points for this participations! ;)
+  br
 
-p
-  strong Points:
-  = @participation.points
-
-= link_to 'Edit', edit_participation_path(@participation)
-'  |
-= link_to 'Back', participations_path
+  -if current_user.has_role? "admin"
+    p
+      = link_to 'Edit', edit_participation_path(@participation)
+      '  |
+      = link_to 'Back', participations_path

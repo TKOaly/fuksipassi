@@ -1,6 +1,4 @@
 div.request-form
-
-  h3 Request points:
   = form_for @participation_request do |f|
     .field
       = f.collection_select(:participation_id, @unattended_participations, :id, :to_s, {}, {:class=>'form-control'})

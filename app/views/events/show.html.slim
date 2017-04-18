@@ -9,7 +9,7 @@ div.container
   p
     ' Possible points for participation:
     span.badge.badge-pill
-      = @event.points_for_participation
+      = @event.points
   - if @unattended_participations.any?
     == render 'participation_request_form'
   - else
