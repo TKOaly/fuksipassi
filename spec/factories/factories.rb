@@ -10,4 +10,12 @@ FactoryGirl.define do
     password_confirmation "password123"
     confirmed_at Date.today
   end
+
+  factory :participation do
+    participation_type 2
+    description "Test participation"
+    points 5
+  end
+
+
 end
