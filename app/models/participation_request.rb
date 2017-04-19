@@ -1,13 +1,11 @@
 class ParticipationRequest < ApplicationRecord
   belongs_to :acceptor, :class_name => 'User'
-  belongs_to :participant, :class_name => 'User'
+  belongs_to :participant, -> { uniq }, :class_name => 'User'
   belongs_to :participation
   has_one :event, through: :participation
 
   validates :participation, :presence => true
-  validates :participant, :presence => true
-
-  # has_one :points, through: :participation
+  validates :participant, :presence => true, uniqueness: true
 
   scope :unconfirmed, -> {where('ACCEPTOR_ID IS NULL')}
   scope :confirmed, -> {where('ACCEPTOR_ID IS NOT NULL')}

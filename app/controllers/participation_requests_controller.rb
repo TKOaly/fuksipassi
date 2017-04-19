@@ -3,7 +3,10 @@ class ParticipationRequestsController < ApplicationController
   def create
     # TODO: do not allow multiple requests for same point
     @participation_request = ParticipationRequest.new(participation_request_params)
-
+    pp @participation_request.participation
+    if @participation_request.participant.participations.include? @participation_request.participation
+      return
+    end
 
     respond_to do |format|
       if @participation_request.save

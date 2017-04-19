@@ -11,7 +11,7 @@ class ParticipationsController < ApplicationController
   # GET /participations/1
   # GET /participations/1.json
   def show
-    if  @participation.event
+    if @participation.event
       redirect_to @participation.event
 
     end

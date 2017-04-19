@@ -13,10 +13,6 @@ class User < ApplicationRecord
   belongs_to :year
 
   attr_accessor :login
-  # attr_accessible :username
-
-  # attr_accessible :login
-
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :username,
