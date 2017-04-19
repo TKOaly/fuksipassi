@@ -4,6 +4,8 @@ class ParticipationRequest < ApplicationRecord
   belongs_to :participation
   has_one :event, through: :participation
 
+  validates :participation, :presence => true
+  validates :participant, :presence => true
 
   # has_one :points, through: :participation
 
