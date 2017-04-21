@@ -35,7 +35,10 @@ class User < ApplicationRecord
   end
 
   def all_points
-    participations.map { |p| p.points }.inject(:+) + notes.visible.map { |n| n.points }.inject(:+)
+    (participations.any? ?
+        participations.map { |p| p.points }.inject(:+) : 0) +
+        (notes.visible.any? ?
+            notes.visible.map { |n| n.points }.inject(:+) : 0)
   end
 
 
