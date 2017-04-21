@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   resources :participations
   resources :events
   resources :years
-  resources :participation_requests
-  put 'participation_requests/bulk_accept' => 'participation_requests#bulk_accept'
+  resources :participation_requests do
+    collection do
+      patch 'bulk_accept',
+            to: 'participation_requests#bulk_accept',
+            as: :bulk_accept
+    end
+  end
   devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
 
   scope '/apua' do
