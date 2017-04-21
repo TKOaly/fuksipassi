@@ -28,15 +28,14 @@ class User < ApplicationRecord
   end
 
   def confirmed_points
-    if participation_requests.any? or notes.any?
-      participation_requests.confirmed.map {|p| p.participation.points}.inject(:+)  + notes.visible.map {|n|n.points}.inject(:+)
-    else
-      0
-    end
+    (participation_requests.confirmed.any? ?
+        participation_requests.confirmed.map { |p| p.participation.points }.inject(:+) : 0) +
+    (notes.visible.any? ?
+        notes.visible.map { |n| n.points }.inject(:+) : 0)
   end
 
   def all_points
-      participations.map {|p| p.points}.inject(:+) + notes.visible.map {|n|n.points}.inject(:+)
+    participations.map { |p| p.points }.inject(:+) + notes.visible.map { |n| n.points }.inject(:+)
   end
 
 
@@ -58,7 +57,7 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", {:value => login.downcase}]).first
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_hash).first
     end

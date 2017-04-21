@@ -18,7 +18,7 @@ div.container
     == render 'users/note_form' if current_user.has_role? "admin"
     p
       ' Confirmed points:
-      = @user.confirmed_points ? @user.confirmed_points : 0
+      = @user.confirmed_points
       br
       ' All points:
       = @user.all_points
