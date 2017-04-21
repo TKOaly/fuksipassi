@@ -20,7 +20,7 @@ class ParticipationRequestsController < ApplicationController
   end
 
   def bulk_accept
-    participation_request_params[:participations].each {|p| accept(p)}
+    participation_params[:participation_request].each {|p| accept(p)}
   end
 
   def accept(participation)
@@ -35,5 +35,9 @@ class ParticipationRequestsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def participation_request_params
     params.require(:participation_request).permit(:participant_id, :participation_id, :participations)
+  end
+
+  def participation_params
+    params.require(:participation).permit(:participantion_requests)
   end
 end

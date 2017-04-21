@@ -1,6 +1,8 @@
 div.container
   h4 Unconfirmed attendances
-  = form_for :participation_request, :url => participation_requests_bulk_accept_path, :html => { :method => :put } do |f|
+  = form_for(:participation,
+          url: bulk_accept_participation_requests_path,
+          method: :patch) do |f|
     select.list-group(multiple)
       - @unconfirmed_requests.each do |event|
         option(disabled)

@@ -4,7 +4,7 @@ class ParticipationRequest < ApplicationRecord
   belongs_to :participation
   has_one :event, through: :participation
 
-  validates :participation, :presence => true, uniqueness: true
+  validates :participation, :presence => true
   validates :participant, :presence => true
 
   scope :unconfirmed, -> {where('ACCEPTOR_ID IS NULL')}
