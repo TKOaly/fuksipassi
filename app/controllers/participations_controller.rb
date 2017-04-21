@@ -33,7 +33,7 @@ class ParticipationsController < ApplicationController
   # POST /participations.json
   def create
     @participation = Participation.new(participation_params)
-    @participation.participation_type = 2
+    # @participation.participation_type = 2
 
     respond_to do |format|
       if @participation.save
@@ -78,6 +78,6 @@ class ParticipationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def participation_params
-    params.require(:participation).permit(:points, :description)
+    params.require(:participation).permit(:points, :description, :event_id, :participation_type)
   end
 end

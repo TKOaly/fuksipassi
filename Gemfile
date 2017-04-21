@@ -52,7 +52,7 @@ group :development do
   gem 'better_errors'
   gem 'rack-mini-profiler', require: false
   gem 'simplecov', require: false
-
+  gem 'binding_of_caller'
 
 end
 

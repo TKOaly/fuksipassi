@@ -4,7 +4,7 @@ class Participation < ApplicationRecord
   has_many :participation_requests
   has_many :users, through: :participation_requests
 
-  scope :tasks,  -> {where('PARTICIPATION_TYPE = 2')}
+  scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
 
   def name
     if participation_type == 'event'
@@ -17,10 +17,13 @@ class Participation < ApplicationRecord
   end
 
   def to_s
-    if event
+    if participation_type == 'event'
       "#{event.name} - #{points}"
-    else
+    elsif participation_type == 'event_extra'
+      "#{description} - #{points}"
+    elsif participation_type == 'task'
       "#{description} - #{points}"
     end
   end
+
 end
