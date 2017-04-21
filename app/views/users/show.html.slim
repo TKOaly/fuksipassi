@@ -33,4 +33,5 @@ div.container
           small.note-giver
             '
             = '(' + note.from.full_name + ')'
-        span.badge = note.points unless note.points_hidden
+        span[class="#{point_badge(note.points)}"]
+          = note.points unless note.points_hidden

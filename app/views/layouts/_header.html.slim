@@ -14,7 +14,7 @@ nav.navbar.navbar-default role="navigation"
         li
           a href="/overview"  Overview
         li
-          a href="/"  Dokaa fuksipassi
+          a href="/dokaa"  Dokaa fuksipassi
         - if current_user and current_user.has_role? :admin
           li
             = link_to 'Users', users_path

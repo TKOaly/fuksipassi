@@ -15,6 +15,16 @@ class NotesController < ApplicationController
     end
   end
 
+  def dokaa
+    @note = Note.new
+    @note.points = -3
+    @note.description = "dokasit fuksipassin"
+    @note.to = current_user
+    @note.save
+
+    redirect_to @note.to, notice: 'älä plz'
+  end
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params

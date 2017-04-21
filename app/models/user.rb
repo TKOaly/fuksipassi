@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def confirmed_points
-    if participation_requests.any?
+    if participation_requests.any? or notes.any?
       participation_requests.confirmed.map {|p| p.participation.points}.inject(:+)  + notes.visible.map {|n|n.points}.inject(:+)
     else
       0

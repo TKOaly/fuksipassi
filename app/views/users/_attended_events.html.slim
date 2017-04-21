@@ -9,5 +9,6 @@ h3 Attended events
         span.label.label-warning unconfirmed
       - else
         span.label.label-success confirmed
-    span.badge-danger.badge.badge-pill = participation.participation.points
+    span[class="#{point_badge(participation.participation.points)}"]
+      = participation.participation.points
     small#date = date(participation)
