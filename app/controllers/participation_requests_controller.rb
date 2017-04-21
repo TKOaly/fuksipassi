@@ -19,8 +19,21 @@ class ParticipationRequestsController < ApplicationController
     end
   end
 
+  def bulk_accept
+    participation_request_params[:participations].each {|p| accept(p)}
+  end
+
+  def accept(participation)
+    if current_user.has_role? "admin"
+      participation.acceptor = current_user
+      participation.save
+    else
+      redirect_to :back, notice: 'That is not allowed. Please don\'t try that again'
+    end
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def participation_request_params
-    params.require(:participation_request).permit(:participant_id, :participation_id)
+    params.require(:participation_request).permit(:participant_id, :participation_id, :participations)
   end
 end
