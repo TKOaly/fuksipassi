@@ -10,10 +10,10 @@ class ParticipationRequestsController < ApplicationController
 
     respond_to do |format|
       if @participation_request.save
-        format.html { redirect_to :back, notice: 'Request submitted.' }
-        format.json { render :show, status: :created, location: @participation_request }
+        format.html { redirect_to :events, notice: 'Request submitted.' }
+        format.json { render events_path, status: :created, location: @participation_request }
       else
-        format.html { render :new }
+        format.html { render event_path }
         format.json { render json: @participation_request.errors, status: :unprocessable_entity }
       end
     end
