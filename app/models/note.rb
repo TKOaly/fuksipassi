@@ -5,4 +5,6 @@ class Note < ApplicationRecord
   # validates :participation, :presence => true, uniqueness: true
   # validates :participant, :presence => true
 
+  scope :visible, -> {where(points_hidden: [nil, false])}
+
 end

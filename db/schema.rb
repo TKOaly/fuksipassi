@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421124114) do
+ActiveRecord::Schema.define(version: 20170421143604) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",       null: false
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20170421124114) do
     t.string   "description"
     t.integer  "from_id"
     t.integer  "to_id"
-    t.boolean  "points_visible"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "points_hidden"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["from_id"], name: "index_notes_on_from_id"
     t.index ["to_id"], name: "index_notes_on_to_id"
   end
@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 20170421124114) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "year_id"
     t.string   "provider"
     t.string   "uid"
-    t.integer  "year_id"
     t.string   "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

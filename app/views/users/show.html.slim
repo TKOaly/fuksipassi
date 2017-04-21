@@ -33,5 +33,4 @@ div.container
           small.note-giver
             '
             = '(' + note.from.full_name + ')'
-        span.badge = note.points
-
+        span.badge = note.points unless note.points_hidden
