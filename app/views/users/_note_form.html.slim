@@ -1,0 +1,8 @@
+div.inline-form.form-inline
+  = form_for @note do |f|
+    = f.number_field :points, :class => 'form-control', :placeholder => 'points'
+    = f.text_field :description, :class => 'form-control', :placeholder => 'description'
+    = f.check_box :points_visible, :class => 'form-check-input'
+    = f.label :hide_points
+    = f.hidden_field :to_id, :value => @user.id
+    .actions = f.submit 'Gibe points', :class => 'btn btn-primary'

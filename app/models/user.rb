@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id'
   has_many :accepted_participations, :class_name => 'ParticipationRequest', foreign_key: 'acceptor_id'
   has_many :participations, :through => :participation_requests
+  has_many :notes, :class_name => 'Note', foreign_key: 'to_id'
+  has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   belongs_to :year
 
   attr_accessor :login

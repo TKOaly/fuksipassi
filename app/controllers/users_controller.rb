@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   def show
     @user = User.find(params[:id])
-    @participation_requests = @user.participation_requests
-
+    @note = Note.new
   end
 
   def index

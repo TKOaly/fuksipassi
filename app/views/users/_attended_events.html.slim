@@ -1,0 +1,13 @@
+h3 Attended events
+- @user.participation_requests.each do |participation|
+  li.list-group-item.justify-content-between
+    ul.list-inline
+      li
+        h4.mb-1 = link_to participation.participation.name, participation.participation
+      li#confirmed
+      - unless participation.acceptor
+        span.label.label-warning unconfirmed
+      - else
+        span.label.label-success confirmed
+    span.badge-danger.badge.badge-pill = participation.participation.points
+    small#date = date(participation)
