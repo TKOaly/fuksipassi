@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :participations
   resources :events
   resources :years
+  resources :notes
   resources :participation_requests do
     collection do
       patch 'bulk_accept',
