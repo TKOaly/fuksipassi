@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :set_note, only: [ :destroy]
 
   def create
     @note = Note.new(note_params)
@@ -15,6 +16,16 @@ class NotesController < ApplicationController
     end
   end
 
+  # DELETE /participations/1
+  # DELETE /participations/1.json
+  def destroy
+    @note.destroy
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Note successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
   def dokaa
     @note = Note.new
     @note.points = -3
@@ -25,6 +36,11 @@ class NotesController < ApplicationController
     redirect_to @note.to, notice: 'älä plz'
   end
 
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = Note.find(params[:id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params

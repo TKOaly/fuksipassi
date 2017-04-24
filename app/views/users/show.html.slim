@@ -24,14 +24,22 @@ div.container
       = @user.all_points
   div.col-sm-12.col-md-6
     == render 'attended_events' if @user.participation_requests.any?
-  div.col-sm-12.col-md-4
+  div.col-sm-12.col-md-5
     h3 Notes
+    - if admin?
+      h6 Harmaalla taustalla olevat pisteet piilossa fukseilta.
     - @user.notes.each do |note|
       li.list-group-item.justify-content-between
         = note.description
         - if note.from
           small.note-giver
             '
-            = '(' + note.from.full_name + ')'
-        span[class="#{point_badge(note.points)}"]
-          = note.points unless note.points_hidden
+            = '(' + note.from.full_name + ') '
+        = td = link_to glyph(:trash), note, data: {confirm: 'Are you sure?'}, method: :delete if admin?
+        - if note.points_hidden
+          - if admin?
+            span.badge
+              = note.points
+        - else
+          span[class="#{point_badge(note.points)}"]
+            = note.points unless note.points_hidden
