@@ -11,19 +11,19 @@ nav.navbar.navbar-default role="navigation"
       ul.nav.navbar-nav
         li.active
           a href="/events"  Events
-        li
-          a href="/overview"  Overview
-        li
-          a href="/dokaa"  Dokaa fuksipassi
         - if current_user and current_user.has_role? :admin
           li
+            a href="/overview"  Overview
+          li
             = link_to 'Users', users_path
+        li
+          a href="/dokaa"  Dokaa fuksipassi
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
-            li
-              a href="/login"  login
-            li
-              a href="/register" register
+          li
+            a href="/login"  login
+          li
+            a href="/register" register
         - else
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown"
