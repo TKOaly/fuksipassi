@@ -33,6 +33,16 @@ RSpec.describe ParticipationRequest, type: :model do
       expect(ParticipationRequest.all.count).to eq(1)
     end
 
+    it 'does not succeed before event happens' do
+      event = create(:event, date: Date.tomorrow)
+      event.participations << create(:participation)
+      pr = ParticipationRequest.create(participation: event.participations.first, participant: create(:user))
+
+      expect(ParticipationRequest.all.count).to eq(0)
+      expect(pr).to_not be_valid
+
+    end
+
   end
 
 end

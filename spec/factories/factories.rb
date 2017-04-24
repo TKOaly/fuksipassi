@@ -17,5 +17,11 @@ FactoryGirl.define do
     points 5
   end
 
+  factory :event do
+    date Date.yesterday
+    name 'fuksisitsit'
+
+  end
+
 
 end
