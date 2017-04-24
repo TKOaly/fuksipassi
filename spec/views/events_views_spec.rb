@@ -21,10 +21,15 @@ RSpec.describe 'Events view', type: :feature do
     end
 
     it 'adds points to event' do
-
       event = Event.first
       expect(event).to be_valid
       expect(event.participations.first.points).to eq(10)
+    end
+
+    it 'shows as unattended when created' do
+      event = Event.first
+      visit events_path
+      expect(find('#unattended')).to have_content('test event')
     end
   end
 end
