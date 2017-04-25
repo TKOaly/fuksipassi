@@ -8,14 +8,15 @@ div.container
         option(disabled)
           = event.first.participation
           ul.list-group
-          -event.each do |part|
+          - event.each do |part|
             li.list-group-item
               option
                 = part.participant.full_name
     = submit_tag('Accept')
 
-  h4 Possible participations:
-  ul
-    - @participations.each do |p|
-      li
-        = p.to_s
+
+  /h4 Possible participations:
+  /ul
+  /  - @participations.each do |p|
+  /    li
+  /      = p.to_s

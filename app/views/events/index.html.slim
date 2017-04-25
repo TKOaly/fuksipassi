@@ -17,6 +17,6 @@ div.container
 
         == render 'list', events: @participated_events
   br
-  - if current_user.has_role? 'admin'
+  - if admin?
     = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
     = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'
