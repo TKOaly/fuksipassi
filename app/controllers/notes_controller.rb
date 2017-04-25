@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [ :destroy]
+  before_action :set_note, only: [:destroy]
 
   def create
     @note = Note.new(note_params)
@@ -27,11 +27,8 @@ class NotesController < ApplicationController
   end
 
   def dokaa
-    @note = Note.new
-    @note.points = -3
-    @note.description = "dokasit fuksipassin"
-    @note.to = current_user
-    @note.save
+    @note = Note.new(points: -3, description: 'dokasit fuksipassin', to: current_user)
+    @note.save unless current_user.dokattu?
 
     redirect_to @note.to, notice: 'älä plz'
   end

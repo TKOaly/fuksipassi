@@ -30,8 +30,8 @@ class User < ApplicationRecord
   def confirmed_points
     (participation_requests.confirmed.any? ?
         participation_requests.confirmed.map { |p| p.participation.points }.inject(:+) : 0) +
-    (notes.visible.any? ?
-        notes.visible.map { |n| n.points }.inject(:+) : 0)
+        (notes.visible.any? ?
+            notes.visible.map { |n| n.points }.inject(:+) : 0)
   end
 
   def all_points
@@ -47,6 +47,10 @@ class User < ApplicationRecord
         (notes.visible.any? ?
             notes.map { |n| n.points }.inject(:+) : 0)
 
+  end
+
+  def dokattu?
+    notes.where(from: [nil, false]).any?
   end
 
 
