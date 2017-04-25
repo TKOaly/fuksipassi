@@ -1,17 +1,9 @@
 div.container
   h4 Unconfirmed attendances
-  = form_for(:participation,
-          url: bulk_accept_participation_requests_path,
+  = form_for(:p,
+          url: accept_bulk_participation_requests_path,
           method: :patch) do |f|
-    select.list-group(multiple)
-      - @unconfirmed_requests.each do |event|
-        option(disabled)
-          = event.first.participation
-          ul.list-group
-          -event.each do |part|
-            li.list-group-item
-              option
-                = part.participant.full_name
+    = f.select :participation_request_ids, @unconfirmed_requests.collect {|x| [x.participant.full_name, x.id]}, {}, :multiple => true, class: 'list-group'
     = submit_tag('Accept')
 
   h4 Possible participations:

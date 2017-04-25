@@ -9,5 +9,4 @@ class ParticipationRequest < ApplicationRecord
 
   scope :unconfirmed, -> {where('ACCEPTOR_ID IS NULL')}
   scope :confirmed, -> {where('ACCEPTOR_ID IS NOT NULL')}
-  scope :participations_with_unconfirmed, -> {unconfirmed.map { |p| p.participation }.uniq.map { |event| event.participation_requests.unconfirmed }}
 end

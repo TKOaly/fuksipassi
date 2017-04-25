@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :notes
   resources :participation_requests do
     collection do
-      patch 'bulk_accept',
-            to: 'participation_requests#bulk_accept',
-            as: :bulk_accept
+      patch 'accept_bulk',
+            to: 'participation_requests#accept_bulk',
+            as: :accept_bulk
     end
   end
   devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
