@@ -41,6 +41,14 @@ class User < ApplicationRecord
             notes.visible.map { |n| n.points }.inject(:+) : 0)
   end
 
+  def real_points
+    (participations.any? ?
+        participations.map { |p| p.points }.inject(:+) : 0) +
+        (notes.visible.any? ?
+            notes.map { |n| n.points }.inject(:+) : 0)
+
+  end
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

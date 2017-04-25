@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def admin?
-    current_user.has_role? 'admin'
+    current_user&.has_role? 'admin'
   end
 
 

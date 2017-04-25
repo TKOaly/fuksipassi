@@ -11,7 +11,7 @@ nav.navbar.navbar-default role="navigation"
       ul.nav.navbar-nav
         li.active
           a href="/events"  Events
-        - if current_user and current_user.has_role? :admin
+        - if admin?
           li
             a href="/overview"  Overview
           li
