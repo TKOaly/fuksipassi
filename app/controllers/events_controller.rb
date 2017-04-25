@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @future_events = Event.future
-    @unattended_events = Event.unattended  + Participation.tasks - current_user.participations.map { |u| u.event ? u.event : u }
+    @unattended_events = Event.past  + Participation.tasks - current_user.participations.map { |u| u.event ? u.event : u }
     @participated_events = current_user.participations.map { |u| u.event ? u.event : u }
   end
 

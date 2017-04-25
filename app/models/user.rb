@@ -44,7 +44,7 @@ class User < ApplicationRecord
   def real_points
     (participations.any? ?
         participations.map { |p| p.points }.inject(:+) : 0) +
-        (notes.visible.any? ?
+        (notes.any? ?
             notes.map { |n| n.points }.inject(:+) : 0)
 
   end
