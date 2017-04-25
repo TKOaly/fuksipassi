@@ -22,6 +22,10 @@ div.container
       br
       ' All points:
       = @user.all_points
+      - if admin?
+        br
+        ' Real points:
+        = @user.real_points
   div.col-sm-12.col-md-6
     == render 'attended_events' if @user.participation_requests.any?
   div.col-sm-12.col-md-5

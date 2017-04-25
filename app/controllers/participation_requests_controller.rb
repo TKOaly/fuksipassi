@@ -13,7 +13,7 @@ class ParticipationRequestsController < ApplicationController
         format.html { redirect_to :events, notice: 'Request submitted.' }
         format.json { render events_path, status: :created, location: @participation_request }
       else
-        format.html { redirect_to :events , notice: 'Something went wrong'}
+        format.html { redirect_to :events, notice: 'Something went wrong' }
         format.json { render json: @participation_request.errors, status: :unprocessable_entity }
       end
     end

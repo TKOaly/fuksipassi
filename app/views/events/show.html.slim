@@ -4,28 +4,18 @@ div.container
     = @event.name + ' '
     small = @event.date
   p
-    = link_to 'Tapahtuma tko-aly.fi', @event.url if @event.url
+    = link_to 'Tapahtuma tko-aly.fi', @event.event_link if @event.event_link
 
   p
     ' Possible points for participation:
     span.badge.badge-pill
       = @event.points
+  /- if @participation&.event&.future?
   - if @unattended_participations.any?
     == render 'participation_request_form'
   - else
-    ' You have already requested all the possible points for this participations! ;)
-  div.event-form
-    = form_for @participation do |p|
-      .field
-        = p.label :description
-        = p.text_field :description
-      .field
-        = p.label :points
-        = p.number_field :points
-      = p.hidden_field :event_id, :value => @event.id
-      = p.hidden_field :participation_type, :value => 'event_extra'
-      br
-      = p.submit 'Add', :class => 'btn btn-primary'
+    ' You have already requested all the possible points for this participations!
+  == render 'add_participation' if admin?
 
 
   br

@@ -6,7 +6,7 @@
       attr_accessor :points
 
       scope :future, -> {where("date > ?", Time.zone.now)}
-      scope :unattended, -> {where("date < ?", Time.zone.now)}
+      scope :past, -> {where("date < ?", Time.zone.now)}
 
 
       def points
@@ -15,6 +15,10 @@
         else
           0
         end
+      end
+
+      def future?
+        # date > Date.today
       end
 
 

@@ -1,0 +1,12 @@
+div.event-form
+  = form_for @participation do |p|
+    .field
+      = p.label :description
+      = p.text_field :description
+    .field
+      = p.label :points
+      = p.number_field :points
+    = p.hidden_field :event_id, :value => @event.id
+    = p.hidden_field :participation_type, :value => 'event_extra'
+    br
+    = p.submit 'Add', :class => 'btn btn-primary'

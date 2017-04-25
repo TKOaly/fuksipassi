@@ -11,13 +11,13 @@ nav.navbar.navbar-default role="navigation"
       ul.nav.navbar-nav
         li.active
           a href="/events"  Events
-        - if current_user and current_user.has_role? :admin
+        - if admin?
           li
             a href="/overview"  Overview
           li
             = link_to 'Users', users_path
         li
-          a href="/dokaa"  Dokaa fuksipassi
+          = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li
