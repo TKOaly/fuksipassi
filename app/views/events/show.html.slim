@@ -10,11 +10,11 @@ div.container
     ' Possible points for participation:
     span.badge.badge-pill
       = @event.points
-  - if @participation&.event&.future?
-    - if @unattended_participations.any?
-      == render 'participation_request_form'
-    - else
-      ' You have already requested all the possible points for this participations! ;)
+  /- if @participation&.event&.future?
+  - if @unattended_participations.any?
+    == render 'participation_request_form'
+  - else
+    ' You have already requested all the possible points for this participations! ;)
   == render 'add_participation' if admin?
 
 

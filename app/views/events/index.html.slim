@@ -7,10 +7,10 @@ div.container
       - else
         p There doesn't seem to be anything here...
 
-    - if @future_events.any?
+    - if @events.future.any?
       div.col-sm-12.col-md-4#upcoming
         h3 Upcoming events:
-        == render 'list', events: @future_events
+        == render 'list', events: @events.future
     - if @participated_events.any?
       div.col-sm-12.col-md-4#attended
         h3 Attended events:

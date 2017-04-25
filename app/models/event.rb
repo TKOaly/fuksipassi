@@ -18,7 +18,7 @@
       end
 
       def future?
-        date < Date.today
+        # date > Date.today
       end
 
 
