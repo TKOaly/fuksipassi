@@ -3,11 +3,13 @@ div.container
   = form_for(:p,
           url: accept_bulk_participation_requests_path,
           method: :patch) do |f|
+
     = f.select :participation_request_ids, @unconfirmed_requests.collect {|x| [x.participant.full_name, x.id]}, {}, :multiple => true, class: 'list-group'
     = submit_tag('Accept')
 
-  h4 Possible participations:
-  ul
-    - @participations.each do |p|
-      li
-        = p.to_s
+
+  /h4 Possible participations:
+  /ul
+  /  - @participations.each do |p|
+  /    li
+  /      = p.to_s
