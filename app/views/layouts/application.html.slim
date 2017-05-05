@@ -18,4 +18,5 @@ html
       - if flash[:alert]
         div.alert.alert-danger
           = flash[:alert]
-  = yield
+  div.container
+    = yield

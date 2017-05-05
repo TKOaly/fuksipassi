@@ -1,26 +1,24 @@
-div.container
+h2
+  = @event.name + ' '
+  small = @event.date
+p
+  = link_to 'Tapahtuma tko-aly.fi', @event.event_link if @event.event_link
 
-  h2
-    = @event.name + ' '
-    small = @event.date
-  p
-    = link_to 'Tapahtuma tko-aly.fi', @event.event_link if @event.event_link
-
-  p
-    ' Possible points for participation:
-    span.badge.badge-pill
-      = @event.points
-  /- if @participation&.event&.future?
-  - if @unattended_participations.any?
-    == render 'participation_request_form'
-  - else
-    ' You have already requested all the possible points for this participations!
-  == render 'add_participation' if admin?
+p
+  ' Possible points for participation:
+  span.badge.badge-pill
+    = @event.points
+/- if @participation&.event&.future?
+- if @unattended_participations.any?
+  == render 'participation_request_form'
+- else
+  ' You have already requested all the possible points for this participations!
+== render 'add_participation' if admin?
 
 
-  br
+br
 
 
-  = link_to 'Edit', edit_event_path(@event)
-  '  |
-  = link_to 'Back', events_path
+= link_to 'Edit', edit_event_path(@event)
+'  |
+= link_to 'Back', events_path
