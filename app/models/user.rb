@@ -15,7 +15,7 @@ class User < ApplicationRecord
   belongs_to :year
 
 
-  scope :top_fuksit, -> {with_role(:fuksi).sort_by(&:real_points).reverse}
+  scope :top_fuksit, -> { with_role(:fuksi).sort_by(&:real_points).reverse }
   attr_accessor :login
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
@@ -44,8 +44,8 @@ class User < ApplicationRecord
   end
 
   def real_points
-    (participations.any? ?
-        participations.map { |p| p.points }.inject(:+) : 0) +
+    (participation_requests.confirmed.any? ?
+        participation_requests.confirmed.map { |p| p.participation.points }.inject(:+) : 0) +
         (notes.any? ?
             notes.map { |n| n.points }.inject(:+) : 0)
 
