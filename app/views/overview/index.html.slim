@@ -4,7 +4,7 @@ h4 Unconfirmed attendances
         method: :patch) do |f|
 
   = f.select :participation_request_ids, @unconfirmed_requests.collect {|x| ["#{x.participation} || #{x.participant.full_name}", x.id]}, {}, :multiple => true, class: 'list-group'
-  = submit_tag('Accept')
+  = submit_tag('Accept', class: 'btn btn-default')
 
 
 /h4 Possible participations:
