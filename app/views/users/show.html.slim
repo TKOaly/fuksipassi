@@ -6,26 +6,26 @@ ul.list-inline
         '
         = @user.username
   br
-  / Onko ylläoleva tarpeellinen elämän suhteen??
   == render 'role_list', roles: @user.roles
 
   br
   - if @user.image.present?
     = image_tag @user.image.url(:display)
 br
-== render 'users/note_form' if admin?
-p
-  ' Confirmed points:
-  = @user.confirmed_points
-  br
-  ' All points:
-  = @user.all_points
-  - if admin?
+- if @user.can_receive_points?
+  == render 'users/note_form' if can? :create, Note
+  p
+    ' Confirmed points:
+    = @user.confirmed_points
     br
-    ' Real points:
-    = @user.real_points
-div.col-sm-12.col-md-6
-  == render 'attended_events' if @user.participation_requests.any?
-div.col-sm-12.col-md-5
-  h3 Notes
-  == render 'notes_list'
+    ' All points:
+    = @user.all_points
+    - if can? :edit, Event
+      br
+      ' Real points:
+      = @user.real_points
+  div.col-sm-12.col-md-6
+    == render 'attended_events' if @user.participation_requests.any?
+  div.col-sm-12.col-md-5
+    h3 Notes
+    == render 'notes_list'

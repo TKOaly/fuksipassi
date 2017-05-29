@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
 
-  scope '/apua' do
-    resources :users
-  end
+  resources :users
+
 
   # get 'my_page', to: user_path
 

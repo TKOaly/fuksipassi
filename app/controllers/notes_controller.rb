@@ -6,14 +6,18 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.from = current_user
 
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note.to, notice: 'Points given :D.' }
-        format.json { render events_path, status: :created, location: @note }
-      else
-        format.html { redirect_to @note.to, notice: 'Something went wrong' }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+    if @note.to.can_receive_points?
+      respond_to do |format|
+        if @note.save
+          format.html { redirect_to @note.to, notice: 'Points given :D.' }
+          format.json { render events_path, status: :created, location: @note }
+        else
+          format.html { redirect_to @note.to, notice: 'Something went wrong' }
+          format.json { render json: @note.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path, alert: "Can't add note to this user"
     end
   end
 

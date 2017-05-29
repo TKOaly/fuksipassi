@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   belongs_to :year
 
-
-  scope :top_fuksit, -> { with_role(:fuksi).sort_by(&:real_points).reverse }
   attr_accessor :login
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
@@ -53,6 +51,10 @@ class User < ApplicationRecord
 
   def dokattu?
     notes.where(from: [nil, false]).any?
+  end
+
+  def can_receive_points?
+    !(self.has_role? :admin) && !(self.has_role? :tutor)
   end
 
 
