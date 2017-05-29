@@ -27,5 +27,9 @@ module ApplicationHelper
     current_user&.has_role? 'admin'
   end
 
+  def fuksi?
+    current_user&.has_role? 'fuksi'
+  end
+
 
 end

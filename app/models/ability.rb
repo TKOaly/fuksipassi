@@ -10,7 +10,7 @@ class Ability
 
     if user.has_role? :fuksi
       can :read, Event
-      can [:read, :create, :update, :destroy], [Participation, Note]
+      can [:read, :create, :update, :destroy], [Participation, ParticipationRequest, Note]
       can [:read, :create, :update, :destroy], User, id: user.id
     end
   end

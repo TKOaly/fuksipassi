@@ -13,12 +13,12 @@ p
   == render 'participation_request_form'
 - else
   ' You have already requested all the possible points for this participations!
-== render 'add_participation' if admin?
+== render 'add_participation' if can? :create, Participation
 
 
 br
 
-
-= link_to 'Edit', edit_event_path(@event)
-'  |
+- if can? :update, @event
+  = link_to 'Edit', edit_event_path(@event)
+  '  |
 = link_to 'Back', events_path

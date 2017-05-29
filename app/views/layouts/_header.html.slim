@@ -9,14 +9,15 @@ nav.navbar.navbar-default role="navigation"
       a.navbar-brand href="/events"  Fuksipassi
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
-          a href="/events"  Events
-        - if admin?
+        - if user_signed_in?
+          li
+            a href="/events"  Events
+        - if can? [:read, :update], [Participation, ParticipationRequest]
           li
             a href="/overview"  Overview
           li
             = link_to 'Users', users_path
-        - if user_signed_in?
+        - if fuksi?
           li
             = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
           li
