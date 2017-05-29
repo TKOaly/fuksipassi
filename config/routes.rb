@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :years
   resources :notes
+  resources :users
   resources :participation_requests do
     collection do
       patch 'accept_bulk',
@@ -11,12 +12,6 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
-
-  resources :users
-
-
-  # get 'my_page', to: user_path
-
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
