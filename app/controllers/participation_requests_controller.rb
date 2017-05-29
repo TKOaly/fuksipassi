@@ -3,10 +3,6 @@ class ParticipationRequestsController < ApplicationController
   def create
     @participation_request = ParticipationRequest.new(participation_request_params)
     pp @participation_request.participation
-    # binding.pry
-    # if @participation_request.participant.participations.include? @participation_request.participation
-    #   return
-    # end
 
     respond_to do |format|
       if @participation_request.save
@@ -40,7 +36,6 @@ class ParticipationRequestsController < ApplicationController
     end
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def participation_request_params
     params.require(:participation_request).permit(:participant_id, :participation_id, :participations)
   end

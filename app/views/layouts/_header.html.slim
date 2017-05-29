@@ -17,9 +17,10 @@ nav.navbar.navbar-default role="navigation"
             a href="/overview"  Overview
           li
             = link_to 'Users', users_path
-        - if fuksi?
+        - unless can? :create, Event
           li
             = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
+        - if user_signed_in?
           li
             = link_to 'My page', current_user
       ul.nav.navbar-nav.navbar-right
@@ -38,8 +39,6 @@ nav.navbar.navbar-default role="navigation"
                 = link_to 'My page', current_user
               li
                 = link_to 'Edit user details', edit_user_registration_path
-              li
-                a href="#"  Something else here
               li.divider
               li
                 a href="/logout"  Logout

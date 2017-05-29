@@ -1,6 +1,6 @@
 class YearsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_year, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :year
 
   # GET /years
   # GET /years.json

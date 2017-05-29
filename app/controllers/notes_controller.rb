@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:destroy]
+  load_and_authorize_resource :note
 
   def create
     @note = Note.new(note_params)
@@ -27,10 +28,14 @@ class NotesController < ApplicationController
   end
 
   def dokaa
-    @note = Note.new(points: -3, description: 'dokasit fuksipassin', to: current_user)
-    @note.save unless current_user.dokattu?
+    if current_user.has_role? :fuksi
+      @note = Note.new(points: -3, description: 'dokasit fuksipassin', to: current_user)
+      @note.save unless current_user.dokattu?
 
-    redirect_to @note.to, notice: 'älä plz'
+      redirect_to @note.to, notice: 'älä plz'
+    else
+      redirect_to root_path, notice: 'User not fuksi'
+    end
   end
 
   private

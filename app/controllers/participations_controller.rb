@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :participation
 
   # GET /participations
   # GET /participations.json
