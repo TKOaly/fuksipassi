@@ -1,14 +1,11 @@
 h4 Unconfirmed attendances
-= form_for(:p,
-        url: accept_bulk_participation_requests_path,
-        method: :patch) do |f|
+-if !@unconfirmed_requests.empty?
+  = form_for(:p,
+          url: accept_bulk_participation_requests_path,
+          method: :patch) do |f|
 
-  = f.select :participation_request_ids, @unconfirmed_requests.collect {|x| ["#{x.participation} || #{x.participant.full_name}", x.id]}, {}, :multiple => true, class: 'list-group'
-  = submit_tag('Accept', class: 'btn btn-default')
-
-
-/h4 Possible participations:
-/ul
-/  - @participations.each do |p|
-/    li
-/      = p.to_s
+    = f.select :participation_request_ids, @unconfirmed_requests.collect {|x| ["#{x.participation} || #{x.participant.full_name}", x.id]}, {}, :multiple => true, class: 'list-group'
+    = submit_tag('Accept', class: 'btn btn-default')
+- else
+  p
+    = 'Nothing here...'

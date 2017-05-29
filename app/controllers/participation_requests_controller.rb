@@ -32,11 +32,11 @@ class ParticipationRequestsController < ApplicationController
   def accept_bulk
     @participation_requests = ParticipationRequest.find(params[:p][:participation_request_ids].reject!(&:blank?))
     if @participation_requests.empty?
-      flash[:notice] = "Products updated"
+      flash[:notice] = "Participation requets accepted"
       redirect_to overview_path
     else
       @participation_requests.each {|p| accept(p)}
-      flash[:notice] = "Products updated"
+      flash[:notice] = "Participation requets accepted"
       redirect_to overview_path
     end
   end
