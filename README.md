@@ -86,20 +86,18 @@ On pyritty testaamaan ensisijaisesti niitä asioita, joilla fuksi voi rikkoa siv
  
 ![Datamalli](https://i.imgur.com/yDwXyxr.png)
  
-####Year
-Toistaiseiseksi käytttämätön laajannusmahdollisuus, jos haluttaisiin esimerkiksi säilyttää vanhoja tilastoja menneiltä vuosilta emmekä tyhjentäisi passia joka vuosi uusien fuksien tultua
-####User
-Käyttäjästä tallennetaan tarvittavat perustiedot. Nimi, sähköposti, ircnick.
-Lisäksi käyttäjälle voidaan tallentaa valokuva (carrierwave toimii uploaderina ja kuvat tallentuvat imaginary gemin pilveen)
-Käytimme Devise-gemiä, joka hallinnoi käyttäjän salasanan salausta, salasanan palautusta ja tarvittaessa sähköpostin varmistusta jne.
-####Role
-Rolify-gemin määrittämä luokka käyttäjäroolien hallintaan
-####Event
-Kuvaa fuksitapahtumia
-####Participation:
-Kuvaa fuksitapahtumiin liittyviä osasuorituksia. Esimerkiksi fuksisitseillä osasuorituksesta ‘osallistuminen’ voisi saada 5 pistettä ja osasuorituksesta ‘laulun pyytäminen’ 3 pistettä.
-####ParticipationRequest:
-Kun fuksi pyytää osallistumista jonkin tapahtuman (Event) osasuoritukseen (Participation) luodaan ParticipationRequest. Pyyntö tulee tuutorien nähtäväksi ja tuutorin hyväksyttyä pyynnön tallennetaan tuutori pyyntöön pyynnön hyväksyjäksi.
-####Note
-Luokka sekalaisille pistemerkinnöille mitä tuutorit voivat antaa fukseille lennosta.
+#### Year
+* Toistaiseiseksi käytttämätön laajannusmahdollisuus, jos haluttaisiin esimerkiksi säilyttää vanhoja tilastoja menneiltä vuosilta emmekä tyhjentäisi passia joka vuosi uusien fuksien tultua
+#### User
+* Käyttäjästä tallennetaan tarvittavat perustiedot. Nimi, sähköposti, ircnick. Lisäksi käyttäjälle voidaan tallentaa valokuva (carrierwave toimii uploaderina ja kuvat tallentuvat imaginary gemin pilveen) Käytimme Devise-gemiä, joka hallinnoi käyttäjän salasanan salausta, salasanan palautusta ja tarvittaessa sähköpostin varmistusta jne.
+#### Role
+* Rolify-gemin määrittämä luokka käyttäjäroolien hallintaan
+#### Event
+* Kuvaa fuksitapahtumia
+#### Participation:
+* Kuvaa fuksitapahtumiin liittyviä osasuorituksia. Esimerkiksi fuksisitseillä osasuorituksesta ‘osallistuminen’ voisi saada 5 pistettä ja osasuorituksesta ‘laulun pyytäminen’ 3 pistettä.
+#### ParticipationRequest:
+* Kun fuksi pyytää osallistumista jonkin tapahtuman (Event) osasuoritukseen (Participation) luodaan ParticipationRequest. Pyyntö tulee tuutorien nähtäväksi ja tuutorin hyväksyttyä pyynnön tallennetaan tuutori pyyntöön pyynnön hyväksyjäksi.
+#### Note
+* Luokka sekalaisille pistemerkinnöille mitä tuutorit voivat antaa fukseille lennosta.
  
