@@ -55,6 +55,7 @@ group :development do
   gem 'rack-mini-profiler', require: false
   gem 'simplecov', require: false
   gem 'binding_of_caller'
+  gem 'railroady'
 
 end
 
