@@ -1,4 +1,4 @@
-# Fuksipassi
+# Fuksipassi [![Build Status](https://travis-ci.org/tekisfuksi/fuksipassi.svg?branch=master)](https://travis-ci.org/tekisfuksi/fuksipassi)
 
 https://fuksipassi.herokuapp.com
  
@@ -104,4 +104,8 @@ On pyritty testaamaan ensisijaisesti niitä asioita, joilla fuksi voi rikkoa siv
 * Kun fuksi pyytää osallistumista jonkin tapahtuman (Event) osasuoritukseen (Participation) luodaan ParticipationRequest. Pyyntö tulee tuutorien nähtäväksi ja tuutorin hyväksyttyä pyynnön tallennetaan tuutori pyyntöön pyynnön hyväksyjäksi.
 #### Note
 * Luokka sekalaisille pistemerkinnöille mitä tuutorit voivat antaa fukseille lennosta.
+
+## Workflow
+
+Github -> Travis -> Heroku
  
