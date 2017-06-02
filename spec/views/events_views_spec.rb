@@ -27,6 +27,9 @@ RSpec.describe 'Events view', type: :feature do
     end
 
     it 'shows as unattended when created' do
+      user = User.last
+      user.add_role 'fuksi'
+      user.remove_role 'admin'
       event = Event.first
       visit events_path
       expect(find('#unattended')).to have_content('test event')
