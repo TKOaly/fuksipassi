@@ -92,6 +92,8 @@ On pyritty testaamaan ensisijaisesti niitä asioita, joilla fuksi voi rikkoa siv
 * Käyttäjästä tallennetaan tarvittavat perustiedot. Nimi, sähköposti, ircnick. Lisäksi käyttäjälle voidaan tallentaa valokuva (carrierwave toimii uploaderina ja kuvat tallentuvat imaginary gemin pilveen) Käytimme Devise-gemiä, joka hallinnoi käyttäjän salasanan salausta, salasanan palautusta ja tarvittaessa sähköpostin varmistusta jne.
 #### Role
 * Rolify-gemin määrittämä luokka käyttäjäroolien hallintaan
+#### Ability
+* CanCanCan-gemin määrittämä luokka roolien käyttöoikeuksien hallintaan.
 #### Event
 * Kuvaa fuksitapahtumia
 #### Participation:
