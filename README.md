@@ -105,7 +105,7 @@ On pyritty testaamaan ensisijaisesti niitä asioita, joilla fuksi voi rikkoa siv
 #### Note
 * Luokka sekalaisille pistemerkinnöille mitä tuutorit voivat antaa fukseille lennosta.
 
-## Workflow
+## Continuous Integration
 
 Github -> Travis -> Heroku
  

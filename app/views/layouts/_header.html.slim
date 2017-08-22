@@ -17,9 +17,10 @@ nav.navbar.navbar-default role="navigation"
             a href="/overview"  Overview
           li
             = link_to 'Users', users_path
-        - unless can? :create, Event
-          li
-            = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
+        - if user_signed_in?
+          - unless can? :create, Event
+            li
+              = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
         - if user_signed_in?
           li
             = link_to 'My page', current_user

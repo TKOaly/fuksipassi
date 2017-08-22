@@ -1,0 +1,45 @@
+## 14.3. 3h, yht: 3h
+* Suunnittelua
+
+## 20.3. 8h, yht: 11h
+* Rspec, heroku, travis, bootstrap conffaus
+* Modeleita ja testejä
+
+## 21.3. 2h, yht: 13h
+* User view, bootstrap korjauksia
+
+## 26.3. 3h, yht: 16h
+* Modelia, viewejä, testejä eventeille
+
+## 28.3. 8h, yht: 24h
+* Participation ja participationrequest
+
+## 30.3. 4h, yht: 28h
+* Fiksejä, refaktorointeja ja viewin edistämistä
+
+## 31.3. 1h, yht: 29h
+* User viewiin sisältöä
+
+## 4.4. 1h, yht: 30h
+* User viewiä ja seedejä
+
+## 18.4. 8h, yht: 38h
+* Overview page
+
+## 19.4 4h, yht: 42h
+* Testejä ja refactorointia
+
+## 21.4. 8h, yht: 50h
+* Pisteiden laskua ja fuksipassin dokaus
+
+## 24.4. 4h, yht 54h
+* Korjailua, testejä, lisäyksiä
+
+## 25.4. 6h, yht 60h
+* Eventteihin lisää ominaisuuksia ja rajoituksia eri rooleille
+
+## 5.5. 1h, yht 61h
+* Pientä fiksausta ja refaktorointia
+
+## 2.6. 2h, yht 63h
+* Viewi roolien hallintaan
