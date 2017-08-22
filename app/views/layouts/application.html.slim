@@ -3,7 +3,7 @@ html
   head
   title Fuksipassi
   = csrf_meta_tags
-
+  link rel="manifest" href="#{asset_path 'manifest.json'}"
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
