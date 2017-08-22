@@ -15,11 +15,15 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   put 'users/:id/update', to: 'users#update'
 
+  resources :users do
+    post 'toggle_tutor', on: :member
+  end
+
+
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'
     get 'register', to: 'devise/registrations#new'
-
   end
 
   get 'dokaa' => 'notes#dokaa'

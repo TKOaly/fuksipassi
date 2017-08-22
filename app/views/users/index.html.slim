@@ -1,16 +1,10 @@
 h3 Users
-ul.list-group
-  - @users.each do |user|
-    li.list-group-item.justify-content-between
-      h4.mb-1 = link_to user.full_name, user
-      == render 'role_list', roles: user.roles
-      span.rolemanagement
-        button.btn.btn-mini toggle
-        select.btn.btn-mini
-          option select
-          option tutor
-          option fuksi
-          option admin
+- @users.each do |user|
+  li.list-group-item.justify-content-between
+    h4.mb-1 = link_to user.full_name, user
+    == render 'role_list', roles: user.roles
+    span.rolemanagement.label.label-success
+      = link_to 'Toggle tutor', toggle_tutor_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'}
 h3 Top freshmen
 ul.list-group
 - @top_fuksit.each do |fm|
