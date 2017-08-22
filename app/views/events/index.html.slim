@@ -2,7 +2,7 @@
 - if can? :create, Event
   div.col-sm-12.col-md-4
     h3 Events:
-    == render 'list', events: @events
+    == render 'list', events: @all_participations
 - else
   div.col-sm-12.col-md-4#unattended
     h3 Unattended events:
