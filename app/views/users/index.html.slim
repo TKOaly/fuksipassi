@@ -4,7 +4,7 @@ h3 Users
     h4.mb-1 = link_to user.full_name, user
     == render 'role_list', roles: user.roles
     span.rolemanagement.label.label-success
-      = link_to 'Toggle tutor', toggle_tutor_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'}
+      = link_to 'Toggle tutor', toggle_tutor_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'} if admin?
 h3 Top freshmen
 ul.list-group
 - @top_fuksit.each do |fm|

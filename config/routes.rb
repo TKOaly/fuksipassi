@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'overview' => 'overview#index'
   put 'change/:language', to: 'languages#change', as: :change_language
 
+  get 'about' => 'about#index'
+
   authenticated :user do
     root :to => 'events#index', :as => :authenticated_root
   end

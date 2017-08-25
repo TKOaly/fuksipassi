@@ -24,6 +24,8 @@ nav.navbar.navbar-default role="navigation"
         - if user_signed_in?
           li
             = link_to 'My page', current_user
+        li
+          = link_to 'About', about_path
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle data-toggle="dropdown"

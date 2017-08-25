@@ -7,10 +7,10 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   after_create :assign_default_role
-  has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id'
-  has_many :accepted_participations, :class_name => 'ParticipationRequest', foreign_key: 'acceptor_id'
+  has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id', dependent: :destroy
+  has_many :accepted_participations, :class_name => 'ParticipationRequest', foreign_key: 'acceptor_id', dependent: :destroy
   has_many :participations, :through => :participation_requests
-  has_many :notes, :class_name => 'Note', foreign_key: 'to_id'
+  has_many :notes, :class_name => 'Note', foreign_key: 'to_id', dependent: :destroy
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   belongs_to :year
   belongs_to :language

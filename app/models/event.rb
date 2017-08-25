@@ -1,5 +1,5 @@
     class Event < ApplicationRecord
-      has_many :participations
+      has_many :participations, dependent: :destroy
       belongs_to :year
 
       # accepts_nested_attributes_for :participations
