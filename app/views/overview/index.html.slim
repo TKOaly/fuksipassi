@@ -1,11 +1,1 @@
-h4 Unconfirmed attendances
-- if !@unconfirmed_requests.empty?
-  = form_for(:p,
-          url: accept_bulk_participation_requests_path,
-          method: :patch) do |f|
-
-    = f.select :participation_request_ids, @unconfirmed_requests.collect { |x| ["#{x.participation.name} —∗— #{x.participant.full_name}".html_safe, x.id] }, {}, :multiple => true, class: 'list-group'
-    = submit_tag('Accept', class: 'btn btn-default')
-- else
-  p
-    = "There doesn't seem to be anything here..."
+== render 'overview/unconfirmed_requests', unconfirmed: @unconfirmed_requests

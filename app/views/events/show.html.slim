@@ -12,8 +12,10 @@ p
   == render 'events/request_participation_button', participation: @main_participation.first
   - if @unattended_participations.any?
     == render 'participation_request_form'
-== render 'add_participation' if can? :create, Participation
-== render 'extra_participation_list' if can? :create, Participation
+- if can? :create, Participation
+  == render 'add_participation'
+  == render 'extra_participation_list'
+  == render 'overview/unconfirmed_requests', unconfirmed: @event.participations.map { |p| p.participation_requests.unconfirmed }.first
 
 
 br

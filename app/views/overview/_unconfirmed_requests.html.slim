@@ -1,0 +1,10 @@
+h4 Unconfirmed attendances
+- if !unconfirmed.empty?
+  = form_for(:p,
+          url: accept_bulk_participation_requests_path,
+          method: :patch) do |f|
+    = f.select :participation_request_ids, unconfirmed.collect { |x| ["#{x.participation.name} —∗— #{x.participant.full_name}".html_safe, x.id] }, {}, :multiple => true, class: 'list-group'
+    = submit_tag('Accept', class: 'btn btn-default')
+- else
+  p
+    = "All attendances have been accepted. "
