@@ -21,14 +21,15 @@
 
 en:
   application:
+    title: 'Fuksipassi'
     header:
       links:
+        main: 'Fuksipassi'
         events: 'Events'
         overview: 'Overview'
         users: 'Users'
         dokaa: 'Fuck shit up'
-        users: 'Users'
-        view_user: 'My page'
+        view_user: 'Profile'
         about: 'About'
         login: 'Login'
         register: 'Register'
@@ -36,6 +37,17 @@ en:
         dokaa: 'Are you fucking sure? :D'
       language: "Language"
       menu:
-        view_user: 'My page'
+        view_user: 'Profile'
         edit: 'Edit user detail'
         logout: 'Logout'
+  about:
+    index:
+      title: 'Fuksipassi'
+      text1: 'Fuksipassi was created by'
+      text2: 'and'
+      text3: '. If you are having problems with it you can join to our Telegram channel'
+      text4: ". You can join even if you don't have any problems :D"
+      text5: 'Fuksipassi was programmed with Ruby on Rails and is of course open source. If you want to make it better you can message to the channel or to the developers mentioned before.'
+      text6: 'Github of the project can be found '
+      text7: '. Well made pull requests can earn you points (and/or beer). Minus points are given from complaints. Hacking can give you either depending on the level of mayhem.'
+      link: 'here'

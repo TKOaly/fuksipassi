@@ -20,4 +20,34 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fi:
-  language: "Kieli"
+  application:
+    title: 'Fuksipassi'
+    header:
+      links:
+        main: 'Fuksipassi'
+        events: 'Tapahtumat'
+        overview: 'Yleiskatsaus'
+        users: 'Käyttäjät'
+        dokaa: 'Dokaa fuksipassi'
+        view_user: 'Profiili'
+        about: 'Tietoa'
+        login: 'Kirjaudu'
+        register: 'Rekisteröidy'
+      messages:
+        dokaa: 'Ootko nyt ihan vitun varma? :D'
+      language: "Kieli"
+      menu:
+        view_user: 'Profiili'
+        edit: 'Muokkaa käyttäjätietoja'
+        logout: 'Kirjaudu ulos'
+  about:
+    index:
+      title: 'Fuksipassi'
+      text1: 'Fuksipassin loi'
+      text2: 'ja'
+      text3: '. Ongelmatilanteissa liity Telegram-kanavalle'
+      text4: '. Tai ihan muuten vaan :D'
+      text5: 'Fuksipassi on tehty Ruby on Railsilla, ja on tietenkin open source. Jos haluat kehittää sitä, suosittelemme liittymään ylläolevalle kanavalle, tai juttelemaan ko. henkilöille.'
+      text6: 'Projektin github on '
+      text7: '. Asiallisista pull-requesteistä saa tietenkin fuksipisteitä (ja/tai kaljaa). Koodista valittamisesta saa miinuspisteitä. Hakkeroinnista plus tai miinus, riippuen mayhemin tasosta.'
+      link: 'täällä'
