@@ -1,4 +1,4 @@
-- if admin?
+- if tutor?
   h6 Harmaalla taustalla olevat pisteet piilossa fukseilta.
 - @user.notes.each do |note|
   li.list-group-item.justify-content-between
@@ -9,7 +9,7 @@
         = '(' + note.from.full_name + ') '
     = td = link_to glyph(:trash), note, data: {confirm: 'Are you sure?'}, method: :delete if admin?
     - if note.points_hidden
-      - if admin?
+      - if tutor?
         span.badge
           = note.points
     - else

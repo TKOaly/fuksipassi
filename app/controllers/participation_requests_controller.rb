@@ -42,7 +42,7 @@ class ParticipationRequestsController < ApplicationController
   end
 
   def accept(participation)
-    if current_user.has_role? "admin"
+    if tutor?
       participation.acceptor = current_user
       participation.save
     else

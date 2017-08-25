@@ -10,10 +10,14 @@ class Ability
       can :manage, :all
     end
 
+    if user.has_role? :tutor
+      can :manage, :all
+    end
+
     if user.has_role? :fuksi
       can :read, [Event, Participation]
       can [:read, :dokaa], Note
-      can :manage, ParticipationRequest
+      can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
     end
   end

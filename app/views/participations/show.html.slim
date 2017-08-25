@@ -10,8 +10,10 @@ p
   ' You have already requested all the possible points for this participations! ;)
 br
 
--if current_user.has_role? "admin"
+-if tutor?
   p
     = link_to 'Edit', edit_participation_path(@participation)
     '  |
     = link_to 'Back', participations_path
+- else
+  = link_to 'Back', participations_path

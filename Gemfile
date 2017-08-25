@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'slim'
 gem 'slim-rails'
+gem 'rails-i18n'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap-sass'
@@ -44,6 +45,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -53,7 +55,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'rack-mini-profiler', require: false
-  gem 'simplecov', require: false
   gem 'binding_of_caller'
   gem 'railroady'
 
@@ -68,7 +69,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'database_cleaner'
-  gem 'simplecov', :require => false
 
 end
 
