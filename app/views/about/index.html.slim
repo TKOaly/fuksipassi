@@ -1,17 +1,17 @@
 div.container
   h2 Fuksipassi
   p
-    ' Fuksipassin loi
-    a href="https://t.me/klusteri" Julius Uusinarkaus
-    '  ja
-    a href="https://t.me/harrowed" Eetu Mattila.
-    '  Ongelmatilanteissa liity telegram-kanavalle
-    a href="https://t.me/fuksipassi" fuksipassi.
-    '  Tai ihan muuten vaan :D
+    ' #{I18n.t('about.index.text1')}
+    = link_to 'Julius Uusinarkaus', 'https://t.me/klusteri'
+    '  #{I18n.t('about.index.text2')}
+    = link_to 'Eetu Mattila', 'https://t.me/harrowed'
+    '#{I18n.t('about.index.text3')}
+    = link_to '#fuksipassi', 'https://t.me/fuksipassi'
+    '#{I18n.t('about.index.text4')}
   p
-    | Fuksipassi on tehty Ruby on Railsilla, ja on tietenkin open source. Jos haluat kehittää sitä, suosittelemme liittymään ylläolevalle kanavalle, tai juttelemaan ko. henkilöille.
+    | #{I18n.t('about.index.text5')}
   p
-    | Projektin github on
-    a href="https://github.com/tekisfuksi/fuksipassi"  täällä.
-    '  Asiallisista pull-requesteistä saa tietenkin fuksipisteitä (ja/tai kaljaa). Koodista valittamisesta saa miinuspisteitä. Hakkeroinnista plus tai miinus, riippuen mayhemin tasosta.
+    | #{I18n.t('about.index.text6')}
+    = link_to I18n.t('about.index.link'), 'https://github.com/tekisfuksi/fuksipassi'
+    '#{I18n.t('about.index.text7')}
   = image_tag 'osallistuminen.png'

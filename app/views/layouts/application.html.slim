@@ -1,7 +1,8 @@
 /doctype html
 html
   head
-  title Fuksipassi
+  title
+    = I18n.t('application.title')
   = csrf_meta_tags
   link rel="manifest" href="#{asset_path 'manifest.json'}"
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'

@@ -6,7 +6,7 @@ nav.navbar.navbar-default role="navigation"
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="/events"  Fuksipassi
+      = link_to I18n.t('application.header.links.main'), events_path, class: 'navbar-brand'
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         - if user_signed_in?
