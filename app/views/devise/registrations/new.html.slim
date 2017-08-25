@@ -1,43 +1,43 @@
 h2
-  | Sign up
+  | #{I18n.t('devise.registrations.new.title')}
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
-    = f.label :image
+    = f.label I18n.t('devise.registrations.new.labels.image')
     br
     = f.hidden_field :image_cache
     = f.file_field :image
   .field
-    = f.label :email
+    = f.label I18n.t('devise.registrations.new.labels.email')
     br
     = f.email_field :email, autofocus: true
   .field
-    = f.label :username
+    = f.label I18n.t('devise.registrations.new.labels.username')
     br
       = f.text_field :username
   .field
-    = f.label :first_name
+    = f.label I18n.t('devise.registrations.new.labels.first_name')
     br
       = f.text_field :first_name
   .field
-    = f.label :last_name
+    = f.label I18n.t('devise.registrations.new.labels.last_name')
     br
       = f.text_field :last_name
   .field
-    = f.label :irc_nick
+    = f.label I18n.t('devise.registrations.new.labels.irc_nick')
     br
       = f.text_field :irc_nick
   .field
-    = f.label :password
+    = f.label I18n.t('devise.registrations.new.labels.password')
     - if @minimum_password_length
       em
         | (
         = @minimum_password_length
-        |  characters minimum)
+        |  #{I18n.t('devise.registrations.new.labels.password_info')})
     br
     = f.password_field :password, autocomplete: "off"
   .field
-    = f.label :password_confirmation
+    = f.label I18n.t('devise.registrations.new.labels.confirmation')
     br
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
