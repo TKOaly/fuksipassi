@@ -1,7 +1,7 @@
 ul.list-inline
   - roles.each do |role|
     li
-      - if role.name == 'admin'
+      - if role.name == 'admin' or role.name == 'tutor'
         span.label.label-success
           = role.name
       - else

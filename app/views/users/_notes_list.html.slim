@@ -7,7 +7,7 @@
       small.note-giver
         '
         = '(' + note.from.full_name + ') '
-    = td = link_to glyph(:trash), note, data: {confirm: 'Are you sure?'}, method: :delete if admin?
+    = td = link_to glyph(:trash), note, data: {confirm: 'Are you sure?'}, method: :delete if admin? or note.from == current_user
     - if note.points_hidden
       - if tutor?
         span.badge
