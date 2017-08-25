@@ -57,6 +57,17 @@ class User < ApplicationRecord
     !(self.has_role? :admin) && !(self.has_role? :tutor)
   end
 
+  def toggle_tutor
+    if has_role?("tutor")
+      remove_role "tutor"
+      add_role "fuksi"
+    else
+      add_role "tutor"
+      remove_role "fuksi"
+    end
+
+  end
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

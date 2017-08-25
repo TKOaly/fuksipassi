@@ -21,12 +21,7 @@ class UsersController < ApplicationController
 
   def toggle_tutor
     @user = User.find(params[:id])
-
-    if @user.has_role?("tutor")
-      @user.remove_role "tutor"
-    else
-      @user.add_role "tutor"
-    end
+    @user.toggle_tutor
     redirect_to :back, notice: "#{@user.full_name} has been modified."
 
   end
