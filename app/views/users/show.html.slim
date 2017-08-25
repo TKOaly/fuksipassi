@@ -1,31 +1,33 @@
-ul.list-inline
-  li
-    h1
-      = @user.full_name
-      small
-        '
-        = @user.username
-  br
-  == render 'role_list', roles: @user.roles
-
-  br
-  - if @user.image.present?
-    = image_tag @user.image.url(:display)
-br
-- if @user.can_receive_points?
-  == render 'users/note_form' if can? :create, Note
-  p
-    ' Confirmed points:
-    = @user.confirmed_points
+div.container
+  ul.list-inline
+    li
+      h1
+        = @user.full_name
+        small
+          '
+          = @user.username
     br
-    ' All points:
-    = @user.all_points
-    - if can? :edit, Event
+    == render 'role_list', roles: @user.roles
+
+    br
+    - if @user.image.present?
+      = image_tag @user.image.url(:display)
+  br
+  - if @user.can_receive_points?
+    == render 'users/note_form' if can? :create, Note
+    p
+      ' Confirmed points:
+      = @user.confirmed_points
       br
-      ' Real points:
-      = @user.real_points
-  div.col-sm-12.col-md-6
-    == render 'attended_events' if @user.participation_requests.any?
-  div.col-sm-12.col-md-5
-    h3 Notes
-    == render 'notes_list'
+      ' All points:
+      = @user.all_points
+      - if can? :edit, Event
+        br
+        ' Real points:
+        = @user.real_points
+
+div.col-sm-12.col-md-6
+  == render 'attended_events' if @user.participation_requests.any?
+div.col-sm-12.col-md-5
+  h3 Notes
+  == render 'notes_list'

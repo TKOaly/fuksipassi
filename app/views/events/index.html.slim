@@ -18,8 +18,9 @@
     div.col-sm-12.col-md-4#attended
       h3 Attended events:
       == render 'list', events: @participated_events
-br
-- if can? :create, Event
-  = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
-- if can? :create, Participation
-  = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'
+  br
+div.new-events
+  - if can? :create, Event
+    = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
+  - if can? :create, Participation
+    = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'
