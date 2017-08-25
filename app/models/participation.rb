@@ -30,4 +30,6 @@ class Participation < ApplicationRecord
     end
   end
 
+
+
 end

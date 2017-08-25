@@ -5,6 +5,6 @@ class OverviewController < ApplicationController
 
   def index
     @participations = Participation.all
-    @unconfirmed_requests = ParticipationRequest.unconfirmed
+    @unconfirmed_requests = ParticipationRequest.unconfirmed.sort_by(&:participation)
   end
 end

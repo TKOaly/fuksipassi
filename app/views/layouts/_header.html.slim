@@ -14,7 +14,7 @@ nav.navbar.navbar-default role="navigation"
             = link_to I18n.t('application.header.links.events'), events_path
         - if can? [:read, :update], [Participation, ParticipationRequest]
           li
-            = link_to I18n.t('application.header.links.overview'), overview_path
+            = link_to I18n.t('application.header.links.overview'), overview_path, :"data-turbolinks" => false
           li
             = link_to I18n.t('application.header.links.users'), users_path
         - if user_signed_in?
@@ -34,7 +34,7 @@ nav.navbar.navbar-default role="navigation"
           ul.dropdown-menu role="menu"
             - Language.all.each do |language|
               li
-                = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method=> :put
+                = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method => :put
         - unless user_signed_in?
           li
             = link_to I18n.t('application.header.links.login'), login_path
