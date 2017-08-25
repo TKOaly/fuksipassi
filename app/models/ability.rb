@@ -19,6 +19,7 @@ class Ability
       can [:read, :dokaa], Note
       can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
+      can [:read, :change], Language
     end
   end
 end

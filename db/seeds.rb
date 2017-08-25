@@ -9,3 +9,5 @@ User.create(username: 'julkku', first_name: 'Julius', last_name: 'Uusinarkaus', 
 User.create(username: 'Harrowed', first_name: 'Eetu', last_name: 'Mattila', irc_nick: 'Harrowed', email: 'eetu.mattila@cs.helsinki.fi', password: ENV['PASS'], password_confirmation: ENV['PASS'], confirmed_at: Date.today)
 User.first.add_role 'admin'
 User.second.add_role 'admin'
+Language.create(name: 'English', en_name: 'English', code: 'en')
+Language.create(name: 'Suomi', en_name: 'Finnish', code: 'fi')
