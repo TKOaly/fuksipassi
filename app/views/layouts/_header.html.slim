@@ -11,25 +11,25 @@ nav.navbar.navbar-default role="navigation"
       ul.nav.navbar-nav
         - if user_signed_in?
           li
-            a href="/events"  Events
+            = link_to I18n.t('application.header.links.events'), events_path
         - if can? [:read, :update], [Participation, ParticipationRequest]
           li
-            = link_to 'Overview', overview_path, :"data-turbolinks" => false
+            = link_to I18n.t('application.header.links.overview'), overview_path, :"data-turbolinks" => false
           li
-            = link_to 'Users', users_path
+            = link_to I18n.t('application.header.links.users'), users_path
         - if user_signed_in?
           - unless can? :create, Event
             li
-              = link_to 'Dokaa fuksipassi', dokaa_path, data: {confirm: 'Ootko nyt oikeesti ihan vitun varma? :D '}
+              = link_to I18n.t('application.header.links.dokaa'), dokaa_path, data: {confirm: I18n.t('application.header.messages.dokaa')}
         - if user_signed_in?
           li
-            = link_to 'My page', current_user
+            = link_to I18n.t('application.header.links.view_user'), current_user
         li
-          = link_to 'About', about_path
+          = link_to I18n.t('application.header.links.about'), about_path
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle data-toggle="dropdown"
-            = I18n.t('language')
+            = I18n.t('application.header.language')
             span.caret
           ul.dropdown-menu role="menu"
             - Language.all.each do |language|
@@ -37,9 +37,9 @@ nav.navbar.navbar-default role="navigation"
                 = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method => :put
         - unless user_signed_in?
           li
-            a href="/login"  login
+            = link_to I18n.t('application.header.links.login'), login_path
           li
-            a href="/register" register
+            = link_to I18n.t('application.header.links.register'), register_path
         - else
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown"
@@ -47,9 +47,9 @@ nav.navbar.navbar-default role="navigation"
               span.caret
             ul.dropdown-menu role="menu"
               li
-                = link_to 'My page', current_user
+                = link_to I18n.t('application.header.menu.view_user'), current_user
               li
-                = link_to 'Edit user details', edit_user_registration_path
+                = link_to I18n.t('application.header.menu.edit'), edit_user_registration_path
               li.divider
               li
-                a href="/logout"  Logout
+                = link_to I18n.t('application.header.menu.logout'), logout_path
