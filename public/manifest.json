@@ -3,7 +3,13 @@
   "name": "Tekis Fuksipassi",
   "icons": [
     {
-      "src": "/launcher-icon-3x.png",
+      "src": "/assets/launcher-icon-1x.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "density": 1.0
+    },
+    {
+      "src": "/assets/launcher-icon-3x.png",
       "sizes": "144x144",
       "type": "image/png"
     }
