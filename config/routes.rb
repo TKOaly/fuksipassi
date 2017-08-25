@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get 'dokaa' => 'notes#dokaa'
   get 'overview' => 'overview#index'
 
+  get 'about' => 'about#index'
+
   authenticated :user do
     root :to => 'events#index', :as => :authenticated_root
   end
