@@ -1,7 +1,7 @@
 class Participation < ApplicationRecord
   enum participation_type: [:event, :event_extra, :task]
   belongs_to :event
-  has_many :participation_requests
+  has_many :participation_requests, dependent: :destroy
   has_many :users, through: :participation_requests
 
   scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
