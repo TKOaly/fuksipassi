@@ -20,6 +20,8 @@ p
 br
 
 - if can? :update, @event
+  = link_to 'Delete', @event, data: {confirm: 'Are you sure you want to delete this event?'}, method: :delete
+  '  |
   = link_to 'Edit', edit_event_path(@event)
   '  |
 = link_to 'Back', events_path
