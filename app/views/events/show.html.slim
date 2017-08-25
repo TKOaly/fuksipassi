@@ -12,8 +12,6 @@ p
   == render 'events/request_participation_button', participation: @main_participation.first
   - if @unattended_participations.any?
     == render 'participation_request_form'
-  - else
-    ' You have already requested all the possible points for this participations!
 == render 'add_participation' if can? :create, Participation
 == render 'extra_participation_list' if can? :create, Participation
 

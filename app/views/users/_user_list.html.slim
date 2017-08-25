@@ -1,0 +1,10 @@
+div.panel-heading
+  h4.panel-title
+    a data-toggle="collapse" href="##{title}" = title + ' ('+ users.count.to_s + ')'
+div.panel-collapse.collapse id="#{title}"
+  - users.each do |user|
+    li.list-group-item.justify-content-between
+      h4.mb-1 = link_to user.full_name, user
+      == render 'role_list', roles: user.roles
+      span.rolemanagement.label.label-success
+        = link_to 'Toggle tutor', toggle_tutor_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'} if admin?
