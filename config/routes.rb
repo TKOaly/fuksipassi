@@ -10,6 +10,7 @@ Rails.application.routes.draw do
             as: :accept_bulk
     end
   end
+
   devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
   get 'users/:id', to: 'users#show', as: :user
   get 'users', to: 'users#index'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'dokaa' => 'notes#dokaa'
   get 'overview' => 'overview#index'
+  put 'change/:language', to: 'languages#change', as: :change_language
 
   authenticated :user do
     root :to => 'events#index', :as => :authenticated_root

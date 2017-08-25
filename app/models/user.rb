@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :notes, :class_name => 'Note', foreign_key: 'to_id'
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   belongs_to :year
+  belongs_to :language
 
   attr_accessor :login
 

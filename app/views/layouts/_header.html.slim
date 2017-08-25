@@ -25,6 +25,14 @@ nav.navbar.navbar-default role="navigation"
           li
             = link_to 'My page', current_user
       ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown"
+            = I18n.t('language')
+            span.caret
+          ul.dropdown-menu role="menu"
+            - Language.all.each do |language|
+              li
+                = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method=> :put
         - unless user_signed_in?
           li
             a href="/login"  login

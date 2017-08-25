@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   protect_from_forgery with: :exception
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
+
+  private
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :first_name, :last_name, :irc_nick, :image, :remove_image]
@@ -9,7 +12,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-
+  def set_locale
+    I18n.locale = session[:locale] || current_user&.language&.code || I18n.default_locale
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
