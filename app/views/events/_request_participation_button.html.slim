@@ -1,0 +1,9 @@
+- if participation
+  = form_for @participation_request do |f|
+    .field
+      = f.hidden_field :participation_id, :value => participation.id
+      = f.hidden_field :participant_id, :value => current_user.id
+      br
+      = f.submit 'Request points', :class => 'btn btn-success'
+- else
+  span.btn.btn-success.disabled Request points

@@ -4,10 +4,7 @@ p
   ' Possible points for participation:
   span.badge.badge-pill
     = @participation.points
-- if @unattended_participations.any?
-  == render 'events/participation_request_form'
-- else
-  ' You have already requested all the possible points for this participations! ;)
+== render 'events/request_participation_button', participation: @unattended_participations.first
 br
 
 -if tutor?

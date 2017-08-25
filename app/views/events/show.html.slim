@@ -9,16 +9,7 @@ p
   span.badge.badge-pill
     = @event.points
 - unless can? :create, @event
-  - if @main_participation.any?
-    = form_for @participation_request do |f|
-      .field
-        = f.hidden_field :participation_id, :value => @main_participation.first.id
-        = f.hidden_field :participant_id, :value => current_user.id
-        br
-        = f.submit 'Request points', :class => 'btn btn-success'
-  - else
-    span.btn.btn-success.disabled Request points
-
+  == render 'events/request_participation_button', participation: @main_participation.first
   - if @unattended_participations.any?
     == render 'participation_request_form'
   - else
