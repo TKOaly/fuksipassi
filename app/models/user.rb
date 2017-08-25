@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
+  # scope :freshmen, -> { where(has_role? 'fuksi') }
+
+
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :username,
             :presence => true,
