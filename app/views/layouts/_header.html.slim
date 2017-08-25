@@ -14,7 +14,7 @@ nav.navbar.navbar-default role="navigation"
             a href="/events"  Events
         - if can? [:read, :update], [Participation, ParticipationRequest]
           li
-            a href="/overview"  Overview
+            = link_to 'Overview', overview_path, :"data-turbolinks" => false
           li
             = link_to 'Users', users_path
         - if user_signed_in?
@@ -34,7 +34,7 @@ nav.navbar.navbar-default role="navigation"
           ul.dropdown-menu role="menu"
             - Language.all.each do |language|
               li
-                = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method=> :put
+                = link_to "#{language.name} - #{language.en_name}", change_language_path(language.id), :method => :put
         - unless user_signed_in?
           li
             a href="/login"  login

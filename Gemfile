@@ -24,7 +24,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.0.0.beta'
 gem 'jquery-turbolinks'
 
 gem 'jbuilder', '~> 2.5'
