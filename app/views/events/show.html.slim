@@ -2,19 +2,29 @@ h2
   = @event.name + ' '
   small = @event.date
 p
-  link_to
-    = @event.event_link if @event.event_link
+  = link_to @event.event_link if @event.event_link
 
 p
   ' Possible points for participation:
   span.badge.badge-pill
     = @event.points
 - unless can? :create, @event
+  - if @main_participation.any?
+    = form_for @participation_request do |f|
+      .field
+        = f.hidden_field :participation_id, :value => @main_participation.first.id
+        = f.hidden_field :participant_id, :value => current_user.id
+        br
+        = f.submit 'Request points', :class => 'btn btn-success'
+  - else
+    span.btn.btn-success.disabled Request points
+
   - if @unattended_participations.any?
     == render 'participation_request_form'
   - else
     ' You have already requested all the possible points for this participations!
 == render 'add_participation' if can? :create, Participation
+== render 'extra_participation_list' if can? :create, Participation
 
 
 br

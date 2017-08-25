@@ -1,0 +1,9 @@
+h3 Extra points:
+ul
+  - @event.participations.extras.each do |p|
+    li
+      = p.to_s + " "
+      = td = link_to glyph(:trash),
+              p,
+              data: {confirm: 'Are you sure?'},
+              method: :delete

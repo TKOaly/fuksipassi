@@ -6,6 +6,9 @@ class Participation < ApplicationRecord
 
   scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
   scope :events_and_tasks, -> {where('participation_type = 0 OR participation_type = 2')}
+  scope :extras, -> {where('PARTICIPATION_TYPE = 1')}
+  scope :events, -> {where('PARTICIPATION_TYPE = 0')}
+
 
   def name
     if participation_type == 'event'

@@ -15,7 +15,8 @@ class EventsController < ApplicationController
   def show
     @participation_request = ParticipationRequest.new
     @participation = Participation.new
-    @unattended_participations = @event.participations - current_user.participations
+    @unattended_participations = @event.participations.extras - current_user.participations.extras
+    @main_participation = @event.participations.events - current_user.participations.events
   end
 
   # GET /events/new

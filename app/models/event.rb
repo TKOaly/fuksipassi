@@ -10,8 +10,8 @@
 
 
       def points
-        if self.participations.first
-          self.participations.first.points
+        if self.participations
+          participations.map { |p| p.points }.inject(:+)
         else
           0
         end
