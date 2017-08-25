@@ -18,7 +18,7 @@
       end
 
       def future?
-        # date > Date.today
+        date > Time.zone.now
       end
 
 
