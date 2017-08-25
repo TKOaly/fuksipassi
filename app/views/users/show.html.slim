@@ -25,9 +25,19 @@ div.col-sm-12
         br
         ' Real points:
         = @user.real_points
-
-div.col-sm-12.col-md-6
-  == render 'attended_events' if @user.participation_requests.any?
-div.col-sm-12.col-md-5
-  h3 Notes
-  == render 'notes_list'
+- unless @user.has_role? :tutor or @user.has_role? :admin
+  div.col-sm-12.col-md-6
+    == render 'attended_events' if @user.participation_requests.any?
+  div.col-sm-12.col-md-5
+    h3 Notes
+    == render 'notes_list'
+- else
+    p
+      ' Accepted events:
+      = @user.accepted_participations.count
+      br
+      ' Notes written:
+      = @user.submitted_notes.count
+      br
+      ' Points given in notes:
+      = @user.points_given

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :participation_requests, :class_name => 'ParticipationRequest', foreign_key: 'participant_id', dependent: :destroy
   has_many :accepted_participations, :class_name => 'ParticipationRequest', foreign_key: 'acceptor_id', dependent: :destroy
   has_many :participations, :through => :participation_requests
+  # has_many :hidden_participations, :class_name => 'Participation', foreign_key: 'hider_id'
   has_many :notes, :class_name => 'Note', foreign_key: 'to_id', dependent: :destroy
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   belongs_to :year
@@ -50,7 +51,11 @@ class User < ApplicationRecord
         participation_requests.confirmed.map { |p| p.participation.points }.inject(:+) : 0) +
         (notes.any? ?
             notes.map { |n| n.points }.inject(:+) : 0)
+  end
 
+  def points_given
+    result = submitted_notes.map { |n| n.points }.inject(:+)
+    return result ? result : 0
   end
 
   def dokattu?
