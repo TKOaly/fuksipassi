@@ -20,4 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  language: "Language"
+  application:
+    header:
+      links:
+        events: 'Events'
+        overview: 'Overview'
+        users: 'Users'
+        dokaa: 'Fuck shit up'
+        users: 'Users'
+        view_user: 'My page'
+        about: 'About'
+        login: 'Login'
+        register: 'Register'
+      messages:
+        dokaa: 'Are you fucking sure? :D'
+      language: "Language"
+      menu:
+        view_user: 'My page'
+        edit: 'Edit user detail'
+        logout: 'Logout'
