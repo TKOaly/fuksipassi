@@ -1,4 +1,4 @@
-h4 Unconfirmed attendances
+h4 = "Unconfirmed attendances #{@selected_event ? "from #{@selected_event.name}" : ""}#{@selected_user ? "of #{@selected_user.full_name}" : ""}"
 - if !unconfirmed.empty?
   = form_for(:p,
           url: accept_bulk_participation_requests_path,

@@ -1,5 +1,6 @@
     class Event < ApplicationRecord
       has_many :participations, dependent: :destroy
+      has_many :participation_requests, through: :participations
       belongs_to :year
 
       # accepts_nested_attributes_for :participations
@@ -7,6 +8,10 @@
 
       scope :future, -> {where("date > ?", Time.zone.now)}
       scope :past, -> {where("date < ?", Time.zone.now)}
+
+      def unconfirmed_count
+        participation_requests.unconfirmed.count
+      end
 
 
       def points

@@ -66,6 +66,10 @@ class User < ApplicationRecord
     !(self.has_role? :admin) && !(self.has_role? :tutor)
   end
 
+  def unconfirmed_count
+    participation_requests.unconfirmed.count
+  end
+
   def toggle_tutor
     if has_role?("tutor")
       remove_role "tutor"
