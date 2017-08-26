@@ -1,67 +1,68 @@
-h2
-  | #{I18n.t('devise.registrations.edit.title')}
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.image')
-    br
-    = f.hidden_field :image_cache
-    = f.file_field :image
-    - if f.object.image?
-      = f.check_box :remove_image
-      = f.label I18n.t('devise.registrations.edit.labels.remove_image')
+.container
+  h2
+    | #{I18n.t('devise.registrations.edit.title')}
+    = resource_name.to_s.humanize
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = devise_error_messages!
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.image')
       br
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.email')
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.username')
-    br
-      = f.text_field :username
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.first_name')
-    br
-      = f.text_field :first_name
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.last_name')
-    br
-      = f.text_field :last_name
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.irc_nick')
-    br
-      = f.text_field :irc_nick
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for:
-      = resource.unconfirmed_email
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.password')
-    i
-      | #{I18n.t('devise.registrations.edit.labels.password_info')}
-    br
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
+      = f.hidden_field :image_cache
+      = f.file_field :image
+      - if f.object.image?
+        = f.check_box :remove_image
+        = f.label I18n.t('devise.registrations.edit.labels.remove_image')
+        br
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.email')
       br
-      em
-        = @minimum_password_length
-        |  characters minimum
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.confirmation')
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label I18n.t('devise.registrations.edit.labels.current')
-    i
-      | #{I18n.t('devise.registrations.edit.labels.current_info')}
-    br
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-h3
-  | #{I18n.t('devise.registrations.edit.unhappy.title')}
-p
-  | #{I18n.t('devise.registrations.edit.unhappy.text')}
-  = button_to I18n.t('devise.registrations.edit.unhappy.submit'), registration_path(resource_name), data: { confirm: I18n.t('devise.registrations.edit.unhappy.confirmation') }, method: :delete
-= link_to I18n.t('devise.registrations.edit.unhappy.back'), :back
+      = f.email_field :email, autofocus: true
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.username')
+      br
+        = f.text_field :username
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.first_name')
+      br
+        = f.text_field :first_name
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.last_name')
+      br
+        = f.text_field :last_name
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.irc_nick')
+      br
+        = f.text_field :irc_nick
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      div
+        | Currently waiting confirmation for:
+        = resource.unconfirmed_email
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.password')
+      i
+        | #{I18n.t('devise.registrations.edit.labels.password_info')}
+      br
+      = f.password_field :password, autocomplete: "off"
+      - if @minimum_password_length
+        br
+        em
+          = @minimum_password_length
+          |  characters minimum
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.confirmation')
+      br
+      = f.password_field :password_confirmation, autocomplete: "off"
+    .field
+      = f.label I18n.t('devise.registrations.edit.labels.current')
+      i
+        | #{I18n.t('devise.registrations.edit.labels.current_info')}
+      br
+      = f.password_field :current_password, autocomplete: "off"
+    .actions
+      = f.submit "Update"
+  h3
+    | #{I18n.t('devise.registrations.edit.unhappy.title')}
+  p
+    | #{I18n.t('devise.registrations.edit.unhappy.text')}
+    = button_to I18n.t('devise.registrations.edit.unhappy.submit'), registration_path(resource_name), data: { confirm: I18n.t('devise.registrations.edit.unhappy.confirmation') }, method: :delete
+  = link_to I18n.t('devise.registrations.edit.unhappy.back'), :back
