@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :manage, :callback
+    can [:read, :change], Language
 
     if user.has_role? :admin
       can :manage, :all
@@ -19,7 +20,6 @@ class Ability
       can [:read, :dokaa], Note
       can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
-      can [:read, :change], Language
     end
   end
 end
