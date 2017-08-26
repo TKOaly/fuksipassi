@@ -15,6 +15,6 @@ class OverviewController < ApplicationController
       @unconfirmed_requests = all_unconfirmed_requests
     end
     @events = all_unconfirmed_requests.collect(&:event).uniq
-    @users = all_unconfirmed_requests.collect(&:participant).uniq.
+    @users = all_unconfirmed_requests.collect(&:participant).uniq
   end
 end
