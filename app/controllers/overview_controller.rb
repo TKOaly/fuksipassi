@@ -17,6 +17,7 @@ class OverviewController < ApplicationController
     else
       @unconfirmed_requests = all_unconfirmed_requests
     end
+    @unconfirmed_requests = @unconfirmed_requests.joins(:event).joins(:participant).order("events.name ASC, participations.description ASC, users.last_name ASC, users.first_name ASC")
     @events = all_unconfirmed_requests.collect(&:event).compact.uniq.sort_by(&:name)
     @users = all_unconfirmed_requests.collect(&:participant).compact.uniq.sort_by {|u| [u.first_name, u.last_name]}
     @tasks = all_unconfirmed_requests.collect(&:participation).compact.select {|p| p.participation_type == 'task'}.sort_by(&:description)
