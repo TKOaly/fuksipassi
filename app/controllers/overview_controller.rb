@@ -14,7 +14,7 @@ class OverviewController < ApplicationController
     else
       @unconfirmed_requests = all_unconfirmed_requests
     end
-    @events = all_unconfirmed_requests.collect(&:event).compact.uniq
-    @users = all_unconfirmed_requests.collect(&:participant).compact.uniq
+    @events = all_unconfirmed_requests.collect(&:event).compact.uniq.sort_by(&:name)
+    @users = all_unconfirmed_requests.collect(&:participant).compact.uniq.sort_by {|u| [u.first_name, u.last_name]}
   end
 end
