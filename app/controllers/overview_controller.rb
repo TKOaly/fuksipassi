@@ -8,14 +8,17 @@ class OverviewController < ApplicationController
     if params[:event]
       @unconfirmed_requests = all_unconfirmed_requests.joins(:participation).where(participations: { event_id: params[:event] })
       @selected_event = Event.find_by_id params[:event]
+    elsif params[:task]
+      @unconfirmed_requests = all_unconfirmed_requests.joins(:participation).where(participations: { participation_type: 'task'})
+      @selected_task = Participation.find_by_id params[:task]
     elsif params[:user]
       @unconfirmed_requests = all_unconfirmed_requests.where(participant_id: params[:user])
       @selected_user = User.find_by_id params[:user]
     else
       @unconfirmed_requests = all_unconfirmed_requests
     end
-    @unconfirmed_requests = @unconfirmed_requests.sort_by(&:participation)
     @events = all_unconfirmed_requests.collect(&:event).compact.uniq.sort_by(&:name)
     @users = all_unconfirmed_requests.collect(&:participant).compact.uniq.sort_by {|u| [u.first_name, u.last_name]}
+    @tasks = all_unconfirmed_requests.collect(&:participation).compact.select {|p| p.participation_type == 'task'}.sort_by(&:description)
   end
 end

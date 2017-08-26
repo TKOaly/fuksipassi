@@ -8,6 +8,13 @@ h4 = 'Filters'
         li class= "nav-item #{event.id == @selected_event&.id ? 'active' : ''}"
           = link_to text_with_badge(event.name, event.unconfirmed_count), overview_path(event: event.id), class: 'nav-link', :"data-turbolinks" => false
   .panel-heading
+    = 'Tasks'
+  .panel-body
+    ul.nav.flex-sm-column
+      - tasks.each do |task|
+        li class= "nav-item #{task.id == @selected_task&.id ? 'active' : ''}"
+          = link_to text_with_badge(task.description, task.unconfirmed_count), overview_path(task: task.id), :"data-turbolinks" => false
+  .panel-heading
     = 'Users'
   .panel-body
     ul.nav.flex-sm-column

@@ -9,6 +9,9 @@ class Participation < ApplicationRecord
   scope :extras, -> {where('PARTICIPATION_TYPE = 1')}
   scope :events, -> {where('PARTICIPATION_TYPE = 0')}
 
+  def unconfirmed_count
+    participation_requests.unconfirmed.count
+  end
 
   def name
     if participation_type == 'event'
