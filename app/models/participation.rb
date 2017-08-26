@@ -10,7 +10,7 @@ class Participation < ApplicationRecord
   scope :events, -> {where('PARTICIPATION_TYPE = 0')}
 
   def unconfirmed_count
-    participation_requests.unconfirmed.count
+    participation_requests.tasks.unconfirmed.count
   end
 
   def name
