@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'slim'
 gem 'slim-rails'
 gem 'rails-i18n'
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap-sass'
