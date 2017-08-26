@@ -14,7 +14,7 @@ class OverviewController < ApplicationController
     else
       @unconfirmed_requests = all_unconfirmed_requests
     end
-    @events = all_unconfirmed_requests.collect(&:event).uniq
-    @users = all_unconfirmed_requests.collect(&:participant).uniq
+    @events = all_unconfirmed_requests.collect(&:event).compact.uniq
+    @users = all_unconfirmed_requests.collect(&:participant).compact.uniq
   end
 end
