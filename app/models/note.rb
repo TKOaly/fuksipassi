@@ -11,8 +11,8 @@ class Note < ApplicationRecord
   validates :to,
             presence: true,
             associated: true
-  validates :points_hidden,
-            presence: true
+  # validates :points_hidden,
+  #           presence: true
 
   scope :visible, -> { where(points_hidden: [nil, false]) }
 

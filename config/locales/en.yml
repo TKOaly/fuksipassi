@@ -34,7 +34,7 @@ en:
         login: 'Login'
         register: 'Register'
       messages:
-        dokaa: 'Are you fucking sure? :D'
+        dokaa: 'Seriously?'
       language: "Language"
       menu:
         view_user: 'Profile'
@@ -140,5 +140,5 @@ en:
         show_btn: "Unhide events"
         hide_btn: "Hide event"
   notes:
-    dokaa: "Dokasi fuksipassin / Fucked the shit up"
+    dokaa: "Dokasi fuksipassin / You ruined it."
     plz_no: "Don't do this plz"
