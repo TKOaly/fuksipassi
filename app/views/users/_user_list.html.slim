@@ -8,3 +8,6 @@ div.panel-collapse.collapse id="#{title}"
       == render 'role_list', roles: user.roles
       span.rolemanagement.label.label-success
         = link_to 'Toggle tutor', toggle_tutor_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'} if admin?
+      |&nbsp;
+      span.rolemanagement.label.label-danger
+        = link_to 'Toggle admin', toggle_admin_user_path(user.id), method: :post, data: {confirm: 'Are you sure?'} if admin?

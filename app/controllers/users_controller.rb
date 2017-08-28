@@ -20,9 +20,18 @@ class UsersController < ApplicationController
   end
 
   def toggle_tutor
-    @user = User.find(params[:id])
-    @user.toggle_tutor
-    redirect_to :back, notice: "#{@user.full_name} has been modified."
+    if admin?
+      @user = User.find(params[:id])
+      @user.toggle_tutor
+      redirect_to :back, notice: "#{@user.full_name} has been modified."
+    end
+  end
 
+  def toggle_admin
+    if admin?
+      @user = User.find(params[:id])
+      @user.toggle_admin
+      redirect_to :back, notice: "#{@user.full_name} has been modified."
+    end
   end
 end

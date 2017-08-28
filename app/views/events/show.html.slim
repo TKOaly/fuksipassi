@@ -3,7 +3,7 @@
     = @event.name + ' '
     small = @event.date
   p
-    = link_to @event.event_link if @event.event_link
+    = link_to @event.event_link, @event.event_link if @event.event_link
 
   p
     ' Possible points for participation:

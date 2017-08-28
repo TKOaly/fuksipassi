@@ -87,6 +87,14 @@ class User < ApplicationRecord
 
   end
 
+  def toggle_admin
+    if has_role?("admin")
+      remove_role "admin"
+    else
+      add_role "admin"
+    end
+  end
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
