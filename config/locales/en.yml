@@ -137,8 +137,8 @@ en:
       new_btn: "New Event"
       new_task_btn: "New Task"
       list:
-        show_btn: "Hide event"
-        hide_btn: "Unhide event"
+        show_btn: "Unhide events"
+        hide_btn: "Hide event"
   notes:
     dokaa: "Dokasi fuksipassin / Fucked the shit up"
     plz_no: "Don't do this plz"
