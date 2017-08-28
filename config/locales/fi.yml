@@ -137,8 +137,8 @@ fi:
       new_btn: "Uusi tapahtuma"
       new_task_btn: "Uusi haaste"
       list:
-        show_btn: "Piilota tapahtuma"
-        hide_btn: "Poista tapahtuman piilotus"
+        show_btn: "Poista tapahtuman piilotus"
+        hide_btn: "Piilota tapahtuma"
   notes:
     dokaa: "Dokasi fuksipassin"
     plz_no: "Älä plz"
