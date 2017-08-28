@@ -2,32 +2,32 @@
   .row
     - if can? :create, Event
       .col-sm-12.col-md-12
-        h3 Events:
+        h3 = I18n.t('events.index.title')
         == render 'list', events: @all_participations, show_hide_links: false
     - else
       .col-sm-12.col-md-4#unattended
-        h3 Unattended events:
+        h3 = I18n.t('events.index.unattended_title')
         - if @unattended_events.any?
           == render 'list', events: @unattended_events, show_hide_links: true
         - else
-          p There doesn't seem to be anything here...
+          p = I18n.t('events.index.no_events')
       - if @events.future.any?
         div.col-sm-12.col-md-4#upcoming
-          h3 Upcoming events:
+          h3 = I18n.t('events.index.upcoming_title')
           == render 'list', events: @events.future, show_hide_links: false
       - if @participated_events.any?
         div.col-sm-12.col-md-4#attended
-          h3 Attended events:
+          h3 = I18n.t('events.index.attended_title')
           == render 'list', events: @participated_events, show_hide_links: false
   .row
     .new-events
       - if fuksi? && !@show_hidden
-        = link_to 'Show hidden events', events_path(show_hidden: true), :class => 'btn btn-sm btn-info'
+        = link_to I18n.t('events.index.show_btn'), events_path(show_hidden: true), :class => 'btn btn-sm btn-info'
       - elsif fuksi? && @show_hidden
-        = link_to 'Hide hidden events', events_path, :class => 'btn btn-sm btn-info'
+        = link_to I18n.t('events.index.hide_btn'), events_path, :class => 'btn btn-sm btn-info'
       - if can? :create, Event
-        = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
+        = link_to I18n.t('events.index.new_btn'), new_event_path, :class => 'btn btn-sm btn-info'
         |&nbsp;
       - if can? :create, Participation
-        = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'
+        = link_to I18n.t('events.index.new_task_btn'), new_participation_path, :class => 'btn btn-sm btn-info'
 

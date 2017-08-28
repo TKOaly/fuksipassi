@@ -33,10 +33,10 @@ class NotesController < ApplicationController
 
   def dokaa
     if current_user.has_role? :fuksi
-      @note = Note.new(points: -3, description: 'dokasit fuksipassin', to: current_user)
+      @note = Note.new(points: -3, description: I18n.t('notes.dokaa'), to: current_user)
       @note.save unless current_user.dokattu?
 
-      redirect_to @note.to, notice: 'älä plz'
+      redirect_to @note.to, notice: I18n.t('notes.plz_no')
     else
       redirect_to root_path, notice: 'User not fuksi'
     end

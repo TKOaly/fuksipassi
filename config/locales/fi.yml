@@ -51,3 +51,94 @@ fi:
       text6: 'Projektin github on '
       text7: '. Asiallisista pull-requesteistä saa tietenkin fuksipisteitä (ja/tai kaljaa). Koodista valittamisesta saa miinuspisteitä. Hakkeroinnista plus tai miinus, riippuen mayhemin tasosta.'
       link: 'täällä'
+  devise:
+    confirmations:
+      new:
+        title: "Uudelleenlähetä sähköpostinvarmistus"
+        submit: "Uudelleenlähetä sähköpostinvarmistus"
+        labels:
+          email: 'Sähköposti'
+    passwords:
+      edit:
+        title: 'Salasanan vaihto'
+        labels:
+          password: "Uusi salasana"
+          confirmation: "Uusi salasana uudestaan"
+        submit: "Vaihda salasana"
+      new:
+        title: 'Unohditko salasanasi?'
+        submit: "Lähetä minulle ohjeet salasanani uusimiseen"
+        labels:
+          email: "Sähköposti"
+    registrations:
+      edit:
+        title: 'Muokkaa '
+        labels:
+          image: 'Kuva'
+          remove_image: 'Poista kuva'
+          email: 'Sähköposti'
+          username: 'Käyttäjätunnus'
+          first_name: 'Etunimi'
+          last_name: 'Sukunimi'
+          irc_nick: 'Irc nick'
+          password: 'Salasana'
+          password_info: "(jätä tyhjäksi, jos et halua vaihtaa)"
+          confirmation: 'Salasana uudestaan'
+          current: 'Nykyinen salasana'
+          current_info: "(Tarvitsemme nykyisen salasanasi vahvistaaksemme muutokset)"
+        submit: 'Päivitä'
+        unhappy:
+          title: 'Poista tunnukseni'
+          text: 'Tyytymätön?'
+          submit: 'Poista tunnukseni'
+          confirmation: 'Oletko varma?'
+          back: 'Takaisin'
+      new:
+        title: 'Rekisteröidy'
+        labels:
+          image: 'Kuva'
+          email: 'Sähköpostiosoite'
+          username: 'Käyttäjänimi'
+          first_name: 'Etunimi'
+          last_name: 'Sukunimi'
+          irc_nick: 'Irc nick'
+          password: 'Salasana'
+          password_info: 'Merkkejä vähintään'
+          confirmation: 'Salasana uudestaan'
+        submit: 'Rekisteröidy'
+    sessions:
+      new:
+        title: 'Kirjaudu'
+        submit: 'Kirjaudu'
+        labels:
+          email_or_username: "Sähköposti tai käyttäjätunnus"
+          password: "Salasana"
+          remember_me: "Muista minut"
+    unlocks:
+      new:
+        title: 'Uudelleenlähetä tilin avausohjeet'
+        submit: 'Uudelleenlähetä tilin avausohjeet'
+    links:
+      link1: "Kirjaudu"
+      link2: "Rekisteröidy"
+      link3: "Unohditko salasanasi?"
+      link4: "Etkö saanut sähköpostin varmistusohjeita?"
+      link5: "Etkö saanut tilin avausohjeita?"
+      link6: "Kirjaudu palvelussa"
+  events:
+    index:
+      title: "Tapahtumat"
+      unattended_title: "Käymättömät tapahtumat"
+      no_events: "Täällä ei näytä olevan mitään..."
+      upcoming_title: "Tulevat tapahtumat"
+      attended_title: "Osallistumani tapahtumat"
+      show_btn: "Näytä piilotetut tapahtumat"
+      hide_btn: "Piilota piilotetut tapahtumat"
+      new_btn: "Uusi tapahtuma"
+      new_task_btn: "Uusi haaste"
+      list:
+        show_btn: "Piilota tapahtuma"
+        hide_btn: "Poista tapahtuman piilotus"
+  notes:
+    dokaa: "Dokasi fuksipassin"
+    plz_no: "Älä plz"

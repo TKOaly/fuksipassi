@@ -3,18 +3,18 @@
     | #{I18n.t('devise.sessions.new.title')}
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.label :email_or_username
+      = f.label I18n.t('devise.sessions.new.labels.email_or_username')
       br
       = f.text_field :login, autofocus: true
     .field
-      = f.label :password
+      = f.label I18n.t('devise.sessions.new.labels.password')
       br
       = f.password_field :password, autocomplete: "off"
     - if devise_mapping.rememberable?
       .field
         = f.check_box :remember_me
         |&nbsp;
-        = f.label :remember_me
+        = f.label I18n.t('devise.sessions.new.labels.remember_me')
     .actions
       = f.submit I18n.t('devise.sessions.new.submit')
   = render "devise/shared/links"

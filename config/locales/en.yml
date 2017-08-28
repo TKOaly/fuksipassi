@@ -56,6 +56,8 @@ en:
       new:
         title: "Resend confirmation instructions"
         submit: "Resend confirmation instructions"
+        labels:
+          email: 'Email'
     passwords:
       edit:
         title: 'Change your password'
@@ -66,6 +68,8 @@ en:
       new:
         title: 'Forgot your password?'
         submit: "Send me reset password instructions"
+        labels:
+          email: "Email"
     registrations:
       edit:
         title: 'Edit '
@@ -106,6 +110,10 @@ en:
       new:
         title: 'Log in'
         submit: 'Log in'
+        labels:
+          email_or_username: "Email or username"
+          password: "Password"
+          remember_me: "Remember me"
     unlocks:
       new:
         title: 'Resend unlock instructions'
@@ -117,3 +125,20 @@ en:
       link4: "Didn't receive confirmation instructions?"
       link5: "Didn't receive unlock instructions?"
       link6: "Sign in with"
+  events:
+    index:
+      title: "Events"
+      unattended_title: "Unattended events"
+      no_events: "There doesn't seem to be anything here..."
+      upcoming_title: "Upcoming events"
+      attended_title: "Attended events"
+      show_btn: "Show hidden events"
+      hide_btn: "Hide hidden events"
+      new_btn: "New Event"
+      new_task_btn: "New Task"
+      list:
+        show_btn: "Hide event"
+        hide_btn: "Unhide event"
+  notes:
+    dokaa: "Dokasi fuksipassin / Fucked the shit up"
+    plz_no: "Don't do this plz"

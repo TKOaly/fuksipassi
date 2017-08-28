@@ -6,6 +6,6 @@
     = date(event)
     |&nbsp;
     - if show_hide_links && event.respond_to?(:date) && !@hidden_event_ids.include?(event.id)
-      = link_to 'Hide event', hide_event_path(event.id), :method => :put
+      = link_to I18n.t('events.index.list.hide_btn'), hide_event_path(event.id), :method => :put
     - elsif show_hide_links && event.respond_to?(:date)
-      = link_to 'Unhide event', unhide_event_path(event.id), :method => :delete
+      = link_to I18n.t('events.index.list.show_btn'), unhide_event_path(event.id), :method => :delete
