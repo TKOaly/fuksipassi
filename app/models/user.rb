@@ -13,6 +13,8 @@ class User < ApplicationRecord
   # has_many :hidden_participations, :class_name => 'Participation', foreign_key: 'hider_id'
   has_many :notes, :class_name => 'Note', foreign_key: 'to_id', dependent: :destroy
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
+  has_many :hidden_events, dependent: :destroy
+  has_many :hidden, class_name: 'Event', through: :hidden_events
   belongs_to :year
   belongs_to :language
 

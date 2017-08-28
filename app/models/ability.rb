@@ -21,6 +21,7 @@ class Ability
       can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
       can [:set_user_language], Language
+      can :manage, HiddenEvent, user_id: user.id
     end
   end
 end

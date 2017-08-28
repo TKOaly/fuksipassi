@@ -5,9 +5,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @show_hidden = params[:show_hidden]
+    if params[:show_hidden]
+      @unattended_events = Event.past + Participation.tasks - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+    else
+      @unattended_events = Event.past.unhidden(current_user.id) + Participation.tasks - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+    end
     @all_participations = Participation.events_and_tasks.map { |u| u.event ? u.event : u }
-    @unattended_events = Event.past + Participation.tasks - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
     @participated_events = current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+    @hidden_event_ids = HiddenEvent.where(user_id: current_user.id).collect(&:event_id)
   end
 
   # GET /events/1
