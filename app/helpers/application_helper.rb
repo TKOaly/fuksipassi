@@ -9,10 +9,11 @@ module ApplicationHelper
     end
   end
 
-  def point_badge(points = 0)
+  def point_badge(points=0)
+    points = 0 unless points
     if points > 9
       'very-positive-score badge badge-pill'
-    elsif points <0
+    elsif points < 0
       'negative-score badge badge-pill'
     else
       'positive-score badge badge-pill'
