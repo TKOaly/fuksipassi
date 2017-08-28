@@ -4,6 +4,7 @@ class AddBunchOfNotNullConstraints < ActiveRecord::Migration[5.0]
     change_column :hidden_events, :event_id, :integer, null: false
     change_column :notes, :points, :integer, null: false
     change_column :notes, :description, :string, null: false
+    Note.where(to_id: nil).each{ |n| n.destroy}
     change_column :notes, :to_id, :integer, null: false
     Note.where(points_hidden: nil).each{ |n| n.update_attributes(points_hidden: false)}
     change_column :notes, :points_hidden, :boolean, null: false, default: false
