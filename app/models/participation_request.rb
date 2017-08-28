@@ -4,9 +4,13 @@ class ParticipationRequest < ApplicationRecord
   belongs_to :participation
   has_one :event, through: :participation
 
-  validates :participation, :presence => true
-  validates :participant, :presence => true
-  validates_uniqueness_of :participant, :scope => :participation
+  validates :participant,
+            presence: true,
+            associated: true
+  validates :participation,
+            presence: true,
+            associated: true
+  validates_uniqueness_of :participant, scope: :participation
 
   validate :participation_not_in_future
 

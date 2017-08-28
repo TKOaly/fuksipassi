@@ -24,7 +24,7 @@ RSpec.describe ParticipationRequest, type: :model do
 
     it 'does not succeed twice for the same participant and event' do
       fuksi = create(:user)
-      p = Participation.create(points: 5)
+      p = Participation.create(points: 5, participation_type: 1)
 
       ParticipationRequest.create(participant: fuksi, participation: p)
       ParticipationRequest.create(participant: fuksi, participation: p)

@@ -5,9 +5,14 @@ class Participation < ApplicationRecord
   has_many :users, through: :participation_requests
 
   scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
-  scope :events_and_tasks, -> {where('participation_type = 0 OR participation_type = 2')}
-  scope :extras, -> {where('PARTICIPATION_TYPE = 1')}
-  scope :events, -> {where('PARTICIPATION_TYPE = 0')}
+  scope :events_and_tasks, -> {where('participation_type = 0 OR participation_type = 2')  }
+  scope :extras, -> { where('PARTICIPATION_TYPE = 1') }
+  scope :events, -> { where('PARTICIPATION_TYPE = 0') }
+
+  validates :points,
+            presence: true
+  validates :participation_type,
+            presence: true
 
   def unconfirmed_count
     participation_requests.unconfirmed.count

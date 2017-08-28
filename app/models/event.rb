@@ -12,6 +12,11 @@ class Event < ApplicationRecord
   scope :past, -> { where("date < ?", Time.zone.now) }
   scope :unhidden, ->(user_id) { where('id NOT IN (?)', HiddenEvent.where(user_id: user_id).collect(&:event_id) << -1) }
 
+  validates :name,
+            presence: true,
+            :uniqueness => {
+                :case_sensitive => false}
+
   def unconfirmed_count
     participation_requests.unconfirmed.count
   end

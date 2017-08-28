@@ -4,7 +4,7 @@ class CreateHiddenEvent < ActiveRecord::Migration[5.0]
       t.references :user
       t.references :event
 
-      t.timestamps
+
     end
   end
 end
