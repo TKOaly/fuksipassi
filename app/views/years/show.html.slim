@@ -1,9 +1,10 @@
-p#notice = notice
+.container
+  p#notice = notice
 
-p
-  strong Integer:
-  = @year.integer
+  p
+    strong Integer:
+    = @year.integer
 
-= link_to 'Edit', edit_year_path(@year)
-'  |
-= link_to 'Back', years_path
+  = link_to 'Edit', edit_year_path(@year)
+  '  |
+  = link_to 'Back', years_path

@@ -1,16 +1,17 @@
-h2
-  =@participation.description
-p
-  ' Possible points for participation:
-  span.badge.badge-pill
-    = @participation.points
-== render 'events/request_participation_button', participation: @unattended_participations.first
-br
-
--if tutor?
+.container
+  h2
+    =@participation.description
   p
-    = link_to 'Edit', edit_participation_path(@participation)
-    '  |
+    ' Possible points for participation:
+    span.badge.badge-pill
+      = @participation.points
+  == render 'events/request_participation_button', participation: @unattended_participations.first
+  br
+
+  -if tutor?
+    p
+      = link_to 'Edit', edit_participation_path(@participation)
+      '  |
+      = link_to 'Back', participations_path
+  - else
     = link_to 'Back', participations_path
-- else
-  = link_to 'Back', participations_path

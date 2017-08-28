@@ -7,6 +7,7 @@
       = f.label :email
       br
       = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+    .line-break-md
     .actions
       = f.submit I18.t('devise.confirmations.submit')
   = render "devise/shared/links"

@@ -1,26 +1,28 @@
-
-- if can? :create, Event
-  div.col-sm-12.col-md-12
-    h3 Events:
-    == render 'list', events: @all_participations
-- else
-  div.col-sm-12.col-md-4#unattended
-    h3 Unattended events:
-    - if @unattended_events.any?
-      == render 'list', events: @unattended_events
+.grid
+  .row
+    - if can? :create, Event
+      .col-sm-12.col-md-12
+        h3 Events:
+        == render 'list', events: @all_participations
     - else
-      p There doesn't seem to be anything here...
-  - if @events.future.any?
-    div.col-sm-12.col-md-4#upcoming
-      h3 Upcoming events:
-      == render 'list', events: @events.future
-  - if @participated_events.any?
-    div.col-sm-12.col-md-4#attended
-      h3 Attended events:
-      == render 'list', events: @participated_events
-  br
-div.new-events
-  - if can? :create, Event
-    = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
-  - if can? :create, Participation
-    = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'
+      .col-sm-12.col-md-4#unattended
+        h3 Unattended events:
+        - if @unattended_events.any?
+          == render 'list', events: @unattended_events
+        - else
+          p There doesn't seem to be anything here...
+      - if @events.future.any?
+        div.col-sm-12.col-md-4#upcoming
+          h3 Upcoming events:
+          == render 'list', events: @events.future
+      - if @participated_events.any?
+        div.col-sm-12.col-md-4#attended
+          h3 Attended events:
+          == render 'list', events: @participated_events
+  .row
+    .new-events
+      - if can? :create, Event
+        = link_to 'New Event', new_event_path, :class => 'btn btn-sm btn-info'
+        |&nbsp;
+      - if can? :create, Participation
+        = link_to 'New Task', new_participation_path, :class => 'btn btn-sm btn-info'

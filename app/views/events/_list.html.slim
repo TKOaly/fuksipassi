@@ -1,6 +1,6 @@
 - events.each do |event|
   li.list-group-item.justify-content-between
-    h4.mb-1 = link_to event.name, event
+    h4.mb-1 = link_to event.name, event, :"data-turbolinks" => false
     span[class="#{point_badge(event.points)}"]
       = event.points
     = date(event)

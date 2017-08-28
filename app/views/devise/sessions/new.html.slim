@@ -13,6 +13,7 @@
     - if devise_mapping.rememberable?
       .field
         = f.check_box :remember_me
+        |&nbsp;
         = f.label :remember_me
     .actions
       = f.submit I18n.t('devise.sessions.new.submit')

@@ -1,28 +1,29 @@
-h2
-  = @event.name + ' '
-  small = @event.date
-p
-  = link_to @event.event_link if @event.event_link
+.container
+  h2
+    = @event.name + ' '
+    small = @event.date
+  p
+    = link_to @event.event_link if @event.event_link
 
-p
-  ' Possible points for participation:
-  span.badge.badge-pill
-    = @event.points
-- unless can? :create, @event or @event.future?
-  == render 'events/request_participation_button', participation: @main_participation.first
-  - if @unattended_participations.any?
-    == render 'participation_request_form'
-- if can? :create, Participation
-  == render 'add_participation'
-  == render 'extra_participation_list'
-  == render 'overview/unconfirmed_requests', unconfirmed: @event.participations.map { |p| p.participation_requests.unconfirmed }.first
+  p
+    ' Possible points for participation:
+    span.badge.badge-pill
+      = @event.points
+  - unless can? :create, @event or @event.future?
+    == render 'events/request_participation_button', participation: @main_participation.first
+    - if @unattended_participations.any?
+      == render 'participation_request_form'
+  - if can? :create, Participation
+    == render 'add_participation'
+    == render 'extra_participation_list'
+    == render 'overview/unconfirmed_requests', unconfirmed: @event.participations.map { |p| p.participation_requests.unconfirmed }.first
 
 
-br
+  br
 
-- if can? :update, @event
-  = link_to 'Delete', @event, data: {confirm: 'Are you sure you want to delete this event?'}, method: :delete
-  '  |
-  = link_to 'Edit', edit_event_path(@event)
-  '  |
-= link_to 'Back', events_path
+  - if can? :update, @event
+    = link_to 'Delete', @event, data: {confirm: 'Are you sure you want to delete this event?'}, method: :delete
+    '  |
+    = link_to 'Edit', edit_event_path(@event)
+    '  |
+  = link_to 'Back', events_path

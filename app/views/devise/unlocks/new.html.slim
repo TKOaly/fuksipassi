@@ -6,6 +6,7 @@ h2
     = f.label :email
     br
     = f.email_field :email, autofocus: true
+  |&nbsp;
   .actions
     = f.submit I18n.t('devise.unlocks.new.submit')
 = render "devise/shared/links"

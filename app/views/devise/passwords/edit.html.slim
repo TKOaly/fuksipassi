@@ -18,6 +18,7 @@
       = f.label :password_confirmation, I18n.t('devise.passwords.edit.labels.confirmation')
       br
       = f.password_field :password_confirmation, autocomplete: "off"
+    .line-break-md
     .actions
       = f.submit I18n.t('devise.passwords.edit.submit')
   = render "devise/shared/links"

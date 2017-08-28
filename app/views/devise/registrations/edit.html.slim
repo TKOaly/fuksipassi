@@ -11,6 +11,7 @@
       = f.file_field :image
       - if f.object.image?
         = f.check_box :remove_image
+        |&nbsp;
         = f.label I18n.t('devise.registrations.edit.labels.remove_image')
         br
     .field
@@ -58,6 +59,7 @@
         | #{I18n.t('devise.registrations.edit.labels.current_info')}
       br
       = f.password_field :current_password, autocomplete: "off"
+    .line-break-md
     .actions
       = f.submit "Update"
   h3

@@ -68,7 +68,7 @@ en:
         submit: "Send me reset password instructions"
     registrations:
       edit:
-        title: 'Edit'
+        title: 'Edit '
         labels:
           image: 'Image'
           remove_image: 'Remove image'
