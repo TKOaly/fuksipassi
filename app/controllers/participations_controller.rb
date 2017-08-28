@@ -57,10 +57,12 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1
   # DELETE /participations/1.json
   def destroy
-    @participation.destroy
-    respond_to do |format|
-      format.html { redirect_to :back, notice: 'Participation was successfully destroyed.' }
-      format.json { head :no_content }
+    if @participation.participation_type != 0
+      @participation.destroy
+      respond_to do |format|
+        format.html { redirect_to :back, notice: 'Participation was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

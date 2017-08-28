@@ -10,6 +10,8 @@
 
   -if tutor?
     p
+      = link_to 'Delete', @participation, data: {confirm: 'Are you sure you want to delete this task?'}, method: :delete
+      '  |
       = link_to 'Edit', edit_participation_path(@participation)
       '  |
       = link_to 'Back', events_path
