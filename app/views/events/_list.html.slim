@@ -5,7 +5,7 @@
       = event.points
     = date(event)
     |&nbsp;
-    - if show_hide_links && event.try(:date) && !@hidden_event_ids.include?(event.id)
+    - if show_hide_links && event.respond_to?(:date) && !@hidden_event_ids.include?(event.id)
       = link_to 'Hide event', hide_event_path(event.id), :method => :put
-    - elsif show_hide_links && event.try(:date)
+    - elsif show_hide_links && event.respond_to?(:date)
       = link_to 'Unhide event', unhide_event_path(event.id), :method => :delete

@@ -21,7 +21,7 @@ class HiddenEventsController < ApplicationController
     @hidden_event = HiddenEvent.where(user_id: current_user.id, event_id: params[:event_id]).take
     @hidden_event.destroy
     respond_to do |format|
-      format.html { redirect_to events_path, notice: 'Event was successfully unhidden.' }
+      format.html { redirect_to events_path(show_hidden: true), notice: 'Event was successfully unhidden.' }
       format.json { head :no_content }
     end
   end
