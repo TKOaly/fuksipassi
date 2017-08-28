@@ -18,7 +18,7 @@ class ParticipationRequest < ApplicationRecord
   scope :confirmed, -> { where('ACCEPTOR_ID IS NOT NULL') }
 
   def participation_not_in_future
-    if participation && participation.event && participation.event.date && participation.event.date > Date.today
+    if participation && participation.event && participation.event.date && participation.event.date > Time.now.utc.to_date
       errors.add(:participation_request, 'Event has not taken place yet!')
     end
   end
