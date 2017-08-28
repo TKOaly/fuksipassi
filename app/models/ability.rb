@@ -12,7 +12,11 @@ class Ability
     end
 
     if user.has_role? :tutor
-      can :manage, :all
+      can :manage, [Event, Participation, ParticipationRequest]
+      can :read, [Note, User]
+      can :manage, Note, from_id: user.id
+      can :manage, User, id: user.id
+      can [:read, :set_user_language], Language
     end
 
     if user.has_role? :fuksi
@@ -20,7 +24,7 @@ class Ability
       can [:read, :dokaa], Note
       can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
-      can [:set_user_language], Language
+      can [:read, :set_user_language], Language
       can :manage, HiddenEvent, user_id: user.id
     end
   end
