@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :participations
+  resources :participations, only: [:show, :new, :edit, :create, :update, :destroy]
   resources :events
   resources :years
   resources :notes

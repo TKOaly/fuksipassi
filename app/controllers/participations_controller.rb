@@ -2,12 +2,6 @@ class ParticipationsController < ApplicationController
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :participation
 
-  # GET /participations
-  # GET /participations.json
-  def index
-    @participations = Participation.all
-  end
-
   # GET /participations/1
   # GET /participations/1.json
   def show
