@@ -15,7 +15,7 @@ nav.navbar.navbar-default role="navigation"
         - if can? [:read, :update], [Participation, ParticipationRequest]
           li
             = link_to text_with_badge(I18n.t('application.header.links.overview'), unaccepted_participations), overview_path, :"data-turbolinks" => false
-
+        - if tutor?
           li
             = link_to I18n.t('application.header.links.users'), users_path
         - if user_signed_in?

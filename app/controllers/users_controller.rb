@@ -7,9 +7,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    authorize! :read, User.all
-    @users = User.all
-    @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
+    if tutor?
+      @users = User.all
+      @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
+    end
   end
 
   def update
