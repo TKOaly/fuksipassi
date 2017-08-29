@@ -60,7 +60,7 @@ class ParticipationsController < ApplicationController
     if @participation.participation_type != 0
       @participation.destroy
       respond_to do |format|
-        format.html { redirect_to :events_path, notice: 'Participation was successfully destroyed.' }
+        format.html { redirect_to events_url, notice: 'Participation was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
