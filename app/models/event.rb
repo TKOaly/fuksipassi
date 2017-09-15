@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   attr_accessor :points
 
   scope :future, -> { where("date > ?", Time.zone.now) }
-  scope :past, -> { where("date < ?", Time.zone.now) }
+  scope :past, -> { where("date <= ? ", Time.zone.today) }
   scope :unhidden, ->(user_id) { where('id NOT IN (?)', HiddenEvent.where(user_id: user_id).collect(&:event_id) << -1) }
 
   validates :name,
@@ -32,6 +32,8 @@ class Event < ApplicationRecord
   def future?
     date > Time.zone.now
   end
+
+
 
 
 end
