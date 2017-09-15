@@ -30,7 +30,7 @@ class Event < ApplicationRecord
   end
 
   def future?
-    date > Time.zone.now
+    date >= Time.zone.now
   end
 
 
