@@ -25,6 +25,9 @@ class User < ApplicationRecord
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :username,
+            length: { 
+                maximum: 32, minimum: 2
+            },
             :presence => true,
             :uniqueness => {
                 :case_sensitive => false
@@ -33,6 +36,13 @@ class User < ApplicationRecord
             presence: true
   validates :last_name,
             presence: true
+  validates :irc_nick,
+            length: {
+                maximum: 32, minimum: 2
+            },
+            :uniqueness => {
+                :case_sensitive => false
+            }
 
   def full_name
     "#{first_name} #{last_name}"
