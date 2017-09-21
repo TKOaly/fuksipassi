@@ -92,7 +92,7 @@ fi:
           text: 'Tyytymätön?'
           submit: 'Poista tunnukseni'
           confirmation: 'Oletko varma?'
-          back: 'Takaisin'
+          back: 'EIKU'
       new:
         title: 'Rekisteröidy'
         labels:
