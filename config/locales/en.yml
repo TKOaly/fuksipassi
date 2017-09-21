@@ -92,7 +92,7 @@ en:
           text: 'Unhappy?'
           submit: 'Cancel my account'
           confirmation: 'Are you sure?'
-          back: 'Back'
+          back: 'EIKU'
       new:
         title: 'Sign up'
         labels:
