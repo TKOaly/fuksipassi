@@ -42,7 +42,8 @@ class User < ApplicationRecord
                 allow_nil: true
             },
             :uniqueness => {
-                :case_sensitive => false
+                :case_sensitive => false,
+                allow_nil: true
             }
 
   def full_name
