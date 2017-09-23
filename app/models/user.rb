@@ -39,7 +39,7 @@ class User < ApplicationRecord
   validates :irc_nick,
             length: {
                 maximum: 32, minimum: 2,
-                allow_nil: false
+                allow_nil: true
             },
             :uniqueness => {
                 :case_sensitive => false
