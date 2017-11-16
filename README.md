@@ -116,7 +116,7 @@ Github -> Travis -> Heroku
    1. Joko `GMAIL_*`- tai `SENGRID_*`-muuttujat vaaditaan sähköpostiliikenteen toimintaan. Huomaa että `config/enviroments/*`-tiedostoissa on tällä hetkellä asetettu kehitysympäristön sähköpostipalveluksi Gmail ja tuotantoympäristön sähköpostipalveluksi Sengrid, muokkaa tarvittaessa. Lisäksi Gmailin toiminta vaatii todennäköisesti "vähemmän turvallisten sovellusten" käytön sallimista Gmailin asetuksista.
    1. Facebook-rekisteröinti/kirjautuminen tällä hetkellä disabloitu rikkinäisenä joten siihen liittyvien muuttujien asettaminen on tarpeellista vasta jos joku haluaa korjata kyseisen toiminnallisuuden.
    1. Cloudinaryn api-tunnukset vaaditaan valokuvien uploadauksen mahdollistamiseksi ja ne saa rekisteröitymällä Cloudinaryyn.
-   1. Rekisteröidy Rollbariin ja aseta `ROLLBAR_ACCESS_TOKEN`
+   1. Rekisteröidy Rollbariin ja aseta `ROLLBAR_ACCESS_TOKEN`. Sovelluksen virheilmoitukset lähetetään Rollbarin-logiin.
    1. Täytä luotavan admin-tunnuksen tiedot.
 1. Aja seuraavat komennot
    1. `bundle install`
