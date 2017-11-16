@@ -108,4 +108,18 @@ On pyritty testaamaan ensisijaisesti niitä asioita, joilla fuksi voi rikkoa siv
 ## Continuous Integration
 
 Github -> Travis -> Heroku
- 
+
+## Sovelluksen asentaminen
+
+l. Asenna ruby 2.3.1 sekä rails 5.0.2 esimerkiksi [näitä](https://github.com/mluukkai/WebPalvelinohjelmointi2017/wiki/railsin-asennus) ohjeita mukailemalla. Asenna postgresql tuotantopalvelimelle jos sitä siellä ei vielä ole.
+l. Muokkaa tarvittavat ympäristömuuttujat `.env`-tiedostoon projektin juuressa tai exporttaa muuttujat jollain muulla tavalla, esimerkiksi Herokussa muuttujille löytyy oma alueensa asetuksista.
+  l. Joko `GMAIL_*`- tai `SENGRID_*`-muuttujat vaaditaan sähköpostiliikenteen toimintaan. Huomaa että `config/enviroments/*`-tiedostoissa on tällä hetkellä asetettu kehitysympäristön sähköpostipalveluksi Gmail ja tuotantoympäristön sähköpostipalveluksi Sengrid, muokkaa tarvittaessa. Lisäksi Gmailin toiminta vaatii todennäköisesti "vähemmän turvallisten sovellusten" käytön sallimista Gmailin asetuksista.
+  l. Facebook-rekisteröinti/kirjautuminen tällä hetkellä disabloitu rikkinäisenä joten siihen liittyvien muuttujien asettaminen on tarpeellista vasta jos joku haluaa korjata kyseisen toiminnallisuuden.
+  l. Cloudinaryn api-tunnukset vaaditaan valokuvien uploadauksen mahdollistamiseksi ja ne saa rekisteröitymällä Cloudinaryyn.
+  l. Rekisteröidy Rollbariin ja aseta `ROLLBAR_ACCESS_TOKEN`
+  l. Täytä luotavan admin-tunnuksen tiedot.
+l. Aja seuraavat komennot
+  l. `bundle install`
+  l. `rake db:migrate`
+  l. `rake db:seed`
+l. Aja sovellusta komennolla `rails s`
