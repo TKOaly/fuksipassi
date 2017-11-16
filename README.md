@@ -113,13 +113,13 @@ Github -> Travis -> Heroku
 
 1. Asenna ruby 2.3.1 sekä rails 5.0.2 esimerkiksi [näitä](https://github.com/mluukkai/WebPalvelinohjelmointi2017/wiki/railsin-asennus) ohjeita mukailemalla. Asenna postgresql tuotantopalvelimelle jos sitä siellä ei vielä ole.
 1. Muokkaa tarvittavat ympäristömuuttujat `.env`-tiedostoon projektin juuressa tai exporttaa muuttujat jollain muulla tavalla, esimerkiksi Herokussa muuttujille löytyy oma alueensa asetuksista.
-  1. Joko `GMAIL_*`- tai `SENGRID_*`-muuttujat vaaditaan sähköpostiliikenteen toimintaan. Huomaa että `config/enviroments/*`-tiedostoissa on tällä hetkellä asetettu kehitysympäristön sähköpostipalveluksi Gmail ja tuotantoympäristön sähköpostipalveluksi Sengrid, muokkaa tarvittaessa. Lisäksi Gmailin toiminta vaatii todennäköisesti "vähemmän turvallisten sovellusten" käytön sallimista Gmailin asetuksista.
-  1. Facebook-rekisteröinti/kirjautuminen tällä hetkellä disabloitu rikkinäisenä joten siihen liittyvien muuttujien asettaminen on tarpeellista vasta jos joku haluaa korjata kyseisen toiminnallisuuden.
-  1. Cloudinaryn api-tunnukset vaaditaan valokuvien uploadauksen mahdollistamiseksi ja ne saa rekisteröitymällä Cloudinaryyn.
-  1. Rekisteröidy Rollbariin ja aseta `ROLLBAR_ACCESS_TOKEN`
-  1. Täytä luotavan admin-tunnuksen tiedot.
+   1. Joko `GMAIL_*`- tai `SENGRID_*`-muuttujat vaaditaan sähköpostiliikenteen toimintaan. Huomaa että `config/enviroments/*`-tiedostoissa on tällä hetkellä asetettu kehitysympäristön sähköpostipalveluksi Gmail ja tuotantoympäristön sähköpostipalveluksi Sengrid, muokkaa tarvittaessa. Lisäksi Gmailin toiminta vaatii todennäköisesti "vähemmän turvallisten sovellusten" käytön sallimista Gmailin asetuksista.
+   1. Facebook-rekisteröinti/kirjautuminen tällä hetkellä disabloitu rikkinäisenä joten siihen liittyvien muuttujien asettaminen on tarpeellista vasta jos joku haluaa korjata kyseisen toiminnallisuuden.
+   1. Cloudinaryn api-tunnukset vaaditaan valokuvien uploadauksen mahdollistamiseksi ja ne saa rekisteröitymällä Cloudinaryyn.
+   1. Rekisteröidy Rollbariin ja aseta `ROLLBAR_ACCESS_TOKEN`
+   1. Täytä luotavan admin-tunnuksen tiedot.
 1. Aja seuraavat komennot
-  1. `bundle install`
-  1. `rake db:migrate`
-  1. `rake db:seed`
+   1. `bundle install`
+   1. `rake db:migrate`
+   1. `rake db:seed`
 1. Aja sovellusta komennolla `rails s`
