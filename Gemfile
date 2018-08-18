@@ -7,7 +7,7 @@ end
 
 
 gem 'rails', '~> 5.2.1'
-ruby '2.3.1'
+ruby '2.5.1'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now', groups: [:development, :test]
 
@@ -19,7 +19,7 @@ gem 'slim'
 gem 'slim-rails'
 gem 'rails-i18n'
 gem 'rollbar'
-gem 'oj', '~> 2.12.14'
+gem 'oj'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap-sass'
