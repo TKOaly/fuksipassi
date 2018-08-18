@@ -24,7 +24,7 @@ class ParticipationRequestsController < ApplicationController
   def destroy
     @participation_request.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Participation request successfully deleted.' }
+      format.html { redirect_back fallback_location: root_path, notice: 'Participation request successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -46,7 +46,7 @@ class ParticipationRequestsController < ApplicationController
       participation.acceptor = current_user
       participation.save
     else
-      redirect_to :back, notice: 'That is not allowed. Please don\'t try that again'
+      redirect_back fallback_location: root_path, notice: 'That is not allowed. Please don\'t try that again'
     end
   end
 

@@ -80,7 +80,7 @@ fi:
           username: 'Käyttäjätunnus'
           first_name: 'Etunimi'
           last_name: 'Sukunimi'
-          irc_nick: 'Irc nick'
+          irc_nick: 'Telegram / irc nick'
           password: 'Salasana'
           password_info: "(jätä tyhjäksi, jos et halua vaihtaa)"
           confirmation: 'Salasana uudestaan'
@@ -97,14 +97,17 @@ fi:
         title: 'Rekisteröidy'
         labels:
           image: 'Kuva'
-          email: 'Sähköpostiosoite'
-          username: 'Käyttäjänimi'
-          first_name: 'Etunimi'
-          last_name: 'Sukunimi'
-          irc_nick: 'Irc nick'
-          password: 'Salasana'
+          email: 'Sähköpostiosoite*'
+          username: 'Käyttäjänimi*'
+          first_name: 'Etunimi*'
+          last_name: 'Sukunimi*'
+          irc_nick: 'Telegram / irc nick'
+          password: 'Salasana*'
           password_info: 'Merkkejä vähintään'
-          confirmation: 'Salasana uudestaan'
+          confirmation: 'Salasana uudestaan*'
+          privacy_policy_consent: 'Käyttöehdot'
+          privacy_policy_consent_label: " Hyväksyn, että antamani henkilötiedot tallennetaan fuksipassin henkilötietorekisteriin. Lisätietoja fuksipassin <a href='https://www.tko-aly.fi/freshman_privacy' target='_blank'>tietosuojaselosteesta</a>."
+        required: 'Pakolliset kentät merkitty *-merkillä'
         submit: 'Rekisteröidy'
     sessions:
       new:

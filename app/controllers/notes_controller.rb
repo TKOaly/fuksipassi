@@ -26,7 +26,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Note successfully deleted.' }
+      format.html { redirect_back fallback_location: root_path, notice: 'Note successfully deleted.' }
       format.json { head :no_content }
     end
   end

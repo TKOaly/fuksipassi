@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828151756) do
+ActiveRecord::Schema.define(version: 2018_08_18_184219) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.date     "date"
-    t.string   "event_link"
+    t.string "name", null: false
+    t.date "date"
+    t.string "event_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "year_id"
+    t.integer "year_id"
     t.index ["year_id"], name: "index_events_on_year_id"
   end
 
   create_table "hidden_events", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "event_id",   null: false
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_hidden_events_on_event_id"
@@ -32,52 +32,52 @@ ActiveRecord::Schema.define(version: 20170828151756) do
   end
 
   create_table "languages", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "en_name",    null: false
-    t.string   "code",       null: false
+    t.string "name", null: false
+    t.string "en_name", null: false
+    t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "notes", force: :cascade do |t|
-    t.integer  "points",                        null: false
-    t.string   "description",                   null: false
-    t.integer  "from_id"
-    t.integer  "to_id",                         null: false
-    t.boolean  "points_hidden", default: false, null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer "points", null: false
+    t.string "description", null: false
+    t.integer "from_id"
+    t.integer "to_id", null: false
+    t.boolean "points_hidden", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["from_id"], name: "index_notes_on_from_id"
     t.index ["to_id"], name: "index_notes_on_to_id"
   end
 
   create_table "participation_requests", force: :cascade do |t|
-    t.integer  "acceptor_id"
-    t.integer  "participant_id",                   null: false
-    t.string   "description"
-    t.integer  "participation_id",                 null: false
-    t.boolean  "accepted",         default: false, null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer "acceptor_id"
+    t.integer "participant_id", null: false
+    t.string "description"
+    t.integer "participation_id", null: false
+    t.boolean "accepted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["acceptor_id"], name: "index_participation_requests_on_acceptor_id"
     t.index ["participant_id"], name: "index_participation_requests_on_participant_id"
     t.index ["participation_id"], name: "index_participation_requests_on_participation_id"
   end
 
   create_table "participations", force: :cascade do |t|
-    t.integer  "points",             null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "event_id"
-    t.string   "description"
-    t.integer  "participation_type", null: false
+    t.integer "points", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.string "description"
+    t.integer "participation_type", null: false
     t.index ["event_id"], name: "index_participations_on_event_id"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "resource_type"
-    t.integer  "resource_id"
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -85,34 +85,35 @@ ActiveRecord::Schema.define(version: 20170828151756) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                            null: false
-    t.string   "first_name",                          null: false
-    t.string   "last_name",                           null: false
-    t.string   "irc_nick"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string "username", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "irc_nick"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
-    t.string   "unlock_token"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "year_id"
-    t.string   "image"
-    t.integer  "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.integer "year_id"
+    t.string "image"
+    t.integer "language_id"
+    t.boolean "privacy_policy_consent", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["language_id"], name: "index_users_on_language_id"
@@ -128,7 +129,7 @@ ActiveRecord::Schema.define(version: 20170828151756) do
   end
 
   create_table "years", force: :cascade do |t|
-    t.integer  "year",       null: false
+    t.integer "year", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

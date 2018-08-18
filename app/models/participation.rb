@@ -1,6 +1,6 @@
 class Participation < ApplicationRecord
   enum participation_type: [:event, :event_extra, :task]
-  belongs_to :event
+  belongs_to :event, required: false
   has_many :participation_requests, dependent: :destroy
   has_many :users, through: :participation_requests
 

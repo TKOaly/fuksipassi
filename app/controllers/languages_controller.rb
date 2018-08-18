@@ -5,7 +5,7 @@ class LanguagesController < ApplicationController
     language = Language.find_by_id(params[:language])
     session[:locale] = Language.find_by_id(params[:language]).code
     set_user_language(language) if current_user
-    redirect_to :back
+    redirect_back fallback_location: root_path
   end
 
   private

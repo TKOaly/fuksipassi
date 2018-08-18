@@ -15,8 +15,8 @@ class User < ApplicationRecord
   has_many :submitted_notes, :class_name => 'Note', foreign_key: 'from_id'
   has_many :hidden_events, dependent: :destroy
   has_many :hidden, class_name: 'Event', through: :hidden_events
-  belongs_to :year
-  belongs_to :language
+  belongs_to :year, required: false
+  belongs_to :language, required: false
 
   attr_accessor :login
 
@@ -24,6 +24,9 @@ class User < ApplicationRecord
 
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates :privacy_policy_consent,
+            :presence => true,
+            inclusion: { in: [ true ] }
   validates :username,
             length: { 
                 maximum: 32, minimum: 2

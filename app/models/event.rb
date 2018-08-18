@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_many :participation_requests, through: :participations
   has_many :hidden_events, dependent: :destroy
   has_many :hiders, class_name: 'User', through: :hidden_events
-  belongs_to :year
+  belongs_to :year, required: false
 
   # accepts_nested_attributes_for :participations
   attr_accessor :points

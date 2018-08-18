@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if admin?
       @user = User.find(params[:id])
       @user.toggle_tutor
-      redirect_to :back, notice: "#{@user.full_name} has been modified."
+      redirect_back fallback_location: root_path, notice: "#{@user.full_name} has been modified."
     end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     if admin?
       @user = User.find(params[:id])
       @user.toggle_admin
-      redirect_to :back, notice: "#{@user.full_name} has been modified."
+      redirect_back fallback_location: root_path, notice: "#{@user.full_name} has been modified."
     end
   end
 end

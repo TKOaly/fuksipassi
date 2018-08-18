@@ -1,6 +1,8 @@
 .container
   h2
     | #{I18n.t('devise.registrations.new.title')}
+  p
+    | #{I18n.t('devise.registrations.new.required')}
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     .field
@@ -41,6 +43,11 @@
       = f.label I18n.t('devise.registrations.new.labels.confirmation')
       br
       = f.password_field :password_confirmation, autocomplete: "off"
+    .field
+      = f.label I18n.t('devise.registrations.new.labels.privacy_policy_consent')
+      br
+      = f.check_box :privacy_policy_consent
+      == I18n.t('devise.registrations.new.labels.privacy_policy_consent_label')
     .line-break-md
     .actions
       = f.submit I18n.t('devise.registrations.new.submit')

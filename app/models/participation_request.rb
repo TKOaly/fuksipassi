@@ -1,5 +1,5 @@
 class ParticipationRequest < ApplicationRecord
-  belongs_to :acceptor, :class_name => 'User'
+  belongs_to :acceptor, :class_name => 'User', required: false
   belongs_to :participant, -> { distinct }, :class_name => 'User'
   belongs_to :participation
   has_one :event, through: :participation

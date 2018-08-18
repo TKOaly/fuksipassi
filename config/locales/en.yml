@@ -80,7 +80,7 @@ en:
           username: 'Username'
           first_name: 'First name'
           last_name: 'Last name'
-          irc_nick: 'Irc nick'
+          irc_nick: 'Telegram / irc nick'
           password: 'Password'
           password_info: "(leave blank if you don't want to change it)"
           confirmation: 'Password confirmation'
@@ -97,14 +97,17 @@ en:
         title: 'Sign up'
         labels:
           image: 'Image'
-          email: 'Email'
-          username: 'Username'
-          first_name: 'First name'
-          last_name: 'Last name'
-          irc_nick: 'Irc nick'
-          password: 'Password'
+          email: 'Email*'
+          username: 'Username*'
+          first_name: 'First name*'
+          last_name: 'Last name*'
+          irc_nick: 'Telegram / irc nick'
+          password: 'Password*'
           password_info: 'Characters minimum'
-          confirmation: 'Password confirmation'
+          confirmation: 'Password confirmation*'
+          privacy_policy_consent: 'Privacy policy'
+          privacy_policy_consent_label: " I agree that the information I have given can be saved to user personal information registry of Freshman pass service. More information at our <a href='https://www.tko-aly.fi/freshman_privacy' target='_blank'>Privacy Policy</a> page."
+        required: 'Required fields marked with *'
         submit: 'Sign up'
     sessions:
       new:
