@@ -11,10 +11,10 @@ ruby '2.5.1'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now', groups: [:development, :test]
 
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'slim'
 gem 'slim-rails'
 gem 'rails-i18n'
@@ -26,10 +26,10 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5.0.0.beta'
+gem 'turbolinks'
 gem 'jquery-turbolinks'
 
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 
 
 gem 'devise'
@@ -51,10 +51,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'better_errors'
   gem 'rack-mini-profiler', require: false
   gem 'binding_of_caller'
