@@ -106,7 +106,7 @@ en:
           password_info: 'Characters minimum'
           confirmation: 'Password confirmation*'
           privacy_policy_consent: 'Privacy policy'
-          privacy_policy_consent_label: " I agree that the information I have given can be saved to user personal information registry of Freshman pass service. More information at our <a href='https://www.tko-aly.fi/freshman_privacy' target='_blank'>Privacy Policy</a> page."
+          privacy_policy_consent_label: " I agree that the information I have given can be saved to personal data registry of Freshman pass service. More information at our <a href='https://www.tko-aly.fi/freshman_privacy' target='_blank'>Privacy Policy</a> page."
         required: 'Required fields marked with *'
         submit: 'Sign up'
     sessions:
