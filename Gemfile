@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.1'
 ruby '2.3.1'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now', groups: [:development, :test]
