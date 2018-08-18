@@ -45,7 +45,7 @@ fi:
       title: 'Fuksipassi'
       text1: 'Fuksipassin loi'
       text2: 'ja'
-      text3: '. Ongelmatilanteissa liity Telegram-kanavalle'
+      text3: ' (Julius ei enää vastaa ylläpidosta). Ongelmatilanteissa liity Telegram-kanavalle'
       text4: '. Tai ihan muuten vaan :D'
       text5: 'Fuksipassi on tehty Ruby on Railsilla, ja on tietenkin open source. Jos haluat kehittää sitä, suosittelemme liittymään ylläolevalle kanavalle, tai juttelemaan ko. henkilöille.'
       text6: 'Projektin github on '
