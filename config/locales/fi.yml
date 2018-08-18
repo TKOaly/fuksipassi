@@ -145,3 +145,9 @@ fi:
   notes:
     dokaa: "Dokasi fuksipassin"
     plz_no: "Älä plz"
+  user:
+    show:
+      destroy:
+        title: "Poista käyttäjä"
+        btn: "Poista käyttäjä"
+        confirmation: "Oletko varma?"

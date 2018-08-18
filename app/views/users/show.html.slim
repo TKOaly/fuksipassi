@@ -42,3 +42,11 @@
       br
       ' Points given in notes:
       = @user.points_given
+
+  - if admin?
+    br
+    div.col-sm-12
+      h3
+        | #{I18n.t('user.show.destroy.title')}
+      br
+      = button_to I18n.t('user.show.destroy.btn'), user_path(@user), class: 'btn btn-danger', data: {confirm: I18n.t('user.show.destroy.confirmation')}, method: :delete

@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if admin?
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to overview_path, notice: "User destroyed."
+    end
+  end
+
   def toggle_tutor
     if admin?
       @user = User.find(params[:id])

@@ -145,3 +145,9 @@ en:
   notes:
     dokaa: "Dokasi fuksipassin / You ruined it."
     plz_no: "Don't do this plz"
+  user:
+    show:
+      destroy:
+        title: "Remove user"
+        btn: "Remove user"
+        confirmation: "Are you sure?"

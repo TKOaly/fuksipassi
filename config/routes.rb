@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users do
     post 'toggle_tutor', on: :member
     post 'toggle_admin', on: :member
+    delete 'destroy', on: :member
   end
 
 
