@@ -14,8 +14,11 @@
       - if @user.image.present?
         = image_tag @user.image.url(:display)
     br
-    - if @user.can_receive_points?
+  - if @user.can_receive_points?
+    div.col-sm-12
       == render 'users/note_form' if can? :create, Note
+  - if @user.can_receive_points?
+    div.col-sm-12
       p
         ' Confirmed points:
         = @user.confirmed_points
@@ -26,22 +29,35 @@
           br
           ' Real points:
           = @user.real_points
-  - unless @user.has_role? :tutor or @user.has_role? :admin
-    div.col-sm-12.col-md-6
-      == render 'attended_events' if @user.participation_requests.any?
-    div.col-sm-12.col-md-5
-      h3 Notes
-      == render 'notes_list'
   - else
-    p
-      ' Accepted events:
-      = @user.accepted_participations.count
-      br
-      ' Notes written:
-      = @user.submitted_notes.count
-      br
-      ' Points given in notes:
-      = @user.points_given
+    div.col-sm-12
+      p
+        'Points:
+        = @user.all_points
+  - if tutor? and @user.has_role? :tutor
+    div.col-sm-12
+      p
+        ' Accepted events:
+        = @user.accepted_participations.count
+        br
+        ' Notes written:
+        = @user.submitted_notes.count
+        br
+        ' Points given in notes:
+        = @user.points_given
+  div.col-sm-12.col-md-6
+    - unless @user.has_role? :tutor or @user.has_role? :admin
+      h3 Attended events
+      == render 'attended_events' if @user.participation_requests.any?
+    - if @user.has_role? :tutor and fuksi?
+      h3 Give feedback
+      == render 'feedback_form'
+    - if @user.has_role? :tutor and admin? and @user != current_user
+      h3 Give points
+      == render 'note_form'
+  div.col-sm-12.col-md-5
+    h3 Comments
+    == render 'notes_list'
 
   - if admin?
     br

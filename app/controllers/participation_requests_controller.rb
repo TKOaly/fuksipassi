@@ -12,7 +12,7 @@ class ParticipationRequestsController < ApplicationController
           format.html { redirect_to :events, notice: 'Request submitted.' }
           format.json { render events_path, status: :created, location: @participation_request }
         else
-          format.html { redirect_to :events, notice: 'Something went wrong' }
+          format.html { redirect_to :events, alert: 'Something went wrong' }
           format.json { render json: @participation_request.errors, status: :unprocessable_entity }
         end
       end
@@ -46,7 +46,7 @@ class ParticipationRequestsController < ApplicationController
       participation.acceptor = current_user
       participation.save
     else
-      redirect_back fallback_location: root_path, notice: 'That is not allowed. Please don\'t try that again'
+      redirect_back fallback_location: root_path, alert: 'That is not allowed. Please don\'t try that again'
     end
   end
 

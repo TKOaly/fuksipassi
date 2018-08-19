@@ -1,0 +1,6 @@
+div.inline-form.form-inline
+  = form_for @note, url: like_tutor_path do |f|
+    = f.text_field :description, :class => 'form-control', :placeholder => 'description'
+    = f.hidden_field :to_id, :value => @user.id
+    .actions = f.submit "Gibe like \u{1F44D}", :class => 'btn btn-primary'
+    .actions = f.submit "Gibe dislike \u{1F44E}", :class => 'btn btn-primary'

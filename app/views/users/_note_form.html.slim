@@ -2,7 +2,10 @@ div.inline-form.form-inline
   = form_for @note do |f|
     = f.number_field :points, :class => 'form-control', :placeholder => 'points'
     = f.text_field :description, :class => 'form-control', :placeholder => 'description'
-    = f.check_box :points_hidden, :class => 'form-check-input'
-    = f.label :hide_points
+    - if @user.has_role? :fuksi
+      = f.check_box :points_hidden, :class => 'form-check-input'
+      = f.label :hide_points
+    - else
+      = f.hidden_field :points_hidden, :value => false
     = f.hidden_field :to_id, :value => @user.id
     .actions = f.submit 'Gibe points', :class => 'btn btn-primary'

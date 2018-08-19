@@ -21,9 +21,11 @@ class Ability
 
     if user.has_role? :fuksi
       can :read, [Event, Participation]
-      can [:read, :dokaa], Note
+      can [:read, :dokaa, :like_tutor, :dislike_tutor], Note
+      can :manage, Note, from_id: user.id
       can :manage, ParticipationRequest, participant_id: user.id
       can :manage, User, id: user.id
+      can :read, User
       can [:read, :set_user_language], Language
       can :manage, HiddenEvent, user_id: user.id
     end

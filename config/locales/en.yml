@@ -28,6 +28,7 @@ en:
         events: 'Events'
         overview: 'Overview'
         users: 'Users'
+        tutors: 'Tutors'
         dokaa: 'Fuck shit up'
         view_user: 'Profile'
         about: 'About'
@@ -145,6 +146,9 @@ en:
   notes:
     dokaa: "Dokasi fuksipassin / You ruined it."
     plz_no: "Don't do this plz"
+    comment_tutor:
+      success: "Saved successfully"
+      error: "Error, not saved"
   user:
     show:
       destroy:

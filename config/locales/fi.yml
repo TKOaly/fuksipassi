@@ -28,6 +28,7 @@ fi:
         events: 'Tapahtumat'
         overview: 'Yleiskatsaus'
         users: 'Käyttäjät'
+        tutors: 'Tuutorit'
         dokaa: 'Dokaa fuksipassi'
         view_user: 'Profiili'
         about: 'Tietoa'
@@ -145,6 +146,9 @@ fi:
   notes:
     dokaa: "Dokasi fuksipassin"
     plz_no: "Älä plz"
+    comment_tutor:
+      success: "Tallennettu onnistuneesti"
+      error: "Virhe, tallenus epäonnistui"
   user:
     show:
       destroy:

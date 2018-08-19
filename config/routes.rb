@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'dokaa' => 'notes#dokaa'
   get 'overview' => 'overview#index'
   put 'change/:language', to: 'languages#change', as: :change_language
+  post 'like_tutor', to: 'notes#like_tutor', as: :like_tutor
 
   get 'about' => 'about#index'
 

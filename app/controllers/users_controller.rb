@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.has_role?(:fuksi) && fuksi? && @user != current_user
+      redirect_back fallback_location: root_path, alert: "You are not authorized to access this page."
+    end
     @note = Note.new
   end
 
@@ -10,6 +13,11 @@ class UsersController < ApplicationController
     if tutor?
       @users = User.all
       @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
+      @top_tutors = @users.tutors.sort_by(&:real_points).reverse
+    end
+    if fuksi?
+      @users = User.tutors
+      @top_tutors = @users.sort_by(&:real_points).reverse
     end
   end
 

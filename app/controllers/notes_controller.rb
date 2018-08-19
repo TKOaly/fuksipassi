@@ -6,7 +6,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.from = current_user
 
-    if @note.to.can_receive_points?
+    if @note.to.can_receive_points? or admin?
       respond_to do |format|
         if @note.save
           format.html { redirect_to @note.to, notice: 'Points given :D.' }
@@ -34,9 +34,33 @@ class NotesController < ApplicationController
   def dokaa
     if current_user.has_role? :fuksi
       current_user.notes << Note.create(points: -3, description: I18n.t('notes.dokaa'), to: current_user, points_hidden: false) unless current_user.dokattu?
-      redirect_to current_user, notice: I18n.t('notes.plz_no')
+      redirect_to current_user, alert: I18n.t('notes.plz_no')
     else
-      redirect_to root_path, notice: 'User not fuksi'
+      redirect_to root_path, alert: 'User not fuksi'
+    end
+  end
+
+  def like_tutor
+    if current_user.has_role? :fuksi
+      @note = Note.new(note_params)
+      @note.from = current_user
+      @note.points_hidden = false
+      if params[:commit] == 'Gibe dislike'
+        @note.points = -1
+      else
+        @note.points = 1
+      end
+      if @note.to.has_role? :tutor
+        if @note.save
+          redirect_to @note.to, notice: I18n.t('notes.comment_tutor.success')
+        else
+          redirect_to @note.to, alert: I18n.t('notes.comment_tutor.error')
+        end
+      else
+        redirect_to root_path, alert: 'User not tutor'
+      end
+    else
+      redirect_to root_path, alert: 'User not fuksi'
     end
   end
 

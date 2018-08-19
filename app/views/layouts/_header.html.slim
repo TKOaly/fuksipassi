@@ -18,15 +18,18 @@ nav.navbar.navbar-default role="navigation"
         - if tutor?
           li
             = link_to I18n.t('application.header.links.users'), users_path
-        - if user_signed_in?
-          - unless can? :create, Event
-            li
-              = link_to I18n.t('application.header.links.dokaa'), dokaa_path, data: {confirm: I18n.t('application.header.messages.dokaa')}
+        - if fuksi?
+          li
+            = link_to I18n.t('application.header.links.tutors'), users_path
         - if user_signed_in?
           li
             = link_to I18n.t('application.header.links.view_user'), current_user
         li
           = link_to I18n.t('application.header.links.about'), about_path
+        - if user_signed_in?
+          - unless can? :create, Event
+            li
+              = link_to I18n.t('application.header.links.dokaa'), dokaa_path, data: {confirm: I18n.t('application.header.messages.dokaa')}
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle data-toggle="dropdown"
