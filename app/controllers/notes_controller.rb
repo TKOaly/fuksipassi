@@ -45,7 +45,7 @@ class NotesController < ApplicationController
       @note = Note.new(note_params)
       @note.from = current_user
       @note.points_hidden = false
-      if params[:commit] == 'Gibe dislike'
+      if params[:commit] && params[:commit].include?('Gibe dislike')
         @note.points = -1
       else
         @note.points = 1

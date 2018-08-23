@@ -16,7 +16,7 @@
     br
   - if @user.can_receive_points?
     div.col-sm-12
-      == render 'users/note_form' if can? :create, Note
+      == render 'users/note_form' if tutor?
   - if @user.can_receive_points?
     div.col-sm-12
       p
