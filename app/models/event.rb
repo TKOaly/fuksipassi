@@ -29,6 +29,14 @@ class Event < ApplicationRecord
     end
   end
 
+  def event_points
+    if self.participations
+      participations.first.points
+    else
+      0
+    end
+  end
+
   def future?
     date >= Time.zone.now
   end

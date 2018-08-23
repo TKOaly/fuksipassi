@@ -6,9 +6,9 @@
     = link_to @event.event_link, @event.event_link if @event.event_link
 
   p
-    ' Possible points for participation:
+    ' Points for participation:
     span.badge.badge-pill
-      = @event.points
+      = @event.event_points
   - unless can? :create, @event or @event.future?
     == render 'events/request_participation_button', participation: @main_participation.first
     - if @unattended_participations.any?

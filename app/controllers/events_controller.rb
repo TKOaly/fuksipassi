@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.create(event_params)
-    @event.participations << Participation.create(points: params[:event][:points], participation_type: 0)
+    @event.participations << Participation.create(points: params[:event][:even_points], participation_type: 0)
 
     respond_to do |format|
       if @event.save
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     p = @event.participations.where(participation_type: 0).take
-    p.points = params[:event][:points] if params[:event][:points] && p
+    p.points = params[:event][:event_points] if params[:event][:event_points] && p
     p.save if p
     respond_to do |format|
       if @event.update(event_params)

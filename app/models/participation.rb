@@ -38,6 +38,8 @@ class Participation < ApplicationRecord
     end
   end
 
-
-
+  def event_points
+    points
+  end
+  
 end
