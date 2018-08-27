@@ -5,7 +5,7 @@
         h4.mb-1 = link_to participation.participation.name, participation.participation, :"data-turbolinks" => false
       = td = link_to glyph(:trash), participation,
               data: {confirm: 'Are you sure you want to delete this participation?'},
-              method: :delete if (current_user == participation.participant) or (tutor? and @user.fuksi?) or admin?
+              method: :delete if (current_user == participation.participant) or (tutor? and @user.has_role? :fuksi) or admin?
       li#confirmed
       - unless participation.acceptor
         span.label.label-warning unconfirmed
