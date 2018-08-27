@@ -51,11 +51,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.create(event_params)
+    @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
-        participation = Participation.create(event: @event, points: params[:event][:event_points], participation_type: 0, fresher_can_participate: params[:event][:fresher_can_participate], tutor_can_participate: params[:event][:tutor_can_participate])
+        participation = Participation.new(event: @event, points: params[:event][:event_points], participation_type: 0, fresher_can_participate: params[:event][:fresher_can_participate], tutor_can_participate: params[:event][:tutor_can_participate])
         if participation.save
           format.html { redirect_to @event, notice: 'Event was successfully created.' }
           format.json { render :show, status: :created, location: @event }
