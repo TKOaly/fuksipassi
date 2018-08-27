@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     if admin?
       @user = User.find(params[:id])
       @user.destroy
-      redirect_to overview_path, notice: "User destroyed."
+      redirect_to users_path, notice: "User destroyed."
     end
   end
 
