@@ -17,6 +17,7 @@ class Ability
       can :manage, Note, from_id: user.id
       can :manage, User, id: user.id
       can [:read, :set_user_language], Language
+      can :manage, HiddenEvent, user_id: user.id
     end
 
     if user.has_role? :fuksi
