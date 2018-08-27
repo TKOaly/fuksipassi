@@ -22,5 +22,14 @@
     = f.label :points_for_participation
     br
     = f.number_field :event_points
-
+  .field
+    = f.label :fresher_can_participate, "Freshmen are allowed to participate?"
+    br
+    = f.check_box :fresher_can_participate, { checked: true }
+  .field
+    = f.label :tutor_can_participate, "Tutors are allowed to participate?"
+    br
+    = f.check_box :tutor_can_participate, { checked: true }
+  = f.hidden_field :participation_type, :value => "task"
+  .line-break-sm
   .actions = f.submit

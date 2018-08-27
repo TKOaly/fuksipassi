@@ -23,15 +23,17 @@ class Event < ApplicationRecord
 
   def points
     if self.participations.first && self.participations.first&.points
-      participations.map { |p| p.points }.inject(:+)
+      result = participations.for_freshers_strictly.map { |p| p.points }.inject(:+)
+      return result if result
+      return 0
     else
       0
     end
   end
 
   def event_points
-    if self.participations.first && self.participations.first&.points
-      participations.first.points
+    if self.participations.for_freshers_strictly.first && self.participations.for_freshers_strictly.first&.points
+      participations.for_freshers_strictly.first.points
     else
       0
     end

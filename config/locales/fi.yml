@@ -131,7 +131,7 @@ fi:
       link6: "Kirjaudu palvelussa"
   events:
     index:
-      title: "Tapahtumat"
+      title: "Kaikki tapahtumat"
       unattended_title: "Käymättömät tapahtumat"
       no_events: "Täällä ei näytä olevan mitään..."
       upcoming_title: "Tulevat tapahtumat"

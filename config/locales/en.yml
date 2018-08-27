@@ -131,7 +131,7 @@ en:
       link6: "Sign in with"
   events:
     index:
-      title: "Events"
+      title: "All events"
       unattended_title: "Unattended events"
       no_events: "There doesn't seem to be anything here..."
       upcoming_title: "Upcoming events"

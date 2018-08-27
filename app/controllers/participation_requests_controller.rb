@@ -4,12 +4,21 @@ class ParticipationRequestsController < ApplicationController
 
   def create
     @participation_request = ParticipationRequest.new(participation_request_params)
-    pp @participation_request.participation
+    pp = @participation_request.participation
 
-    if @participation_request.participant.can_receive_points?
+    if (pp.fresher_can_participate and @participation_request.participant.has_role? :fuksi) ||
+        (pp.tutor_can_participate and @participation_request.participant.has_role? :tutor)
+
+
+      if @participation_request.participant.has_role? :tutor
+        @participation_request.acceptor = current_user
+        notice_msg = 'Points added.'
+      else
+        notice_msg = 'Request submitted.'
+      end
       respond_to do |format|
         if @participation_request.save
-          format.html { redirect_to :events, notice: 'Request submitted.' }
+          format.html { redirect_to :events, notice: notice_msg }
           format.json { render events_path, status: :created, location: @participation_request }
         else
           format.html { redirect_to :events, alert: 'Something went wrong' }
@@ -17,7 +26,7 @@ class ParticipationRequestsController < ApplicationController
         end
       end
     else
-      redirect_to root_path, alert: "Can't add participation to this user"
+      redirect_to :events, alert: 'You cannot attend to this event/challenge.'
     end
   end
 

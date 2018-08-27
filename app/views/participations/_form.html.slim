@@ -11,5 +11,11 @@
   .field
     = f.label :points
     = f.number_field :points
+  .field
+    = f.label :fresher_can_participate, "Freshmen are allowed to fulfill?"
+    = f.check_box :fresher_can_participate, { checked: true }
+  .field
+    = f.label :tutor_can_participate, "Tutors are allowed to fulfill?"
+    = f.check_box :tutor_can_participate
   = f.hidden_field :participation_type, :value => "task"
   .actions = f.submit

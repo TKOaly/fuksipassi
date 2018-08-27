@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_184219) do
+ActiveRecord::Schema.define(version: 2018_08_27_135534) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_08_18_184219) do
     t.integer "event_id"
     t.string "description"
     t.integer "participation_type", null: false
+    t.boolean "fresher_can_participate", default: true, null: false
+    t.boolean "tutor_can_participate", default: false, null: false
     t.index ["event_id"], name: "index_participations_on_event_id"
   end
 

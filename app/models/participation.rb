@@ -5,7 +5,12 @@ class Participation < ApplicationRecord
   has_many :users, through: :participation_requests
 
   scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
+  scope :events, -> {where('participation_type = 0')  }
   scope :events_and_tasks, -> {where('participation_type = 0 OR participation_type = 2')  }
+  scope :for_freshers, -> { where(fresher_can_participate: true)  }
+  scope :for_tutors, -> { where(tutor_can_participate: true)  }
+  scope :for_freshers_strictly, -> { where(tutor_can_participate: false)  }
+  scope :for_tutors_strictly, -> { where(fresher_can_participate: false)  }
   scope :extras, -> { where('PARTICIPATION_TYPE = 1') }
   scope :events, -> { where('PARTICIPATION_TYPE = 0') }
 
@@ -13,9 +18,20 @@ class Participation < ApplicationRecord
             presence: true
   validates :participation_type,
             presence: true
+  validate :someone_can_participate
 
   def unconfirmed_count
     participation_requests.unconfirmed.count
+  end
+
+  def can_participate?(user)
+    if user.has_role? :fuksi and self.fresher_can_participate
+      return true
+    end
+    if user.has_role? :tutor and self.tutor_can_participate
+      return true
+    end
+    return false
   end
 
   def name
@@ -41,5 +57,11 @@ class Participation < ApplicationRecord
   def event_points
     points
   end
-  
+
+  def someone_can_participate
+    unless fresher_can_participate || tutor_can_participate
+      errors.add(:points, 'Someone needs to be able to participate')
+    end
+  end
+
 end

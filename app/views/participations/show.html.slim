@@ -2,10 +2,11 @@
   h2
     =@participation.description
   p
-    ' Possible points for participation:
+    ' Points for participation:
     span.badge.badge-pill
       = @participation.points
-  - if fuksi?
+
+  - if @participation.can_participate?(current_user)
     == render 'events/request_participation_button', participation: @unattended_participations.first
   br
 

@@ -6,12 +6,21 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @show_hidden = params[:show_hidden]
-    if params[:show_hidden]
-      @unattended_events = Event.past + Participation.tasks - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+
+    if tutor?
+      if params[:show_hidden]
+        @unattended_events = (Event.past - Participation.event.for_freshers_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+      else
+        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_freshers_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+      end
     else
-      @unattended_events = Event.past.unhidden(current_user.id) + Participation.tasks - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+      if params[:show_hidden]
+        @unattended_events = (Event.past - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+      else
+        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+      end
     end
-    @all_participations = Participation.events_and_tasks.map { |u| u.event ? u.event : u }
+    @all_participations = Participation.events_and_tasks.map { |u| u.event ? u.event : u }.sort_by{|e| e.name.downcase}
     @participated_events = current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
     @hidden_event_ids = HiddenEvent.where(user_id: current_user.id).collect(&:event_id)
   end
@@ -21,7 +30,11 @@ class EventsController < ApplicationController
   def show
     @participation_request = ParticipationRequest.new
     @participation = Participation.new
-    @unattended_participations = @event.participations.extras - current_user.participations.extras
+    if tutor?
+      @unattended_participations = @event.participations.for_tutors.extras - current_user.participations.for_tutors.extras
+    else
+      @unattended_participations = @event.participations.for_freshers.extras - current_user.participations.for_freshers.extras
+    end
     @main_participation = @event.participations.events - current_user.participations.events
   end
 
@@ -39,7 +52,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.create(event_params)
-    @event.participations << Participation.create(points: params[:event][:even_points], participation_type: 0)
+    @event.participations << Participation.create(points: params[:event][:event_points], participation_type: 0, fresher_can_participate: params[:event][:fresher_can_participate], tutor_can_participate: params[:event][:tutor_can_participate])
 
     respond_to do |format|
       if @event.save
@@ -57,6 +70,8 @@ class EventsController < ApplicationController
   def update
     p = @event.participations.where(participation_type: 0).take
     p.points = params[:event][:event_points] if params[:event][:event_points] && p
+    p.fresher_can_participate = params[:event][:fresher_can_participate] if params[:event][:fresher_can_participate] && p
+    p.tutor_can_participate = params[:event][:tutor_can_participate] if params[:event][:tutor_can_participate] && p
     p.save if p
     respond_to do |format|
       if @event.update(event_params)
@@ -87,6 +102,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name, :date, :event_link, :points)
+    params.require(:event).permit(:name, :date, :event_link)
   end
 end

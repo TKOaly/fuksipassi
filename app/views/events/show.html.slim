@@ -9,11 +9,13 @@
     ' Points for participation:
     span.badge.badge-pill
       = @event.event_points
-  - unless can? :create, @event or @event.future?
+  - if !@event.future? && (!@main_participation.first || @main_participation.first&.can_participate?(current_user))
     == render 'events/request_participation_button', participation: @main_participation.first
     - if @unattended_participations.any?
       == render 'participation_request_form'
   - if can? :create, Participation
+    .line-break-lg
+    h3 Edit event
     == render 'add_participation'
     == render 'extra_participation_list'
     == render 'overview/unconfirmed_requests', unconfirmed: @event.participations.map { |p| p.participation_requests.unconfirmed }.first

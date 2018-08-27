@@ -74,6 +74,6 @@ class ParticipationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def participation_params
-    params.require(:participation).permit(:points, :description, :event_id, :participation_type)
+    params.require(:participation).permit(:points, :description, :event_id, :participation_type, :fresher_can_participate, :tutor_can_participate)
   end
 end
