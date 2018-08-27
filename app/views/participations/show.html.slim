@@ -5,7 +5,7 @@
     ' Possible points for participation:
     span.badge.badge-pill
       = @participation.points
-  - if tutor?
+  - if fuksi?
     == render 'events/request_participation_button', participation: @unattended_participations.first
   br
 
