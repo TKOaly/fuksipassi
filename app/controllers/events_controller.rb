@@ -52,18 +52,25 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.create(event_params)
-    @event.participations << Participation.create(points: params[:event][:event_points], participation_type: 0, fresher_can_participate: params[:event][:fresher_can_participate], tutor_can_participate: params[:event][:tutor_can_participate])
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        participation = Participation.create(event: @event, points: params[:event][:event_points], participation_type: 0, fresher_can_participate: params[:event][:fresher_can_participate], tutor_can_participate: params[:event][:tutor_can_participate])
+        if participation.save
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render :show, status: :created, location: @event }
+        else
+          @event.destroy
+          format.html { render :new }
+          format.json { render json: participation.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
+
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
