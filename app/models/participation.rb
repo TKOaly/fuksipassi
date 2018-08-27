@@ -7,10 +7,10 @@ class Participation < ApplicationRecord
   scope :tasks, -> { where('PARTICIPATION_TYPE = 2') }
   scope :events, -> {where('participation_type = 0')  }
   scope :events_and_tasks, -> {where('participation_type = 0 OR participation_type = 2')  }
-  scope :for_freshers, -> { where(fresher_can_participate: true)  }
-  scope :for_tutors, -> { where(tutor_can_participate: true)  }
-  scope :for_freshers_strictly, -> { where(tutor_can_participate: false)  }
-  scope :for_tutors_strictly, -> { where(fresher_can_participate: false)  }
+  scope :for_freshers, -> { where('fresher_can_participate IS ?', true)  }
+  scope :for_tutors, -> { where('tutor_can_participate IS ?', true)  }
+  scope :for_freshers_strictly, -> { where('tutor_can_participate IS ?', false)  }
+  scope :for_tutors_strictly, -> { where('fresher_can_participate IS ?', false)  }
   scope :extras, -> { where('PARTICIPATION_TYPE = 1') }
   scope :events, -> { where('PARTICIPATION_TYPE = 0') }
 
