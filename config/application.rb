@@ -14,11 +14,5 @@ module Fuksipassi
 
     config.i18n.available_locales = [:en, :fi]
     config.i18n.default_locale = :en
-
-    config.assets.paths << Rails.root.join('app', 'assets', 'hero-images')
-
-    Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
-      config.assets.paths << path
-    end
   end
 end

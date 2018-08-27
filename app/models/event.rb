@@ -22,7 +22,7 @@ class Event < ApplicationRecord
   end
 
   def points
-    if self.participations.first
+    if self.participations.first && self.participations.first&.points
       participations.map { |p| p.points }.inject(:+)
     else
       0
@@ -30,7 +30,7 @@ class Event < ApplicationRecord
   end
 
   def event_points
-    if self.participations.first
+    if self.participations.first && self.participations.first&.points
       participations.first.points
     else
       0
