@@ -136,13 +136,15 @@ fi:
       no_events: "Täällä ei näytä olevan mitään..."
       upcoming_title: "Tulevat tapahtumat"
       attended_title: "Osallistumani tapahtumat"
-      show_btn: "Näytä piilotetut tapahtumat"
-      hide_btn: "Piilota piilotetut tapahtumat"
+      show_btn: "Näytä piilotetut"
+      hide_btn: "Piilota piilotetut"
       new_btn: "Uusi tapahtuma"
       new_task_btn: "Uusi haaste"
       list:
         show_btn: "Poista tapahtuman piilotus"
         hide_btn: "Piilota tapahtuma"
+        show_btn2: "Poista haasteen piilotus"
+        hide_btn2: "Piilota haaste"
   notes:
     dokaa: "Dokasi fuksipassin"
     plz_no: "Älä plz"

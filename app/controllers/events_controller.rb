@@ -11,18 +11,19 @@ class EventsController < ApplicationController
       if params[:show_hidden]
         @unattended_events = (Event.past - Participation.event.for_freshers_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       else
-        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_freshers_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_freshers_strictly.collect(&:event)) + Participation.tasks.for_tutors.unhidden(current_user.id) - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       end
     else
       if params[:show_hidden]
         @unattended_events = (Event.past - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       else
-        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+        @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors.unhidden(current_user.id) - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       end
     end
     @all_participations = Participation.events_and_tasks.map { |u| u.event ? u.event : u }.sort_by{|e| e.name.downcase}
     @participated_events = current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
     @hidden_event_ids = HiddenEvent.where(user_id: current_user.id).collect(&:event_id)
+    @hidden_participation_ids = HiddenParticipation.where(user_id: current_user.id).collect(&:participation_id)
   end
 
   # GET /events/1

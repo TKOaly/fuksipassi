@@ -136,13 +136,15 @@ en:
       no_events: "There doesn't seem to be anything here..."
       upcoming_title: "Upcoming events"
       attended_title: "Attended events"
-      show_btn: "Show hidden events"
-      hide_btn: "Hide hidden events"
+      show_btn: "Show hidden"
+      hide_btn: "Hide hidden"
       new_btn: "New Event"
       new_task_btn: "New Task"
       list:
-        show_btn: "Unhide events"
+        show_btn: "Unhide event"
         hide_btn: "Hide event"
+        show_btn2: "Unhide challenge"
+        hide_btn2: "Hide challenge"
   notes:
     dokaa: "Dokasi fuksipassin / You ruined it."
     plz_no: "Don't do this plz"

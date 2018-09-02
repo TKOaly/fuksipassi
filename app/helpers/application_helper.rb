@@ -5,7 +5,11 @@ module ApplicationHelper
     elsif object.event
       object.event.date
     else
-      "HAASTE"
+      if current_user.language&.name == 'English'
+        "CHALLENGE"
+      else
+        "HAASTE"
+      end
     end
   end
 

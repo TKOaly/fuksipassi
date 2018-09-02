@@ -18,6 +18,7 @@ class Ability
       can :manage, User, id: user.id
       can [:read, :set_user_language], Language
       can :manage, HiddenEvent, user_id: user.id
+      can :manage, HiddenParticipation, user_id: user.id
     end
 
     if user.has_role? :fuksi
@@ -29,6 +30,7 @@ class Ability
       can :read, User
       can [:read, :set_user_language], Language
       can :manage, HiddenEvent, user_id: user.id
+      can :manage, HiddenParticipation, user_id: user.id
     end
   end
 end

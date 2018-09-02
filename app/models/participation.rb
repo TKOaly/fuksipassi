@@ -13,6 +13,7 @@ class Participation < ApplicationRecord
   scope :for_tutors_strictly, -> { where('fresher_can_participate IS ?', false)  }
   scope :extras, -> { where('PARTICIPATION_TYPE = 1') }
   scope :events, -> { where('PARTICIPATION_TYPE = 0') }
+  scope :unhidden, ->(user_id) { where('id NOT IN (?)', HiddenParticipation.where(user_id: user_id).collect(&:participation_id) << -1) }
 
   validates :points,
             presence: true

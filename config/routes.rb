@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   put 'users/:id/update', to: 'users#update'
   put 'events/:event_id/hide', to: 'hidden_events#create', as: :hide_event
   delete 'events/:event_id/unhide', to: 'hidden_events#destroy', as: :unhide_event
+  put 'participations/:participation_id/hide', to: 'hidden_participations#create', as: :hide_participation
+  delete 'participations/:participation_id/unhide', to: 'hidden_participations#destroy', as: :unhide_participation
 
   resources :users do
     post 'toggle_tutor', on: :member

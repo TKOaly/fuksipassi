@@ -9,3 +9,7 @@
       = link_to I18n.t('events.index.list.hide_btn'), hide_event_path(event.id), :method => :put
     - elsif show_hide_links && event.respond_to?(:date)
       = link_to I18n.t('events.index.list.show_btn'), unhide_event_path(event.id), :method => :delete
+    - elsif show_hide_links && !event.respond_to?(:date) && !@hidden_participation_ids.include?(event.id)
+      = link_to I18n.t('events.index.list.hide_btn2'), hide_participation_path(event.id), :method => :put
+    - elsif show_hide_links && !event.respond_to?(:date)
+      = link_to I18n.t('events.index.list.show_btn2'), unhide_participation_path(event.id), :method => :delete
