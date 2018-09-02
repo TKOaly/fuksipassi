@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   def index
     if tutor?
       @users = User.all
-      @top_fuksit = sort_users(@users.select { |u| u.can_receive_points? })
-      @top_tutors = sort_users(@users.tutors)
+      @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
+      @top_tutors = @users.tutors.sort_by(&:real_points).reverse
     end
     if fuksi?
       @users = User.tutors
-      @top_tutors = sort_users(@users)
+      @top_tutors = @users.sort_by(&:real_points).reverse
     end
   end
 
