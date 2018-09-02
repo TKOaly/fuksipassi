@@ -70,7 +70,7 @@ class User < ApplicationRecord
   end
 
   def real_points
-    (participation_requests.confirmed.any? ?
+    0 + (participation_requests.confirmed.any? ?
         participation_requests.confirmed.map { |p| p.participation.points }.inject(:+) : 0) +
         (notes.any? ?
             notes.map { |n| n.points }.inject(:+) : 0)

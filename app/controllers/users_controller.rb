@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   def index
     if tutor?
       @users = User.all
-      @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
-      @top_tutors = @users.tutors.sort_by(&:real_points).reverse
+      @top_fuksit = sort_users(@users.select { |u| u.can_receive_points? })
+      @top_tutors = sort_users(@users.tutors)
     end
     if fuksi?
       @users = User.tutors
-      @top_tutors = @users.sort_by(&:real_points).reverse
+      @top_tutors = sort_users(@users)
     end
   end
 
@@ -49,6 +49,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user.toggle_admin
       redirect_back fallback_location: root_path, notice: "#{@user.full_name} has been modified."
+    end
+  end
+
+  private
+
+  def sort_users(users)
+    return users.sort do |a, b|
+      [b.real_points, a.full_name.downcase] <=> [a.real_points, b.full_name.downcase]
     end
   end
 end
