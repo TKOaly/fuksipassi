@@ -32,7 +32,7 @@ nav.navbar.navbar-default role="navigation"
               = link_to I18n.t('application.header.links.dokaa'), dokaa_path, data: {confirm: I18n.t('application.header.messages.dokaa')}
       ul.nav.navbar-nav.navbar-right
         li.dropdown
-          a.dropdown-toggle data-toggle="dropdown"
+          a.dropdown-toggle data-toggle="dropdown" href="#"
             = I18n.t('application.header.language')
             span.caret
           ul.dropdown-menu role="menu"
@@ -46,7 +46,7 @@ nav.navbar.navbar-default role="navigation"
             = link_to I18n.t('application.header.links.register'), register_path
         - else
           li.dropdown
-            a.dropdown-toggle data-toggle="dropdown"
+            a.dropdown-toggle data-toggle="dropdown" href="#"
               = current_user.first_name
               span.caret
             ul.dropdown-menu role="menu"
