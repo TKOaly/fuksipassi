@@ -124,10 +124,11 @@ class EventsController < ApplicationController
 
   # Fetch events from TKO-aly api
   def fetch_tekis_events
+    auth_key = ENV['TKO_ALY_EVENT_API']
     from_date = Time.now.strftime('%Y-%m-') + '01'
     url = URI.parse('https://members.tko-aly.fi/api/events?fromDate=' + from_date)
     request = Net::HTTP::Get.new(url)
-    request.add_field('X-Token', '9540a74d-f9cf-4c40-825f-056bf2eef392')
+    request.add_field('X-Token', auth_key)
 
     response = Net::HTTP.start(url.host, url.port, :use_ssl => true) do |http|
       http.request(request)

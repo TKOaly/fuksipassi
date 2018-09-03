@@ -9,7 +9,7 @@
   .field
     = f.label :name
     br
-    = f.text_field :name, :value => selected_event['name']
+    = f.text_field :name, :value => selected_event['name'] if selected_event
   .field
     = f.label :date
     br
@@ -17,7 +17,7 @@
   .field
     = f.label :url
     br
-    = f.text_field :event_link, :value => 'http://tko-aly.fi/event/' + String(selected_event['id'])
+    = f.text_field :event_link, :value => 'http://tko-aly.fi/event/' + String(selected_event['id']) if selected_event
   .field
     = f.label :points_for_participation
     br
