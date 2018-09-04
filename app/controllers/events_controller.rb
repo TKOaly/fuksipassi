@@ -48,7 +48,8 @@ class EventsController < ApplicationController
     if request.query_parameters.has_key?(:tekisEventId)
       event_id = request.query_parameters['tekisEventId']
       if event_id != ''
-        @selected_event = tekis_events.select {|event| event['id'] == Integer(event_id)}[0]
+        selected_events = tekis_events.select {|event| event['id'] == Integer(event_id)}
+        @selected_event = selected_events.length == 0 ? nil : selected_events[0]
       end
     end
     @tekis_events = tekis_events
