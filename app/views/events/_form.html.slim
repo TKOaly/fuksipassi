@@ -9,15 +9,15 @@
   .field
     = f.label :name
     br
-    = f.text_field :name, :value => selected_event['name'] if selected_event
+    = f.text_field :name, :value => selected_event == nil ? '' : selected_event['name']
   .field
     = f.label :date
     br
-    = f.date_select :date
+    = f.date_select :date, :selected => selected_event == nil ? Time.now : Time.parse(selected_event['starts'])
   .field
     = f.label :url
     br
-    = f.text_field :event_link, :value => 'http://tko-aly.fi/event/' + String(selected_event['id']) if selected_event
+    = f.text_field :event_link, :value => selected_event == nil ? '' : 'http://tko-aly.fi/event/' + String(selected_event['id'])
   .field
     = f.label :points_for_participation
     br
