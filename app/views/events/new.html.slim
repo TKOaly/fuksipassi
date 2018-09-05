@@ -1,6 +1,10 @@
 .container
   h1 New event
-
-  == render 'form'
-
-  = link_to 'Back', events_path
+  .grid
+    .row
+      .col-sm-12.col-md-4
+        == render 'form', selected_event: @selected_event
+        = link_to 'Back', events_path
+      .col-sm-12.col-md-4
+        h4 Copy from TKO-äky calendar 
+        == render 'list_tekis_events', tekis_events: @tekis_events

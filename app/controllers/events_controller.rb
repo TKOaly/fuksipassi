@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :event
@@ -41,6 +44,15 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    tekis_events = fetch_tekis_events
+    if params[:tekisEventId]
+      event_id = params[:tekisEventId]
+      if event_id != ''
+        selected_events = tekis_events.select {|event| event['id'] == event_id.to_i}
+        @selected_event = selected_events[0]
+      end
+    end
+    @tekis_events = tekis_events
     @event = Event.new
     @participation = Participation.new
   end
@@ -111,5 +123,19 @@ class EventsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:name, :date, :event_link)
+  end
+
+  # Fetch events from TKO-aly api
+  def fetch_tekis_events
+    auth_key = ENV['TKO_ALY_EVENT_API']
+    from_date = Time.now.strftime('%Y-%m-') + '01'
+    url = URI.parse('https://members.tko-aly.fi/api/events?fromDate=' + from_date)
+    request = Net::HTTP::Get.new(url)
+    request.add_field('X-Token', auth_key)
+
+    response = Net::HTTP.start(url.host, url.port, :use_ssl => true) do |http|
+      http.request(request)
+    end
+    JSON.parse(response.body) 
   end
 end

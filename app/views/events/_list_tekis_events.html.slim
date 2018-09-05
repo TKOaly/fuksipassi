@@ -1,0 +1,4 @@
+div.tekis_event_list
+  - tekis_events.each do |event|
+    li.list-group-item.justify-content-between
+      a(href="?tekisEventId=#{event['id']}") = event['name']
