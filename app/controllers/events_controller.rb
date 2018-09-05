@@ -45,11 +45,11 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     tekis_events = fetch_tekis_events
-    if request.query_parameters.has_key?(:tekisEventId)
-      event_id = request.query_parameters['tekisEventId']
+    if params[:tekisEventId]
+      event_id = params[:tekisEventId]
       if event_id != ''
-        selected_events = tekis_events.select {|event| event['id'] == Integer(event_id)}
-        @selected_event = selected_events.length == 0 ? nil : selected_events[0]
+        selected_events = tekis_events.select {|event| event['id'] == event_id.to_i}
+        @selected_event = selected_events[0]
       end
     end
     @tekis_events = tekis_events
