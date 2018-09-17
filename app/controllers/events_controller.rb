@@ -18,7 +18,7 @@ class EventsController < ApplicationController
       end
     else
       if params[:show_hidden]
-        @unattended_events = (Event.past - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
+        @unattended_events = (Event.past - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_freshers - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       else
         @unattended_events = (Event.past.unhidden(current_user.id) - Participation.event.for_tutors_strictly.collect(&:event)) + Participation.tasks.for_tutors.unhidden(current_user.id) - current_user.participations.events_and_tasks.map { |u| u.event ? u.event : u }
       end
