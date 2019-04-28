@@ -9,7 +9,7 @@
     - if @events.future.any?
       div.col-sm-12.col-md-4#upcoming
         h3 = I18n.t('events.index.upcoming_title')
-        == render 'list', events: @events.future, show_hide_links: false
+        == render 'list', events: @coming_events, show_hide_links: false
     - if @participated_events.any?
       div.col-sm-12.col-md-4#attended
         h3 = I18n.t('events.index.attended_title')
