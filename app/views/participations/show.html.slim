@@ -4,7 +4,12 @@
   p
     ' Points for participation:
     span.badge.badge-pill
-      = @participation.points
+      = @participation.participation_points(current_user)
+  - if tutor?
+    p
+      ' Points for freshers for participation:
+      span.badge.badge-pill
+        = @participation.points
 
   - if @participation.can_participate?(current_user)
     == render 'events/request_participation_button', participation: @unattended_participations.first
