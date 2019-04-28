@@ -55,8 +55,28 @@ class Participation < ApplicationRecord
     end
   end
 
-  def event_points
-    points
+  def participation_points(user = nil)
+    if user && user.has_role?(:tutor)
+      if tutor_can_participate
+        points
+      else
+        0
+      end
+    else
+      points
+    end
+  end
+
+  def event_points(user = nil)
+    if user && user.has_role?(:tutor)
+      if tutor_can_participate
+        points
+      else
+        0
+      end
+    else
+      points
+    end
   end
 
   def someone_can_participate
