@@ -21,9 +21,13 @@ class Event < ApplicationRecord
     participation_requests.unconfirmed.count
   end
 
-  def points
+  def points(user = nil)
     if self.participations.first && self.participations.first&.points
-      result = participations.for_freshers.map { |p| p.points }.inject(:+)
+      if user && user.has_role?(:tutor)
+        result = participations.for_tutors.map { |p| p.points }.inject(:+)
+      else
+        result = participations.for_freshers.map { |p| p.points }.inject(:+)
+      end
       return result if result
       return 0
     else
@@ -31,8 +35,10 @@ class Event < ApplicationRecord
     end
   end
 
-  def event_points
-    if self.participations.for_freshers.first && self.participations.for_freshers.first&.points
+  def event_points(user = nil)
+    if user && user.has_role?(:tutor) && participations.for_tutors.first&.points
+      participations.for_tutors.first.points
+    elsif !user&.has_role?(:tutor) && participations.for_freshers.first&.points
       participations.for_freshers.first.points
     else
       0

@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 2018_09_02_205312) do
   create_table "hidden_events", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "event_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_hidden_events_on_event_id"
     t.index ["user_id"], name: "index_hidden_events_on_user_id"
   end
@@ -87,10 +85,11 @@ ActiveRecord::Schema.define(version: 2018_09_02_205312) do
     t.string "name"
     t.string "resource_type"
     t.integer "resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -134,7 +133,9 @@ ActiveRecord::Schema.define(version: 2018_09_02_205312) do
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   create_table "years", force: :cascade do |t|

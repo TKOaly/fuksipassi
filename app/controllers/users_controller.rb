@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if tutor?
+    if tutor? || admin?
       @users = User.all
       @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
       @top_tutors = @users.tutors.sort_by(&:real_points).reverse
