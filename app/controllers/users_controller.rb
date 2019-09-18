@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
     if fuksi?
       @users = User.all
-      @top_tutors = @users.sort_by(&:real_points).reverse
+      @top_tutors = @users.tutors.sort_by(&:real_points).reverse
     end
   end
 
