@@ -8,8 +8,11 @@
         '
         = '(' + note.from.full_name + ') '
     = td = link_to glyph(:trash), note, data: {confirm: 'Are you sure?'}, method: :delete if admin? or note.from == current_user
-    - if note.points_hidden
-      - if tutor?
+    - if @user.has_role? :tutor
+      span[class="#{point_badge(note.points)}"]
+        = note.points if admin?
+    - elsif note.points_hidden
+      - if tutor? and @user.has_role? :fuksi
         span.badge
           = note.points
     - else

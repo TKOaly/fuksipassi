@@ -26,7 +26,7 @@
           br
           ' Real points:
           = @user.real_points
-  - else
+  - elsif admin?
     div.col-sm-12
       p
         'Points:
@@ -56,8 +56,9 @@
     h3 Attended events
     == render 'attended_events' if @user.participation_requests.any?
   div.col-sm-12.col-md-5
-    h3 Comments
-    == render 'notes_list'
+    - if tutor?
+      h3 Comments
+      == render 'notes_list'
 
   - if admin?
     br
