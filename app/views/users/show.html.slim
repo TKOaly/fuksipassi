@@ -45,7 +45,7 @@
   - if @user.has_role? :fuksi
     div.col-sm-12
       == render 'users/note_form' if tutor?
-  - if @user.has_role? :tutor and fuksi?
+  - if @user.has_role? :tutor and @user != current_user
     div.col-sm-12
       h3 Give feedback
       == render 'feedback_form'

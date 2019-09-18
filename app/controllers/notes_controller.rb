@@ -41,7 +41,7 @@ class NotesController < ApplicationController
   end
 
   def like_tutor
-    if current_user.has_role? :fuksi
+    # if current_user.has_role? :fuksi
       @note = Note.new(note_params)
       @note.from = current_user
       @note.points_hidden = false
@@ -59,10 +59,10 @@ class NotesController < ApplicationController
       else
         redirect_to root_path, alert: 'User not tutor'
       end
-    else
-      redirect_to root_path, alert: 'User not fuksi'
+    # else
+    #   redirect_to root_path, alert: 'User not fuksi'
     end
-  end
+  # end
 
   private
   # Use callbacks to share common setup or constraints between actions.
