@@ -56,9 +56,8 @@
     h3 Attended events
     == render 'attended_events' if @user.participation_requests.any?
   div.col-sm-12.col-md-5
-    - if tutor?
-      h3 Comments
-      == render 'notes_list'
+    h3 Comments
+    == render 'notes_list'
 
   - if admin?
     br
