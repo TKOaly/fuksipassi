@@ -10,14 +10,16 @@ class UsersController < ApplicationController
   end
 
   def index
-    if tutor? || admin?
-      @users = User.all
+    @users = User.all
+    if admin?
       @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
       @top_tutors = @users.tutors.sort_by(&:real_points).reverse
-    end
-    if fuksi?
-      @users = User.all
-      @top_tutors = @users.tutors.sort_by(&:real_points).reverse
+    elsif tutor?
+      @top_fuksit = @users.select { |u| u.can_receive_points? }.sort_by(&:real_points).reverse
+      @top_tutors = @users.tutors.sort_by(&:full_name)
+
+    elsif fuksi?
+      @top_tutors = @users.tutors.sort_by(&:full_name)
     end
   end
 
