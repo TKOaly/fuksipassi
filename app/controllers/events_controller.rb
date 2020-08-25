@@ -131,7 +131,7 @@ class EventsController < ApplicationController
   def fetch_tekis_events
     auth_key = ENV['TKO_ALY_EVENT_API']
     from_date = Time.now.strftime('%Y-%m-') + '01'
-    url = URI.parse('https://members.tko-aly.fi/api/events?fromDate=' + from_date)
+    url = URI.parse('https://event-api.tko-aly.fi/api/events?fromDate=' + from_date)
     request = Net::HTTP::Get.new(url)
     request.add_field('X-Token', auth_key)
 
